@@ -8,8 +8,8 @@ header {
   text-align: center;
   background: linear-gradient(
     to bottom,
-    #9897DB,
-    #423FDB
+    dodgerblue,
+    midnightblue
   );
   padding: 1rem;
   border-bottom-right-radius: 12px;
