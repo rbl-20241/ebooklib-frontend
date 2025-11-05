@@ -1,7 +1,7 @@
-import {Component, inject, OnInit} from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { FiletreeService } from './filetree.service';
-import {Tree} from 'primeng/tree';
+import { Tree } from 'primeng/tree';
 
 @Component({
   selector: 'app-filetree',
