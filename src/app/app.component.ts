@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from './header/header.component';
-import { FiletreeComponent } from './filetree/filetree.component';
+import { TopComponent } from './top/top.component';
+import { CenterComponent } from './center/center.component';
+import { BottomComponent } from './bottom/bottom.component';
 
 @Component({
   selector: 'app-root',
   imports: [
-    HeaderComponent,
-    FiletreeComponent
+    TopComponent,
+    CenterComponent,
+    BottomComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

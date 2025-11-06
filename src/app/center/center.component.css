@@ -1,0 +1,9 @@
+p-panel {
+  background-color: royalblue;
+  border-color: transparent;
+  margin-left: -1rem;
+  position: fixed;
+  top: 8rem;
+  bottom: -3rem;
+  width: 100%;
+}

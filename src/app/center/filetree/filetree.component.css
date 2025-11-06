@@ -8,12 +8,13 @@ p-tree {
   font-size: 0.9rem;
   line-height: 0.3rem;
   padding: 0;
+  scrollbar-width: auto;
+
 }
 
 p-panel {
   background-color: royalblue;
   border-color: aliceblue;
   border-radius: 12px;
-  margin-bottom: 3rem;
 }
 
