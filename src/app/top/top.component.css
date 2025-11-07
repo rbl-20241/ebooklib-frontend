@@ -1,7 +1,7 @@
 p-panel {
   background-color: royalblue;
   border-color: transparent;
-  margin-bottom: 3rem;
+  /*margin-bottom: 3rem;*/
   position: fixed;
   top: 0;
   width: 100%;
