@@ -1,9 +1,14 @@
-main {
+body {
+  background-color: darkcyan;
+
 }
 
-/*
 p-dialog {
   background-color: darkcyan;
+
+}
+/*
+p-dialog {
   border-color: transparent;
   margin-left: 35rem;
   width: 40rem;

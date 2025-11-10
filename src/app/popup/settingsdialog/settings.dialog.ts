@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 
 @Component({
@@ -9,12 +9,7 @@ import {Dialog} from 'primeng/dialog';
   templateUrl: './settings.dialog.html',
   styleUrl: './settings.dialog.css'
 })
-export class SettingsDialog implements OnInit{
-  public displaySettingsDialog = true;
-
-  ngOnInit(): void {
-    console.log("SettingsDialog");
-  }
-
+export class SettingsDialog {
+  @Input() displaySettingsDialog = true;
 
 }
