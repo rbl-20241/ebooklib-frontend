@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 
 @Component({
@@ -10,6 +10,12 @@ import {Dialog} from 'primeng/dialog';
   styleUrl: './settings.dialog.css'
 })
 export class SettingsDialog {
-  @Input() displaySettingsDialog = true;
+  displaySettingsDialog = signal(true);
+
+  displayDialog(value : boolean) {
+    this.displaySettingsDialog.update(value => value)
+    this.displaySettingsDialog.set(value);
+    console.log("displayDialog: " + value);
+  }
 
 }
