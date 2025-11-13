@@ -14,4 +14,13 @@ export class FiletreeService {
       .toPromise()
       .then(res => <TreeNode[]>res.data);
   }
+
+  getBooks() {
+    let tree =  this.http.get<any>('http://localhost:8080/getbooks')
+      .toPromise()
+      .then(res => <TreeNode[]>res.data);
+
+    console.log(tree);
+    return tree;
+  }
 }
