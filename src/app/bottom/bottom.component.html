@@ -1,6 +1,14 @@
 <main>
   <p-panel [showHeader]="false">
-    <p>bottom works!</p>
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Database"
+      class="ebook-button"
+      (click)="saveBooksToDatabase()"
+      >
+    </button>
   </p-panel>
 </main>
 

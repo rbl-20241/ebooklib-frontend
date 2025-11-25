@@ -17,12 +17,6 @@ export class FiletreeService {
     return res.data as TreeNode[];
   }
 
-  async saveBooksToDatabase() {
-    await firstValueFrom(
-      this.http.get<any>('http://localhost:8080/savedb')
-    );
-  }
-
   public getBookInfo() {
 
   }

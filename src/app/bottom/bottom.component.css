@@ -1,8 +1,27 @@
 p-panel {
-  background-color: dodgerblue;
+  background-color: royalblue;
   border-color: transparent;
   margin-left: -1rem;
   position: fixed;
   bottom: 0;
   width: 100%;
+}
+
+.ebook-button {
+  background: blanchedalmond;
+  color: black;
+  margin-left: 1rem;
+  margin-top: 10px;
+  padding: 0.571rem 1.143rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  &:enabled:hover {
+    background: khaki;
+  }
+  &:enabled:active {
+    background: chocolate;
+    color: white;
+    box-shadow: none;
+  }
+
 }

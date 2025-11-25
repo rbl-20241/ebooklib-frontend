@@ -10,7 +10,7 @@ import {Dialog} from 'primeng/dialog';
   styleUrl: './settings.dialog.css'
 })
 export class SettingsDialog {
-  displaySettingsDialog = signal(true);
+  displaySettingsDialog = signal(false);
 
   displayDialog(value : boolean) {
     this.displaySettingsDialog.update(value => value)
