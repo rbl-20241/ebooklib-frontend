@@ -13,11 +13,11 @@ import { Panel } from 'primeng/panel';
 })
 export class FiletreeComponent implements OnInit {
     files!: TreeNode[];
-    selectedFile!: TreeNode;
+    selectedBook!: TreeNode;
     private filetreeService = inject(FiletreeService);
 
 
     ngOnInit() {
 
-        this.filetreeService.getBooks().then((data) => this.files = data);
+        this.filetreeService.getBooktree().then((data) => this.files = data);
     }}
