@@ -1,24 +1,20 @@
-import {Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Image} from 'primeng/image';
-import {SettingsDialog} from '../../popup/settingsdialog/settings.dialog';
+import {SettingService} from './settings.service';
 
 @Component({
   selector: 'app-settings',
   imports: [
-    Image,
-    SettingsDialog
-  ],
-  providers: [
-    SettingsDialog
+    Image
   ],
   templateUrl: './settings.component.html',
-  styleUrl: './settings.component.css'
+  styleUrl: './settings.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SettingsComponent {
-  settingsDialog = inject(SettingsDialog);
+  private settingsService = inject(SettingService);
 
-  showSettingsDialog(value: boolean) {
-    this.settingsDialog.displayDialog(value);
+  onClickSettings() {
+    this.settingsService.showSettingsDialog();
   }
-
 }

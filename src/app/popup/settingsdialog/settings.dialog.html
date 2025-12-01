@@ -1,5 +1,4 @@
-<!--  <p-dialog header="Instellingen" [(visible)]="displaySettingsDialog">-->
-  <p-dialog header="Instellingen" [(visible)]="displaySettingsDialog">
+  <p-dialog header="Instellingen" [modal]="true" [(visible)]="displaySettingsDialog" (onHide)="cancel()">
     <p>settingsdialog works!</p>
   </p-dialog>
 

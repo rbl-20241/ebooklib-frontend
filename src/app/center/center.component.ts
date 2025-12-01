@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import {Panel} from 'primeng/panel';
 import {FiletreeComponent} from './filetree/filetree.component';
-import {SettingsComponent} from '../top/settings/settings.component';
+import {SettingsDialog} from '../popup/settingsdialog/settings.dialog';
 
 @Component({
   selector: 'app-center',
   imports: [
     Panel,
     FiletreeComponent,
-    SettingsComponent
+    SettingsDialog
   ],
   templateUrl: './center.component.html',
   styleUrl: './center.component.css'
