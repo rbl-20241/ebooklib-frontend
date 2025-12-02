@@ -1,4 +1,186 @@
-  <p-dialog header="Instellingen" [modal]="true" [(visible)]="displaySettingsDialog" (onHide)="cancel()">
-    <p>settingsdialog works!</p>
-  </p-dialog>
+<p-dialog
+    header="Instellingen"
+    [styleClass]="changeColor ? 'dialogSettings' : ''"
+    [modal]="true"
+    [(visible)]="displaySettingsDialog"
+    (onHide)="cancel()"
+>
+  <p-card class="settings-form flex justify-content-center">
+    <form [formGroup]="settingsForm" (ngSubmit)="save()" novalidate>
+      <div class="field">
+        <label for="map" class="block">Folder waar boeken staan:</label>
+        <input type="text" pInputText formControlName="map" />
+        @if(settingsForm.get('map')?.invalid && settingsForm.get('map')?.dirty) {
+          <small class="p-error block">Foldernaam is verplicht</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="copyTo" class="block">Kopieren naar:</label>
+        <input type="text" pInputText formControlName="copyTo" />
+        @if(settingsForm.get('copyTo')?.invalid && settingsForm.get('copyTo')?.dirty) {
+          <small class="p-error block">Dit veld is verplicht</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="host" class="block">Host:</label>
+        <input type="text" pInputText formControlName="host" />
+        @if(settingsForm.get('host')?.invalid && settingsForm.get('host')?.dirty) {
+          <small class="p-error block">Host is verplicht</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="port" class="block">Port:</label>
+        <input type="text" pInputText formControlName="port" />
+        @if(settingsForm.get('port')?.invalid && settingsForm.get('port')?.dirty) {
+          <small class="p-error block">Port is verplicht</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="sendBy" class="block">Afzender:</label>
+        <input type="text" pInputText formControlName="sendBy" />
+        @if(settingsForm.get('sendBy')?.invalid && settingsForm.get('sendBy')?.dirty) {
+          <small class="p-error block">Afzender is verplicht</small>
+        }
+      </div>
+
+      <div class="field">
+        <label for="password" class="block">Wachtwoord:</label>
+        <input type="text" pInputText formControlName="password" />
+        @if(settingsForm.get('password')?.invalid && settingsForm.get('password')?.dirty) {
+          <small class="p-error block">Wachtwoord is verplicht</small>
+        }
+      </div>
+
+      <p>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Annuleer"
+          class="settings-button"
+          (click)="cancel()"
+        >
+        </button>
+
+        <button
+          pButton
+          pRipple
+          type="submit"
+          label="Opslaan"
+          class="settings-button"
+          (click)="save()"
+        >
+        </button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Database verversen"
+          class="settings-button"
+          (click)="saveBooksToDatabase()"
+        >
+        </button>
+      </p>
+    </form>
+  </p-card>
+</p-dialog>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--  <p-dialog-->
+<!--    header="Instellingen"-->
+<!--    [styleClass]="changeColor ? 'dialogSettings' : ''"-->
+<!--    [modal]="true"-->
+<!--    [(visible)]="displaySettingsDialog"-->
+<!--    (onHide)="cancel()"-->
+<!--  >-->
+<!--    <p>-->
+<!--      <label>Map met boeken:</label>-->
+<!--      <input pInputText id="mapLabel" [(ngModel)]="map" autocomplete="off" class="settingsInvoer"/>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Kopieren naar:</label>-->
+<!--      <input pInputText id="copyToLabel" [(ngModel)]="copyTo" autocomplete="off" class="settingsInvoer"/>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Mailen naar:</label>-->
+<!--      <input pInputText id="mailToLabel" [(ngModel)]="mailTo" autocomplete="off" class="settingsInvoer"/>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Host:</label>-->
+<!--      <input pInputText id="hostLabel" [(ngModel)]="host" autocomplete="off" class="settingsInvoer"/>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Port:</label>-->
+<!--      <input pInputText id="portLabel" [(ngModel)]="port" autocomplete="off" class="settingsInvoer"/>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Verzonden door:</label>-->
+<!--      <input pInputText id="sendByLabel" [(ngModel)]="sendBy" autocomplete="off" class="settingsInvoer"/>-->
+<!--    </p>-->
+<!--    <p>-->
+<!--      <label>Wachtwoord:</label>-->
+<!--      <input pInputText id="passwordLabel" [(ngModel)]="password" autocomplete="off" class="settingsInvoer"/>-->
+<!--    </p>-->
+
+<!--    <p>-->
+<!--      <button-->
+<!--        pButton-->
+<!--        pRipple-->
+<!--        type="button"-->
+<!--        label="Annuleer"-->
+<!--        class="settings-button"-->
+<!--        (click)="cancel()"-->
+<!--      >-->
+<!--      </button>-->
+
+<!--      <button-->
+<!--        pButton-->
+<!--        pRipple-->
+<!--        type="submit"-->
+<!--        label="Opslaan"-->
+<!--        class="settings-button"-->
+<!--        (click)="save()"-->
+<!--      >-->
+<!--      </button>-->
+
+<!--      <button-->
+<!--        pButton-->
+<!--        pRipple-->
+<!--        type="button"-->
+<!--        label="Database verversen"-->
+<!--        class="settings-button"-->
+<!--        (click)="saveBooksToDatabase()"-->
+<!--      >-->
+<!--      </button>-->
+<!--    </p>-->
+<!--  </p-dialog>-->
 

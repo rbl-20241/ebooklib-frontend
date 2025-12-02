@@ -1,18 +1,39 @@
-body {
-  background-color: darkcyan;
-
+:host >>> .settings-form {
+  background-color: blanchedalmond;
+  color: #363636;
 }
 
-/*
-p-dialog {
-  border-color: transparent;
-  margin-left: 35rem;
-  width: 40rem;
-  height: 20rem;
-  position: fixed;
-  top: 8rem;
-
+:host >>> .p-dialog {
+  background-color: blanchedalmond;
+  color: #363636;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
-*/
+
+:host >>> .p-inputtext,
+:host >>> .p-inputtext:focus:enabled,
+:host >>> .p-inputtext:hover {
+  background-color: #363636;
+  border-color: #363636;
+  color: blanchedalmond;
+  width: 100%;
+}
+
+.settings-button {
+  background-color: #363636;
+  border-color: #363636;
+  color: blanchedalmond;
+  margin-right: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  &:enabled:hover {
+    background-color: gray;
+    border-color: gray;
+  }
+  &:enabled:active {
+    background-color: royalblue;
+    color: white;
+    box-shadow: none;
+  }
+
+}
 
