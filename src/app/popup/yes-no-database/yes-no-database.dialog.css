@@ -1,0 +1,27 @@
+:host >>> .p-dialog {
+  background-color: crimson;
+  color: blanchedalmond;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+.settings-button {
+  background-color: blanchedalmond;
+  border-color: blanchedalmond;
+  color: #363636;
+  margin-right: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+
+  &:enabled:hover {
+    background-color: gray;
+    border-color: gray;
+  }
+
+  &:enabled:active {
+    background-color: darkred;
+    color: white;
+    box-shadow: none;
+  }
+}
+
+

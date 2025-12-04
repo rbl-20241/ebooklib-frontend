@@ -8,6 +8,7 @@ import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Card} from 'primeng/card';
+import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
 
 @Component({
   selector: 'app-settingsdialog',
@@ -19,6 +20,7 @@ import {Card} from 'primeng/card';
     Ripple,
     Card,
     ReactiveFormsModule,
+    YesNoDatabaseDialog,
   ],
   templateUrl: './settings.dialog.html',
   styleUrl: './settings.dialog.css',
@@ -54,9 +56,11 @@ export class SettingsDialog {
     this.displaySettingsDialog.set(false);
   }
 
-  async saveBooksToDatabase() {
-    await firstValueFrom(
-      this.http.get<any>('http://localhost:8080/savedb')
-    );
+  saveBooksToDatabase() {
+    this.settingsService.showYesNoDatabaseDialog();
+
+    // await firstValueFrom(
+    //   this.http.get<any>('http://localhost:8080/savedb')
+    // );
   }
 }

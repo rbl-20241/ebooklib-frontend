@@ -1,0 +1,31 @@
+<p-dialog
+  header="Wil je de database verversen?"
+  [styleClass]="changeColor ? 'dialogSettings' : ''"
+  [modal]="true"
+  [(visible)]="displayYesNoDbDialog"
+  (onHide)="cancel()"
+>
+<p>
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Nee"
+      class="settings-button"
+      (click)="cancel()"
+    >
+    </button>
+
+    <button
+      pButton
+      pRipple
+      type="submit"
+      label="Ja"
+      class="settings-button"
+      (click)="save()"
+    >
+    </button>
+
+  </p>
+</p-dialog>
+

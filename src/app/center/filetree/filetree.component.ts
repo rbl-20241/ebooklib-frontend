@@ -18,6 +18,6 @@ export class FiletreeComponent implements OnInit {
 
 
     ngOnInit() {
-
-        this.filetreeService.getBooktree().then((data) => this.files = data);
-    }}
+      this.filetreeService.getBooktree().then((data) => this.files = data);
+    }
+}
