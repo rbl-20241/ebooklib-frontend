@@ -1,6 +1,10 @@
 <main>
   <p-panel [showHeader]="false" >
-    <p-tree [value]="files" selectionMode="single" [(selection)]="selectedBook" scrollHeight="700px"/>
+    @if (isReading()) {
+      <p>Boeken worden opgehaald</p>
+    } @else {
+      <p-tree [value]="files" selectionMode="single" [(selection)]="selectedBook" (onNodeSelect)="onBookSelected()" scrollHeight="700px"/>
+    }
   </p-panel>
 </main>
 
