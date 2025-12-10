@@ -9,16 +9,16 @@ import {Book} from './data/book.model';
 export class EBookService {
   private httpClient = inject(HttpClient);
 
-  async loadAvailableBooks() {
-    return   this.getBooks('http://localhost:8080/booktree',
+  loadAvailableBooks() {
+    return this.getBooks('http://localhost:8080/booktree',
       'Fout met ophalen van boeken. Probeer het nog een keer.');
   }
 
   private getBooks(url: string, errorMessage: string) {
     return this.httpClient
-      .get<{ebooks: Book[]}>(url)
+      .get<{books: Book[]}>(url)
       .pipe(
-        map((resData) => resData.ebooks),
+        map((resData) => resData.books),
         catchError((error) => {
           console.log(error);
           return throwError(() => new Error(errorMessage));

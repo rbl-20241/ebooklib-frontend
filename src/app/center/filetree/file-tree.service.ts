@@ -15,6 +15,7 @@ export class FileTreeService {
     const genreTree = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/booktree')
     );
+    console.log(genreTree.data);
     return this.readGenres(genreTree.data) as TreeNode[];
   }
 
@@ -25,17 +26,17 @@ export class FileTreeService {
   genreToTreeNode(genre: GenreTree): TreeNode {
     return {
       label: genre.genre,
-      data: '',
+      data: genre,
       expandedIcon: 'pi pi-folder-open',
       collapsedIcon: 'pi pi-folder',
-      children: genre.books.map((book) => this.bookToTreeNode(book))
+      children: genre.ebooks.map((book) => this.bookToTreeNode(book))
     }
   }
 
   bookToTreeNode(book: Book): TreeNode {
     return {
       label: book.author + ' - ' + book.title,
-      data: '',
+      data: book,
       icon: 'pi pi-file',
     }
   }

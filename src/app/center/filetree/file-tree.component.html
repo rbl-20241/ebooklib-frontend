@@ -3,7 +3,7 @@
     @if (isReading()) {
       <p>Boeken worden opgehaald</p>
     } @else {
-      <p-tree [value]="files" selectionMode="single" [(selection)]="selectedBook" (onNodeSelect)="onBookSelected()" scrollHeight="700px"/>
+      <p-tree [value]="books" selectionMode="single" [(selection)]="selectedBook" (onNodeSelect)="onBookSelected()" scrollHeight="700px"/>
     }
   </p-panel>
 </main>
