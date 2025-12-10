@@ -1,6 +1,6 @@
 import {Book} from './book.model';
 
 export interface GenreTree {
-  genre: string;
+  genreName: string;
   ebooks: Book[]
 }

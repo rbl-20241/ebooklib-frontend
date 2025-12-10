@@ -25,7 +25,7 @@ export class FileTreeService {
 
   genreToTreeNode(genre: GenreTree): TreeNode {
     return {
-      label: genre.genre,
+      label: genre.genreName,
       data: genre,
       expandedIcon: 'pi pi-folder-open',
       collapsedIcon: 'pi pi-folder',
