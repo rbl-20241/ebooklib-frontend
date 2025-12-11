@@ -5,6 +5,7 @@ import {TreeNode} from 'primeng/api';
 import {firstValueFrom} from 'rxjs';
 import {GenreTree} from '../../data/genretree.model';
 import {Book} from '../../data/book.model';
+import {Metadata} from '../../data/metadata.model';
 
 @Injectable({providedIn: 'root'})
 export class FileTreeService {
@@ -15,7 +16,6 @@ export class FileTreeService {
     const genreTree = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/booktree')
     );
-    console.log(genreTree.data);
     return this.readGenres(genreTree.data) as TreeNode[];
   }
 
@@ -41,7 +41,10 @@ export class FileTreeService {
     }
   }
 
-  public getBookInfo() {
-
+  async getBookInfo(id: string) {
+    const metadata: Metadata = await firstValueFrom(
+      this.http.get<any>('http://localhost:8080/book/' + id)
+    );
+    console.log(metadata);
   }
 }
