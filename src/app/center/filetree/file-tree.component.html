@@ -1,10 +1,8 @@
-<main>
-  <p-panel [showHeader]="false" >
+  <p-panel [showHeader]="false">
     @if (isReading()) {
       <p>Boeken worden opgehaald</p>
     } @else {
       <p-tree [value]="books" selectionMode="single" [(selection)]="selectedBook" (onNodeSelect)="onBookSelected()" scrollHeight="700px"/>
     }
   </p-panel>
-</main>
 

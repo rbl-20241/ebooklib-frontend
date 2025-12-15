@@ -1,5 +1,15 @@
-<main>
-  <p-panel>
-    <p>description works!</p>
+  <p-panel [showHeader]="false">
+    @if (getTitle()) {
+      <p>Titel: {{getTitle()}}</p>
+    }
+
+    @if (getAuthor()) {
+      <p>Auteur: {{getAuthor()}}</p>
+    }
+
+
+    @if (getDescription()) {
+      <div [innerHtml]="getDescription()"> </div>
+    }
+
   </p-panel>
-</main>

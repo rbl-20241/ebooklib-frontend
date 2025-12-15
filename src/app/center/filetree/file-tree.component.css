@@ -1,8 +1,3 @@
-main {
-  margin-left: 1rem;
-  margin-right: 70rem;
-}
-
 p-tree {
   background-color: royalblue;
   font-size: 0.8rem;
@@ -16,5 +11,7 @@ p-panel {
   background-color: royalblue;
   border-color: aliceblue;
   border-radius: 12px;
+  margin-left: 1rem;
+  /*width: 40%;*/
 }
 

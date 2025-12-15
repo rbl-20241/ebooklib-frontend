@@ -6,4 +6,16 @@ p-panel {
   top: 8rem;
   bottom: -3rem;
   width: 100%;
+  height: 100%;
+}
+
+p-splitter {
+  background-color: royalblue;
+  border-color: transparent;
+
+}
+
+p-splitter-gutter-handle {
+  background-color: royalblue;
+  width: 0;
 }

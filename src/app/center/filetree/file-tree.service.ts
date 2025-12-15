@@ -11,6 +11,7 @@ import {Metadata} from '../../data/metadata.model';
 export class FileTreeService {
 
   constructor(private http: HttpClient) { }
+  private metadata: Metadata | undefined;
 
   async getBookTree(): Promise<TreeNode[]> {
     const genreTree = await firstValueFrom(
@@ -42,9 +43,17 @@ export class FileTreeService {
   }
 
   async getBookInfo(id: string) {
-    const metadata: Metadata = await firstValueFrom(
+    this.metadata = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/book/' + id)
     );
-    console.log(metadata);
+    console.log(this.metadata);
+  }
+
+  public getMetadata() {
+    return this.metadata;
+  }
+
+  public getTitle() {
+    return this.metadata?.title;
   }
 }
