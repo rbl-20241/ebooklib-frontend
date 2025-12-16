@@ -3,15 +3,17 @@ import {Injectable} from '@angular/core';
 
 import {TreeNode} from 'primeng/api';
 import {firstValueFrom} from 'rxjs';
-import {GenreTree} from '../../data/genretree.model';
-import {Book} from '../../data/book.model';
-import {Metadata} from '../../data/metadata.model';
+import {GenreTree} from '../data/genretree.model';
+import {Book} from '../data/book.model';
+import {Metadata} from '../data/metadata.model';
 
 @Injectable({providedIn: 'root'})
-export class FileTreeService {
+export class EbookService {
 
   constructor(private http: HttpClient) { }
   private metadata: Metadata | undefined;
+  private coverImageURL = "";
+  private id: string | undefined;
 
   async getBookTree(): Promise<TreeNode[]> {
     const genreTree = await firstValueFrom(
@@ -42,6 +44,16 @@ export class FileTreeService {
     }
   }
 
+  async getCoverImageURL(id: string) {
+    this.id = id;
+    console.log("id = " + this.id);
+    const response = await fetch('http://localhost:8080/coverimage/' + id);
+    const buffer = await response.arrayBuffer();
+    const bytes = new Uint8Array(buffer);
+    const blob = new Blob([bytes], { type: 'image/jpeg' });
+    this.coverImageURL = URL.createObjectURL(blob);
+  }
+
   async getBookInfo(id: string) {
     this.metadata = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/book/' + id)
@@ -53,7 +65,11 @@ export class FileTreeService {
     return this.metadata;
   }
 
-  public getTitle() {
-    return this.metadata?.title;
+  public getCoverImage() {
+    return this.coverImageURL;
+  }
+
+  public getId() {
+    return this.id;
   }
 }

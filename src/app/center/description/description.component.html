@@ -1,15 +1,81 @@
-  <p-panel [showHeader]="false">
-    @if (getTitle()) {
-      <p>Titel: {{getTitle()}}</p>
-    }
+<p-panel [showHeader]="false">
 
-    @if (getAuthor()) {
-      <p>Auteur: {{getAuthor()}}</p>
-    }
+  @if (getIdFound()) {
+    <div class="metadata-on-top">
+      <table>
+        <tr>
+          <td>
+            <img [src]="getCoverImage()" alt="Cover" width="200" height="300"/>
+          </td>
+          <td class="metadata-table">
+            <table>
+              @if (getTitle()) {
+                <tr>
+                  <td>Titel:</td>
+                  <td class="metadata-table">{{ getTitle() }}</td>
+                </tr>
+              }
 
+              @if (getAuthor()) {
+                <tr>
+                  <td>Auteur:</td>
+                  <td class="metadata-table">{{ getAuthor() }}</td>
+                </tr>
+              }
 
-    @if (getDescription()) {
-      <div [innerHtml]="getDescription()"> </div>
-    }
+              @if (getPublisher()) {
+                <tr>
+                  <td>Uitgever:</td>
+                  <td class="metadata-table">{{ getPublisher() }}</td>
+                </tr>
+              }
 
-  </p-panel>
+              @if (getSubjects()) {
+                <tr>
+                  <td>Genre:</td>
+                  <td class="metadata-table">{{ getSubjects() }}</td>
+                </tr>
+              }
+
+              @if (getLanguage()) {
+                <tr>
+                  <td>Taal:</td>
+                  <td class="metadata-table">{{ getLanguage() }}</td>
+                </tr>
+              }
+
+              @if (getIsbn()) {
+                <tr>
+                  <td>Isbn:</td>
+                  <td class="metadata-table">{{ getIsbn() }}</td>
+                </tr>
+              }
+
+              @if (getDate()) {
+                <tr>
+                  <td>Datum:</td>
+                  <td class="metadata-table">{{ getDate() }}</td>
+                </tr>
+              }
+
+              @if (getFormat()) {
+                <tr>
+                  <td>Formaat:</td>
+                  <td class="metadata-table">{{ getFormat() }}</td>
+                </tr>
+              }
+
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <p-scroll-panel>
+      @if (getDescription()) {
+        <div [innerHtml]="getDescription()"></div>
+      }
+    </p-scroll-panel>
+  }
+
+</p-panel>

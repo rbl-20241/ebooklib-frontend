@@ -2,7 +2,7 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import {TreeNode} from 'primeng/api';
 import {Tree} from 'primeng/tree';
 import {Panel} from 'primeng/panel';
-import {FileTreeService} from './file-tree.service';
+import {EbookService} from '../ebook.service';
 
 @Component({
   selector: 'app-filetree',
@@ -14,18 +14,19 @@ import {FileTreeService} from './file-tree.service';
 export class FileTreeComponent implements OnInit {
   books!: TreeNode[];
   selectedBook!: TreeNode;
-  private fileTreeService = inject(FileTreeService);
+  private ebookService = inject(EbookService);
   isReading = signal(false);
 
 
   ngOnInit() {
     this.isReading.set(true);
-    this.fileTreeService.getBookTree().then((data) => this.books = data);
+    this.ebookService.getBookTree().then((data) => this.books = data);
     this.isReading.set(false);
   }
 
   onBookSelected() {
     console.log(this.selectedBook.label + " geselecteerd");
-    this.fileTreeService.getBookInfo(this.selectedBook.data.id);
+    this.ebookService.getCoverImageURL(this.selectedBook.data.id);
+    this.ebookService.getBookInfo(this.selectedBook.data.id);
   }
 }
