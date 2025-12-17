@@ -58,9 +58,5 @@ export class SettingsDialog {
 
   saveBooksToDatabase() {
     this.settingsService.showYesNoDatabaseDialog();
-
-    // await firstValueFrom(
-    //   this.http.get<any>('http://localhost:8080/savedb')
-    // );
   }
 }

@@ -28,7 +28,7 @@ export class YesNoDatabaseDialog {
 
   async save() {
     await firstValueFrom(
-      this.http.get<any>('http://localhost:8080/savedb')
+      this.http.get<any>('http://localhost:8080/save-booktree')
     );
     this.displayYesNoDbDialog.set(false);
   }

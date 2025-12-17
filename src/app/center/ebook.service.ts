@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {Injectable} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 
 import {TreeNode} from 'primeng/api';
 import {firstValueFrom} from 'rxjs';
@@ -10,7 +10,7 @@ import {Metadata} from '../data/metadata.model';
 @Injectable({providedIn: 'root'})
 export class EbookService {
 
-  constructor(private http: HttpClient) { }
+  private http = inject(HttpClient);
   private metadata: Metadata | undefined;
   private coverImageURL = "";
   private id: string | undefined;
