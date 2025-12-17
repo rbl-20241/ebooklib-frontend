@@ -1,8 +1,4 @@
 :host ::ng-deep .p-scrollpanel {
-  /*padding: 1.5rem;*/
-  /*line-height: 2;*/
-  /*border: 5px solid green !important;*/
-  /*box-shadow: 5px 10px #eb5454;*/
   height: 370px !important;
 }
 p-panel {

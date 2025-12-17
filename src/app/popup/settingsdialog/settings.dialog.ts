@@ -56,7 +56,7 @@ export class SettingsDialog {
     this.displaySettingsDialog.set(false);
   }
 
-  saveBooksToDatabase() {
-    this.settingsService.showYesNoDatabaseDialog();
-  }
+  // saveBooksToDatabase() {
+  //   this.settingsService.showYesNoDatabaseDialog();
+  // }
 }

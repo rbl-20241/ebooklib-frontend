@@ -1,2 +1,48 @@
-<p></p>
+<p-panel [showHeader]="false" class="panel-row">
+
+  <p-panel [showHeader]="false" class="panel-left">
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Mailen"
+      class="ebook-button left-button"
+      (click)="saveBooksToDatabase()"
+    >
+    </button>
+
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Kopieren"
+      class="ebook-button left-button"
+      (click)="saveBooksToDatabase()"
+    >
+    </button>
+
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Browser"
+      class="ebook-button left-button"
+      (click)="saveBooksToDatabase()"
+    >
+    </button>
+  </p-panel>
+
+  <p-panel [showHeader]="false" class="panel-right">
+    <button
+      pButton
+      pRipple
+      type="button"
+      label="Database verversen"
+      class="ebook-button"
+      (click)="saveBooksToDatabase()"
+    >
+    </button>
+  </p-panel>
+
+</p-panel>
 
