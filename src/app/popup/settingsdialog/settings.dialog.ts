@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {SettingService} from '../../top/settings/settings.service';
 import {InputTextModule} from 'primeng/inputtext';
@@ -9,6 +9,9 @@ import {firstValueFrom} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {Card} from 'primeng/card';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
+import {Settings} from '../../data/settings.model';
+import {Password} from 'primeng/password';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 @Component({
   selector: 'app-settingsdialog',
@@ -21,21 +24,23 @@ import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
     Card,
     ReactiveFormsModule,
     YesNoDatabaseDialog,
+    Password,
+    FloatLabelModule
   ],
   templateUrl: './settings.dialog.html',
   styleUrl: './settings.dialog.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsDialog {
+export class SettingsDialog implements OnInit{
 
   private http = inject(HttpClient);
   private settingsService = inject(SettingService);
+  private fb = inject(FormBuilder);
+
   displaySettingsDialog = this.settingsService.showSettings;
   changeColor = true;
 
-  private fb = inject(FormBuilder);
-
-  settingsForm = this.fb.group({
+  settingsForm = this.fb.nonNullable.group({
     map: ['', Validators.required],
     copyTo: ['', Validators.required],
     mailTo: ['', Validators.required],
@@ -43,20 +48,40 @@ export class SettingsDialog {
     port: ['', Validators.required],
     sendBy: ['', Validators.required],
     password: ['', Validators.required]
-  })
+  });
+
+  ngOnInit() {
+    this.http.get<Settings>('http://localhost:8080/settings')
+      .subscribe({
+        next: settings => {
+          this.settingsForm.patchValue(settings);
+        },
+        error: () => {
+          this.settingsForm.patchValue({
+            map: '/source/rene/boekjes',
+            copyTo: '/source/rene/temp',
+            mailTo: 'iemand@mail.com',
+            host: 'host',
+            port: '123',
+            sendBy: 'me',
+            password: 'hello'
+          });
+        }
+      });
+  }
 
   cancel() {
     this.displaySettingsDialog.set(false);
   }
 
-  async save() {
+  async saveSettings() {
+    const payload = this.settingsForm.value;
+    console.log(payload);
+
     await firstValueFrom(
-      this.http.get<any>('http://localhost:8080/savesettings')
+      this.http.post('http://localhost:8080/settings', payload)
     );
     this.displaySettingsDialog.set(false);
   }
 
-  // saveBooksToDatabase() {
-  //   this.settingsService.showYesNoDatabaseDialog();
-  // }
 }

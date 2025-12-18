@@ -9,6 +9,7 @@
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
+:host >>> .p-password,
 :host >>> .p-inputtext,
 :host >>> .p-inputtext:focus:enabled,
 :host >>> .p-inputtext:hover {
@@ -34,6 +35,13 @@
     color: white;
     box-shadow: none;
   }
+}
 
+/*p-password {*/
+/*  width: 100%;*/
+/*}*/
+
+.settings-input {
+  padding-bottom: 0.5rem;
 }
 
