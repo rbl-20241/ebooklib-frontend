@@ -10,5 +10,5 @@ export interface Metadata {
   subjects: string[];
   format: string;
   description: string;
-  coverImage: string;
+  filePath: string;
 }

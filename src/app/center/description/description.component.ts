@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {EbookService} from '../ebook.service';
+import {EbookService} from '../../services/ebook.service';
 import {Metadata} from '../../data/metadata.model';
 import {TableModule} from 'primeng/table';
 import {ScrollPanel} from 'primeng/scrollpanel';

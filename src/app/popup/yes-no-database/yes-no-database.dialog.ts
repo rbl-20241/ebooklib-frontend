@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {HttpClient} from '@angular/common/http';
-import {SettingService} from '../../top/settings/settings.service';
+import {SettingService} from '../../services/settings.service';
 import {ButtonDirective} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';

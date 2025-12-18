@@ -2,7 +2,7 @@ import {Component, inject, OnInit, signal} from '@angular/core';
 import {TreeNode} from 'primeng/api';
 import {Tree} from 'primeng/tree';
 import {Panel} from 'primeng/panel';
-import {EbookService} from '../ebook.service';
+import {EbookService} from '../../services/ebook.service';
 
 @Component({
   selector: 'app-filetree',
@@ -26,6 +26,7 @@ export class FileTreeComponent implements OnInit {
 
   onBookSelected() {
     console.log(this.selectedBook.label + " geselecteerd");
+    // this.ebookService.setSelectedBookId(this.selectedBook.data.id);
     this.ebookService.getCoverImageURL(this.selectedBook.data.id);
     this.ebookService.getBookInfo(this.selectedBook.data.id);
   }

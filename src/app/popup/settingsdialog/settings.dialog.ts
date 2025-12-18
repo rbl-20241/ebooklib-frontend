@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {SettingService} from '../../top/settings/settings.service';
+import {SettingService} from '../../services/settings.service';
 import {InputTextModule} from 'primeng/inputtext';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ButtonDirective} from 'primeng/button';
@@ -58,8 +58,8 @@ export class SettingsDialog implements OnInit{
         },
         error: () => {
           this.settingsForm.patchValue({
-            map: '/source/rene/boekjes',
-            copyTo: '/source/rene/temp',
+            map: '/home/rene/boekjes',
+            copyTo: '/home/rene/temp',
             mailTo: 'iemand@mail.com',
             host: 'host',
             port: '123',

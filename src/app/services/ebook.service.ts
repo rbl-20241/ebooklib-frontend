@@ -14,6 +14,15 @@ export class EbookService {
   private metadata: Metadata | undefined;
   private coverImageURL = "";
   private id: string | undefined;
+  // private selectedBookId!: string;
+  //
+  // public setSelectedBookId(selectedBookId: string) {
+  //   this.selectedBookId = selectedBookId;
+  // }
+  //
+  // public getSelectedBook() {
+  //
+  // }
 
   async getBookTree(): Promise<TreeNode[]> {
     const genreTree = await firstValueFrom(
@@ -59,6 +68,12 @@ export class EbookService {
       this.http.get<any>('http://localhost:8080/book/' + id)
     );
     console.log(this.metadata);
+  }
+
+  async copyBook(id: string) {
+    await firstValueFrom(
+      this.http.get<any>('http://localhost:8080/book/copy/' + id)
+    );
   }
 
   public getMetadata() {

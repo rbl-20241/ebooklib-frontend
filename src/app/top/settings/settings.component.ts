@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Image} from 'primeng/image';
-import {SettingService} from './settings.service';
+import {SettingService} from '../../services/settings.service';
 
 @Component({
   selector: 'app-settings',
