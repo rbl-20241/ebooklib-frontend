@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Panel} from 'primeng/panel';
 import {ButtonsComponent} from './buttons/buttons.component';
-import {CopyDialog} from '../popup/copy/copy.dialog';
+import {CopyDialog} from '../popup/copydialog/copy.dialog';
 
 @Component({
     selector: 'app-bottom',

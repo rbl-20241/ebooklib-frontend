@@ -11,7 +11,7 @@ import {InputText} from 'primeng/inputtext';
 import {Send} from '../../data/send.model';
 
 @Component({
-  selector: 'app-copy',
+  selector: 'app-copydialog',
   imports: [
     Dialog,
     ButtonDirective,
