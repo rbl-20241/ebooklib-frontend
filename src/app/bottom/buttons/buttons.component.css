@@ -1,0 +1,36 @@
+.panel-left {
+  background-color: royalblue;
+  border-color: transparent;
+  float: left;
+  bottom: 0;
+}
+
+.panel-right {
+  background-color: royalblue;
+  border-color: transparent;
+  float: right;
+  bottom: 0;
+}
+
+.ebook-button {
+  background: aliceblue;
+  color: black;
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  &:enabled:hover {
+    background: khaki;
+  }
+  &:enabled:active {
+    background: #2F4FCD;
+    color: white;
+    box-shadow: none;
+  }
+}
+
+.left-button {
+  width: 100px;
+}
+

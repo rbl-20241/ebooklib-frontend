@@ -1,0 +1,41 @@
+<p-dialog
+  header="EBook kopi&euml;ren"
+  [styleClass]="changeColor ? 'dialogSettings' : ''"
+  [modal]="true"
+  [(visible)]="displayCopyDialog"
+  (onHide)="cancel()"
+>
+  <p-card class="copy-form flex justify-content-center">
+    <form [formGroup]="copyForm" (ngSubmit)="copyBook()">
+      <div class="field settings-input">
+        <label for="copyTo" class="block">"{{ getBookToCopy() }}" kopi&euml;ren naar:</label>
+        <input type="text" pInputText formControlName="copyTo" />
+        @if(copyForm.get('copyTo')?.invalid && copyForm.get('copyTo')?.dirty) {
+          <small class="p-error block">Foldernaam is verplicht</small>
+        }
+      </div>
+
+      <p>
+        <button
+          pButton
+          pRipple
+          type="button"
+          class="settings-button"
+          (click)="cancel()"
+        >Annuleer
+        </button>
+
+        <button
+          pButton
+          pRipple
+          type="submit"
+          class="settings-button"
+          (click)="copyBook()"
+        >Kopi&euml;ren
+        </button>
+
+      </p>
+    </form>
+  </p-card>
+</p-dialog>
+

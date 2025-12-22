@@ -1,8 +1,8 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {SettingService} from '../../services/settings.service';
-import {InputTextModule} from 'primeng/inputtext';
-import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {InputText} from 'primeng/inputtext';
+import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ButtonDirective} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';
@@ -11,21 +11,18 @@ import {Card} from 'primeng/card';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
 import {Settings} from '../../data/settings.model';
 import {Password} from 'primeng/password';
-import { FloatLabelModule } from 'primeng/floatlabel';
 
 @Component({
   selector: 'app-settingsdialog',
   imports: [
     Dialog,
-    InputTextModule,
-    FormsModule,
+    InputText,
     ButtonDirective,
     Ripple,
     Card,
     ReactiveFormsModule,
     YesNoDatabaseDialog,
     Password,
-    FloatLabelModule
   ],
   templateUrl: './settings.dialog.html',
   styleUrl: './settings.dialog.css',

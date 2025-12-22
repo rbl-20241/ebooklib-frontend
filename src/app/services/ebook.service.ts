@@ -6,6 +6,7 @@ import {firstValueFrom} from 'rxjs';
 import {GenreTree} from '../data/genretree.model';
 import {Book} from '../data/book.model';
 import {Metadata} from '../data/metadata.model';
+import {Send} from '../data/send.model';
 
 @Injectable({providedIn: 'root'})
 export class EbookService {
@@ -14,15 +15,6 @@ export class EbookService {
   private metadata: Metadata | undefined;
   private coverImageURL = "";
   private id: string | undefined;
-  // private selectedBookId!: string;
-  //
-  // public setSelectedBookId(selectedBookId: string) {
-  //   this.selectedBookId = selectedBookId;
-  // }
-  //
-  // public getSelectedBook() {
-  //
-  // }
 
   async getBookTree(): Promise<TreeNode[]> {
     const genreTree = await firstValueFrom(
@@ -70,10 +62,11 @@ export class EbookService {
     console.log(this.metadata);
   }
 
-  async copyBook(id: string) {
+  async copyBook(payload: Send) {
+    console.log(payload);
     await firstValueFrom(
-      this.http.get<any>('http://localhost:8080/book/copy/' + id)
-    );
+      this.http.post('http://localhost:8080/book/copy', payload)
+    )
   }
 
   public getMetadata() {
@@ -86,5 +79,13 @@ export class EbookService {
 
   public getId() {
     return this.id;
+  }
+
+  public getTitle() {
+    return this.metadata?.title;
+  }
+
+  public getAuthor() {
+    return this.metadata?.author;
   }
 }

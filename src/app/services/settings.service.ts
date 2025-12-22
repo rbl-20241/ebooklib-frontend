@@ -1,9 +1,14 @@
-import { Injectable, signal} from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
+import {firstValueFrom} from 'rxjs';
+import {Settings} from '../data/settings.model';
+import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SettingService {
+  private http = inject(HttpClient);
+
   private showDialog = signal<boolean>(false);
   showSettings = this.showDialog;
   private showYesNoDbDialog = signal<boolean>(false);
@@ -17,5 +22,16 @@ export class SettingService {
   showYesNoDatabaseDialog() {
     this.showYesNoDbDialog.update((value) => !value);
   }
+
+  async getCopyToMap() {
+    let settings = await  firstValueFrom(
+      this.http.get<Settings>('http://localhost:8080/settings')
+    );
+
+    console.log(settings.copyTo);
+    return settings.copyTo;
+  }
+
+
 
 }
