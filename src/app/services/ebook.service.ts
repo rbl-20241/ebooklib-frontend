@@ -91,4 +91,8 @@ export class EbookService {
   public getAuthor() {
     return this.metadata?.author;
   }
+
+  public isButtonDisabled() {
+    return this.getId() == undefined;
+  }
 }

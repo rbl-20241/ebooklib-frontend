@@ -45,5 +45,9 @@ export class ButtonsComponent {
     this.mailService.showMailDialog();
   }
 
+  isButtonDisabled() {
+    return this.ebookService.isButtonDisabled();
+  }
+
 
 }

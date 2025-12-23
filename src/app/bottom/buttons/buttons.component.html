@@ -2,6 +2,7 @@
   <button
     pButton
     pRipple
+    [disabled]="isButtonDisabled()"
     type="button"
     class="ebook-button left-button"
     (click)="onClickMailBook()"
@@ -11,6 +12,7 @@
   <button
     pButton
     pRipple
+    [disabled]="isButtonDisabled()"
     type="button"
     class="ebook-button left-button"
     (click)="onClickCopyBook()"
@@ -20,6 +22,7 @@
   <button
     pButton
     pRipple
+    [disabled]="isButtonDisabled()"
     type="button"
     class="ebook-button left-button"
     (click)="searchWithBrowser()"
