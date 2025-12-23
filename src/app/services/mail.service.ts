@@ -3,11 +3,11 @@ import {Injectable, signal} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class CopyService {
+export class MailService {
   private showDialog = signal<boolean>(false);
-  showCopy = this.showDialog;
+  showMail = this.showDialog;
 
-  showCopyDialog() {
+  showMailDialog() {
     this.showDialog.update((value) => !value);
   }
 

@@ -39,10 +39,7 @@ export class CopyDialog implements OnInit {
   });
 
   ngOnInit() {
-    console.log("OnInit");
     this.settingService.getCopyToMap().then(copyTo => {
-      console.log(copyTo);
-
       this.copyForm.patchValue({
         copyTo: copyTo
       });
@@ -69,7 +66,4 @@ export class CopyDialog implements OnInit {
     this.ebookService.copyBook(send);
     this.displayCopyDialog.set(false);
   }
-
-
-
 }

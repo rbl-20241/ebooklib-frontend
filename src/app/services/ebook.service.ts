@@ -63,9 +63,15 @@ export class EbookService {
   }
 
   async copyBook(payload: Send) {
-    console.log(payload);
     await firstValueFrom(
       this.http.post('http://localhost:8080/book/copy', payload)
+    )
+  }
+
+  async mailBook(payload: Send) {
+    console.log(payload);
+    await firstValueFrom(
+      this.http.post('http://localhost:8080/book/mail', payload)
     )
   }
 

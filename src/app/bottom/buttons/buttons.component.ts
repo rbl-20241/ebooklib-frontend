@@ -5,6 +5,7 @@ import {Ripple} from 'primeng/ripple';
 import {SettingService} from '../../services/settings.service';
 import {CopyService} from '../../services/copy.service';
 import {EbookService} from '../../services/ebook.service';
+import {MailService} from '../../services/mail.service';
 
 @Component({
   selector: 'app-buttons',
@@ -21,6 +22,7 @@ export class ButtonsComponent {
 
   private settingsService = inject(SettingService);
   private copyService = inject(CopyService);
+  private mailService = inject(MailService);
   private ebookService = inject(EbookService);
 
   saveBooksToDatabase() {
@@ -37,6 +39,10 @@ export class ButtonsComponent {
 
   onClickCopyBook() {
     this.copyService.showCopyDialog();
+  }
+
+  onClickMailBook() {
+    this.mailService.showMailDialog();
   }
 
 

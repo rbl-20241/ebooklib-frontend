@@ -28,8 +28,15 @@ export class SettingService {
       this.http.get<Settings>('http://localhost:8080/settings')
     );
 
-    console.log(settings.copyTo);
     return settings.copyTo;
+  }
+
+  async getMailTo() {
+    let settings = await  firstValueFrom(
+      this.http.get<Settings>('http://localhost:8080/settings')
+    );
+
+    return settings.mailTo;
   }
 
 

@@ -1,0 +1,41 @@
+<p-dialog
+  header="EBook mailen"
+  [styleClass]="changeColor ? 'dialogSettings' : ''"
+  [modal]="true"
+  [(visible)]="displayMailDialog"
+  (onHide)="cancel()"
+>
+  <p-card class="mail-form flex justify-content-center">
+    <form [formGroup]="mailForm" (ngSubmit)="mailBook()">
+      <div class="field settings-input">
+        <label for="mailTo" class="block">"{{ getBookToMail() }}" kopi&euml;ren naar:</label>
+        <input type="text" pInputText formControlName="mailTo" />
+        @if(mailForm.get('mailTo')?.invalid && mailForm.get('mailTo')?.dirty) {
+          <small class="p-error block">Foldernaam is verplicht</small>
+        }
+      </div>
+
+      <p>
+        <button
+          pButton
+          pRipple
+          type="button"
+          class="settings-button"
+          (click)="cancel()"
+        >Annuleer
+        </button>
+
+        <button
+          pButton
+          pRipple
+          type="submit"
+          class="settings-button"
+          (click)="mailBook()"
+        >Mailen
+        </button>
+
+      </p>
+    </form>
+  </p-card>
+</p-dialog>
+
