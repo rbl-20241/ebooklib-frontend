@@ -47,7 +47,6 @@ export class EbookService {
 
   async getCoverImageURL(id: string) {
     this.id = id;
-    console.log("id = " + this.id);
     const response = await fetch('http://localhost:8080/coverimage/' + id);
     const buffer = await response.arrayBuffer();
     const bytes = new Uint8Array(buffer);
@@ -59,7 +58,6 @@ export class EbookService {
     this.metadata = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/book/' + id)
     );
-    console.log(this.metadata);
   }
 
   async copyBook(payload: Send) {
@@ -69,7 +67,6 @@ export class EbookService {
   }
 
   async mailBook(payload: Send) {
-    console.log(payload);
     await firstValueFrom(
       this.http.post('http://localhost:8080/book/mail', payload)
     )

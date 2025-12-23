@@ -73,8 +73,6 @@ export class SettingsDialog implements OnInit{
 
   async saveSettings() {
     const payload = this.settingsForm.value;
-    console.log(payload);
-
     await firstValueFrom(
       this.http.post('http://localhost:8080/settings', payload)
     );

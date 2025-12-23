@@ -40,8 +40,6 @@ export class MailDialog implements OnInit {
 
   ngOnInit() {
     this.settingService.getMailTo().then(mailTo => {
-      console.log(mailTo);
-
       this.mailForm.patchValue({
         mailTo: mailTo
       });

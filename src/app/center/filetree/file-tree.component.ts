@@ -25,8 +25,6 @@ export class FileTreeComponent implements OnInit {
   }
 
   onBookSelected() {
-    console.log(this.selectedBook.label + " geselecteerd");
-    // this.ebookService.setSelectedBookId(this.selectedBook.data.id);
     this.ebookService.getCoverImageURL(this.selectedBook.data.id);
     this.ebookService.getBookInfo(this.selectedBook.data.id);
   }
