@@ -38,8 +38,9 @@ export class EbookService {
   }
 
   bookToTreeNode(book: Book): TreeNode {
+    let label = book.author ? book.author + ' - ' + book.title : book.title;
     return {
-      label: book.author + ' - ' + book.title,
+      label: label,
       data: book,
       icon: 'pi pi-file',
     }

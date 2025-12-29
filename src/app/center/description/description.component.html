@@ -1,11 +1,17 @@
 <p-panel [showHeader]="false">
-
   @if (getIdFound()) {
     <div class="metadata-on-top">
       <table>
         <tr>
           <td>
-            <img [src]="getCoverImage()" alt="Cover" width="150" height="240"/>
+            <a href="#img1">
+              <img [src]="getCoverImage()" alt="" class="thumbnail"/>
+            </a>
+            <div id="img1" class="popup">
+              <a href="#" class="close"></a>
+              <img [src]="getCoverImage()" alt="Foto groot">
+            </div>
+
           </td>
           <td class="metadata-table">
             <table>

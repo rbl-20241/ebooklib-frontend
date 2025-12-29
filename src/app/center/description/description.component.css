@@ -1,6 +1,7 @@
 :host ::ng-deep .p-scrollpanel {
   height: 370px !important;
 }
+
 p-panel {
   background-color: royalblue;
   border-color: aliceblue;
@@ -9,7 +10,6 @@ p-panel {
   min-height: 100%;
   max-height: 100%;
   font-size: 0.9rem;
-
 }
 
 .metadata-on-top {
@@ -21,5 +21,36 @@ p-panel {
   vertical-align: top;
 }
 
+.thumbnail {
+  width: 150px;
+  cursor: pointer;
+}
 
+/* popup basis */
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* toon popup als deze getarget is */
+.popup:target {
+  display: flex;
+}
+
+/* afbeelding in popup */
+.popup img {
+  max-width: 95%;
+  max-height: 95%;
+}
+
+/* klikbare achtergrond om te sluiten */
+.popup .close {
+  position: absolute;
+  inset: 0;
+}
 
