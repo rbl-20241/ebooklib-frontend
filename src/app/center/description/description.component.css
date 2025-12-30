@@ -12,13 +12,13 @@ p-panel {
   font-size: 0.9rem;
 }
 
-.metadata-on-top {
-  margin-top: 1rem;
-}
-
-.metadata-table {
+td {
   padding-left: 1rem;
   vertical-align: top;
+}
+
+.metadata-on-top {
+  margin-top: 1rem;
 }
 
 .thumbnail {
@@ -45,7 +45,7 @@ p-panel {
 /* afbeelding in popup */
 .popup img {
   max-width: 95%;
-  max-height: 95%;
+  max-height: 85%;
 }
 
 /* klikbare achtergrond om te sluiten */
