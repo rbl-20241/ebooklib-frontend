@@ -33,16 +33,19 @@ export class EbookService {
       data: genre,
       expandedIcon: 'pi pi-folder-open',
       collapsedIcon: 'pi pi-folder',
-      children: genre.ebooks.map((book) => this.bookToTreeNode(book))
+      children: genre.ebooks.map((book) => this.bookToTreeNode(book)),
+      selectable: false
     }
   }
 
   bookToTreeNode(book: Book): TreeNode {
     let label = book.author ? book.author + ' - ' + book.title : book.title;
     return {
+      key: book.id,
       label: label,
       data: book,
       icon: 'pi pi-file',
+      selectable: true
     }
   }
 
