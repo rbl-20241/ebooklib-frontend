@@ -4,14 +4,14 @@
       <table>
         <tr>
           <td>
-            <a href="#img1">
-              <img [src]="getCoverImage()" alt="" class="thumbnail"/>
-            </a>
-            <div id="img1" class="popup">
-              <a href="#" class="close"></a>
-              <img [src]="getCoverImage()" alt="Foto groot" class="fade-in">
-            </div>
-
+            <p-image
+              [src]="getCoverImage()"
+              alt="Cover"
+              width="150px"
+              class="thumbnail"
+              (click)="onClickCoverImage()"
+            />
+            <app-cover-image></app-cover-image>
           </td>
           <td>
             <table>

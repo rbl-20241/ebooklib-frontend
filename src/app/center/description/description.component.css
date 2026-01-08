@@ -22,48 +22,6 @@ td {
 }
 
 .thumbnail {
-  width: 150px;
   cursor: pointer;
 }
 
-/* popup basis */
-.popup {
-  display: none;
-  position: fixed;
-  margin: 4rem 32rem;
-  border-radius: 12px;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.9);
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-}
-
-/* toon popup als deze getarget is */
-.popup:target {
-  display: flex;
-}
-
-/* afbeelding in popup */
-.popup img {
-  max-width: 95%;
-  max-height: 85%;
-
-}
-
-/* klikbare achtergrond om te sluiten */
-.popup .close {
-  position: absolute;
-  inset: 0;
-}
-
-.fade-in {
-  opacity: 0;
-  animation: fadeIn 2s ease-in forwards;
-}
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}

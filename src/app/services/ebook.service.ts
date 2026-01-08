@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 
 import {TreeNode} from 'primeng/api';
 import {firstValueFrom} from 'rxjs';
@@ -15,6 +15,9 @@ export class EbookService {
   private metadata: Metadata | undefined;
   private coverImageURL = "";
   private id: string | undefined;
+
+  private showDialog = signal<boolean>(false);
+  showCoverImage = this.showDialog;
 
   async getBookTree(): Promise<TreeNode[]> {
     const genreTree = await firstValueFrom(
@@ -98,5 +101,9 @@ export class EbookService {
 
   public isButtonDisabled() {
     return this.getId() == undefined;
+  }
+
+  public showCoverImageDialog() {
+    this.showDialog.update((value) => !value);
   }
 }

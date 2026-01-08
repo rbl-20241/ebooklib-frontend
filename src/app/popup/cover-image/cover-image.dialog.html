@@ -1,0 +1,18 @@
+<p-dialog [(visible)]="displayCoverImageDialog"
+          [showHeader]="false"
+          [modal]="true"
+          [closable]="false"
+          [draggable]="false"
+          [resizable]="false"
+          [closeOnEscape]="true"
+          styleClass="image-dialog"
+          >
+
+  <p-image
+    [src]="getCoverImage()"
+    class="dialog-image"
+    alt="Cover"
+    (click)="cancel()"
+  />
+
+</p-dialog>

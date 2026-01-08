@@ -4,6 +4,8 @@ import {Metadata} from '../../data/metadata.model';
 import {TableModule} from 'primeng/table';
 import {ScrollPanel} from 'primeng/scrollpanel';
 import {Panel} from 'primeng/panel';
+import {Image} from 'primeng/image';
+import {CoverImageDialog} from '../../popup/cover-image/cover-image.dialog';
 
 @Component({
   selector: 'app-description',
@@ -11,6 +13,8 @@ import {Panel} from 'primeng/panel';
     TableModule,
     ScrollPanel,
     Panel,
+    Image,
+    CoverImageDialog,
   ],
   templateUrl: './description.component.html',
   styleUrl: './description.component.css',
@@ -65,4 +69,7 @@ export class DescriptionComponent {
     return this.ebookService.getId() != undefined;
   }
 
+  onClickCoverImage() {
+    this.ebookService.showCoverImageDialog();
+  }
 }
