@@ -5,7 +5,6 @@ import {TableModule} from 'primeng/table';
 import {ScrollPanel} from 'primeng/scrollpanel';
 import {Panel} from 'primeng/panel';
 import {Image} from 'primeng/image';
-import {CoverImageDialog} from '../../popup/cover-image/cover-image.dialog';
 
 @Component({
   selector: 'app-description',
@@ -14,7 +13,6 @@ import {CoverImageDialog} from '../../popup/cover-image/cover-image.dialog';
     ScrollPanel,
     Panel,
     Image,
-    CoverImageDialog,
   ],
   templateUrl: './description.component.html',
   styleUrl: './description.component.css',
