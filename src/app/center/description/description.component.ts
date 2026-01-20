@@ -69,7 +69,4 @@ export class DescriptionComponent {
     return this.ebookService.getId() != undefined;
   }
 
-  onClickCoverImage() {
-    this.ebookService.showCoverImageDialog();
-  }
 }
