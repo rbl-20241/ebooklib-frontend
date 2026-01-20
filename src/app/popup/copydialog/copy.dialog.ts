@@ -51,7 +51,7 @@ export class CopyDialog implements OnInit {
   }
 
   getBookToCopy() {
-    return this.ebookService.getAuthor() + " - " + this.ebookService.getTitle();
+    return this.ebookService.getAuthors() + " - " + this.ebookService.getTitle();
   }
 
   copyBook() {

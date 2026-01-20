@@ -31,8 +31,10 @@ export class DescriptionComponent {
     return this.metadata?.title ?? "";
   }
 
-  getAuthor() {
-    return this.metadata?.author ?? "";
+  getAuthors(): string {
+    return this.metadata?.authors
+      ?.map(author => `${author.firstname} ${author.lastname}`)
+      .join(',\n') ?? '';
   }
 
   getPublisher() {

@@ -1,8 +1,10 @@
+import {Author} from './author.model';
+
 export interface Metadata {
   id: string;
   ebookId: string;
   title: string;
-  author: string;
+  authors: Author[];
   isbn: string;
   language: string;
   publisher: string;

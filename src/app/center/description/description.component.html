@@ -9,7 +9,8 @@
               alt="Cover"
               width="150px"
               class="thumbnail"
-              preview="true"
+              [preview]="true"
+              appendTo="body"
             />
           </td>
           <td>
@@ -21,10 +22,10 @@
                 </tr>
               }
 
-              @if (getAuthor()) {
+              @if (getAuthors()) {
                 <tr>
                   <td>Auteur:</td>
-                  <td>{{ getAuthor() }}</td>
+                  <td>{{ getAuthors() }}</td>
                 </tr>
               }
 
