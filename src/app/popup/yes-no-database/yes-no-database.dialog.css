@@ -1,4 +1,4 @@
-:host >>> .p-dialog {
+:host ::ng-deep  .p-dialog {
   background-color: crimson;
   color: blanchedalmond;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);

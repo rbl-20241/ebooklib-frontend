@@ -3,6 +3,7 @@
     pButton
     pRipple
     [disabled]="isButtonDisabled()"
+    icon="pi pi-send"
     type="button"
     class="ebook-button left-button"
     (click)="onClickMailBook()"
@@ -13,6 +14,7 @@
     pButton
     pRipple
     [disabled]="isButtonDisabled()"
+    icon="pi pi-copy"
     type="button"
     class="ebook-button left-button"
     (click)="onClickCopyBook()"
@@ -23,10 +25,11 @@
     pButton
     pRipple
     [disabled]="isButtonDisabled()"
+    icon="pi pi-google"
     type="button"
     class="ebook-button left-button"
     (click)="searchWithBrowser()"
-  >Browser
+  >Google
   </button>
 </p-panel>
 
@@ -34,6 +37,7 @@
   <button
     pButton
     pRipple
+    icon="pi pi-refresh"
     type="button"
     class="ebook-button"
     (click)="saveBooksToDatabase()"

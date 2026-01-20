@@ -5,13 +5,13 @@ import {Panel} from 'primeng/panel';
 import {EbookService} from '../../services/ebook.service';
 
 @Component({
-  selector: 'app-filetree',
-  templateUrl: './file-tree.component.html',
-  styleUrls: ['./file-tree.component.css'],
-  imports: [ Tree, Panel ],
-  providers: [ FileTreeComponent ]
+  selector: 'app-booktree',
+  templateUrl: './book-tree.component.html',
+  styleUrls: ['./book-tree.component.css'],
+  imports: [Tree, Panel],
+  providers: [BookTreeComponent]
 })
-export class FileTreeComponent implements OnInit {
+export class BookTreeComponent implements OnInit {
   books!: TreeNode[];
   selectedBook!: TreeNode;
   private ebookService = inject(EbookService);
