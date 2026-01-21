@@ -29,6 +29,7 @@ export class EbookService {
 
   genreToTreeNode(genre: GenreTree): TreeNode {
     return {
+      key: genre.genreId,
       label: genre.genreName,
       data: genre,
       expandedIcon: 'pi pi-folder-open',

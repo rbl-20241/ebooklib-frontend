@@ -24,8 +24,8 @@ export class BookTreeComponent implements OnInit {
     this.isReading.set(false);
   }
 
-  onBookSelected() {
-    this.ebookService.getCoverImageURL(this.selectedBook.data.id);
-    this.ebookService.getBookInfo(this.selectedBook.data.id);
+  async onBookSelected() {
+    await this.ebookService.getCoverImageURL(this.selectedBook.data.id);
+    await this.ebookService.getBookInfo(this.selectedBook.data.id);
   }
 }
