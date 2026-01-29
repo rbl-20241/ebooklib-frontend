@@ -3,10 +3,10 @@ import {inject, Injectable} from '@angular/core';
 
 import {TreeNode} from 'primeng/api';
 import {firstValueFrom} from 'rxjs';
-import {GenreTree} from '../data/genretree.model';
 import {Book} from '../data/book.model';
 import {Metadata} from '../data/metadata.model';
 import {Send} from '../data/send.model';
+import {Genre} from '../data/genre.model';
 
 @Injectable({providedIn: 'root'})
 export class EbookService {
@@ -17,24 +17,24 @@ export class EbookService {
   private id: string | undefined;
 
   async getBookTree(): Promise<TreeNode[]> {
-    const genreTree = await firstValueFrom(
+    const genreTree: Genre[] = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/booktree')
     );
-    return this.readGenres(genreTree.data) as TreeNode[];
+    return this.readGenres(genreTree) as TreeNode[];
   }
 
-  readGenres(genres: GenreTree[]) {
+  readGenres(genres: Genre[]) {
     return genres.map((genre) => this.genreToTreeNode(genre))
   }
 
-  genreToTreeNode(genre: GenreTree): TreeNode {
+  genreToTreeNode(genre: Genre): TreeNode {
     return {
       key: genre.genreId,
       label: genre.genreName,
       data: genre,
       expandedIcon: 'pi pi-folder-open',
       collapsedIcon: 'pi pi-folder',
-      children: genre.ebooks.map((book) => this.bookToTreeNode(book)),
+      children: genre.eBooks.map((book) => this.bookToTreeNode(book)),
       selectable: false
     }
   }
@@ -63,6 +63,7 @@ export class EbookService {
     this.metadata = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/book/' + id)
     );
+    console.log(this.metadata)
   }
 
   async copyBook(payload: Send) {

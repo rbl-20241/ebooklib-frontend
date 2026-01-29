@@ -18,23 +18,23 @@
   width: 100%;
 }
 
-.settings-button {
-  background-color: #363636;
-  border-color: #363636;
-  color: blanchedalmond;
-  margin-right: 0.5rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-  &:enabled:hover {
-    background-color: gray;
-    border-color: gray;
-  }
-  &:enabled:active {
-    background-color: royalblue;
-    color: white;
-    box-shadow: none;
-  }
-}
+/*.settings-button {*/
+/*  background-color: #363636;*/
+/*  border-color: #363636;*/
+/*  color: blanchedalmond;*/
+/*  margin-right: 0.5rem;*/
+/*  border-radius: 10px;*/
+/*  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);*/
+/*  &:enabled:hover {*/
+/*    background-color: gray;*/
+/*    border-color: gray;*/
+/*  }*/
+/*  &:enabled:active {*/
+/*    background-color: royalblue;*/
+/*    color: white;*/
+/*    box-shadow: none;*/
+/*  }*/
+/*}*/
 
 /*p-password {*/
 /*  width: 100%;*/

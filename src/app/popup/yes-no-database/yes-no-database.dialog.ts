@@ -5,6 +5,7 @@ import {SettingService} from '../../services/settings.service';
 import {ButtonDirective} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';
+import {Genre} from '../../data/genre.model';
 
 @Component({
   selector: 'app-yes-no-database',
@@ -21,15 +22,18 @@ export class YesNoDatabaseDialog {
   private settingsService = inject(SettingService);
   displayYesNoDbDialog = this.settingsService.showYesNoDbSettings;
   changeColor = true;
+  genres: Genre[] = [];
 
   cancel() {
     this.displayYesNoDbDialog.set(false);
   }
 
   async save() {
-    await firstValueFrom(
-      this.http.get<any>('http://localhost:8080/refresh-booktree')
+    let genres = await firstValueFrom(
+      this.http.get<Genre[]>('http://localhost:8080/refresh-booktree')
     );
+    console.log("data opgehaald")
+    console.log(genres);
     this.displayYesNoDbDialog.set(false);
   }
 

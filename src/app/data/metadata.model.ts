@@ -2,7 +2,6 @@ import {Author} from './author.model';
 
 export interface Metadata {
   id: string;
-  ebookId: string;
   title: string;
   authors: Author[];
   isbn: string;
@@ -12,5 +11,5 @@ export interface Metadata {
   subjects: string[];
   format: string;
   description: string;
-  filePath: string;
+//  filePath: string;
 }
