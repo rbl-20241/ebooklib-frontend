@@ -1,9 +1,10 @@
   <p-panel [showHeader]="false">
     @if (isReading()) {
       <p>Boeken worden opgehaald</p>
+      <p-progressSpinner></p-progressSpinner>
     } @else {
       <p-tree
-        [value]="books"
+        [value]="books()"
         selectionMode="single"
         [(selection)]="selectedBook"
         (onNodeSelect)="onBookSelected()"
@@ -14,4 +15,5 @@
       />
     }
   </p-panel>
+
 

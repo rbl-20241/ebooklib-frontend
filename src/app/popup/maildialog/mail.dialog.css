@@ -1,17 +1,17 @@
-:host >>> .mail-form {
+:host ::ng-deep .mail-form {
   background-color: blanchedalmond;
   color: #363636;
 }
 
-:host >>> .p-dialog {
+:host ::ng-deep .p-dialog {
   background-color: blanchedalmond;
   color: #363636;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
-:host >>> .p-inputtext,
-:host >>> .p-inputtext:focus:enabled,
-:host >>> .p-inputtext:hover {
+:host ::ng-deep .p-inputtext,
+:host ::ng-deep .p-inputtext:focus:enabled,
+:host ::ng-deep .p-inputtext:hover {
   background-color: #363636;
   border-color: #363636;
   color: blanchedalmond;

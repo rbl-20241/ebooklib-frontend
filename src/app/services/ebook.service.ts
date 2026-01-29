@@ -1,5 +1,5 @@
 import {HttpClient} from '@angular/common/http';
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 
 import {TreeNode} from 'primeng/api';
 import {firstValueFrom} from 'rxjs';
@@ -15,12 +15,24 @@ export class EbookService {
   private metadata: Metadata | undefined;
   private coverImageURL = "";
   private id: string | undefined;
+  books = signal<TreeNode[]>([]);
+  isLoading = signal(false);
 
-  async getBookTree(): Promise<TreeNode[]> {
-    const genreTree: Genre[] = await firstValueFrom(
+  async loadBookTree() {
+    this.isLoading.set(true);
+    const data: Genre[] = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/booktree')
     );
-    return this.readGenres(genreTree) as TreeNode[];
+    console.log(data);
+    this.books.set(this.readGenres(data) as TreeNode[]);
+    this.isLoading.set(false);
+  }
+
+  async refreshDatabase() {
+    await firstValueFrom(
+      this.http.get('http://localhost:8080/refresh-booktree')
+    );
+    await this.loadBookTree();
   }
 
   readGenres(genres: Genre[]) {

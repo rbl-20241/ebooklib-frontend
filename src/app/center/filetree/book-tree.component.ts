@@ -1,27 +1,26 @@
-import {Component, inject, OnInit, signal} from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import {TreeNode} from 'primeng/api';
 import {Tree} from 'primeng/tree';
 import {Panel} from 'primeng/panel';
 import {EbookService} from '../../services/ebook.service';
+import {ProgressSpinner} from 'primeng/progressspinner';
 
 @Component({
   selector: 'app-booktree',
   templateUrl: './book-tree.component.html',
   styleUrls: ['./book-tree.component.css'],
-  imports: [Tree, Panel],
+  imports: [Tree, Panel, ProgressSpinner],
   providers: [BookTreeComponent]
 })
 export class BookTreeComponent implements OnInit {
-  books!: TreeNode[];
   selectedBook!: TreeNode;
   private ebookService = inject(EbookService);
-  isReading = signal(false);
-
+  books = this.ebookService.books;
+  isReading = this.ebookService.isLoading;
 
   ngOnInit() {
-    this.isReading.set(true);
-    this.ebookService.getBookTree().then((data) => this.books = data);
-    this.isReading.set(false);
+    this.ebookService.loadBookTree();
+    console.log(this.books);
   }
 
   async onBookSelected() {

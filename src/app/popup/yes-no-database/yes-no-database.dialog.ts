@@ -1,11 +1,9 @@
 import {Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {HttpClient} from '@angular/common/http';
 import {SettingService} from '../../services/settings.service';
 import {ButtonDirective} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
-import {firstValueFrom} from 'rxjs';
-import {Genre} from '../../data/genre.model';
+import {EbookService} from '../../services/ebook.service';
 
 @Component({
   selector: 'app-yes-no-database',
@@ -18,22 +16,17 @@ import {Genre} from '../../data/genre.model';
   styleUrl: './yes-no-database.dialog.css',
 })
 export class YesNoDatabaseDialog {
-  private http = inject(HttpClient);
   private settingsService = inject(SettingService);
+  private ebookService = inject(EbookService);
   displayYesNoDbDialog = this.settingsService.showYesNoDbSettings;
   changeColor = true;
-  genres: Genre[] = [];
 
   cancel() {
     this.displayYesNoDbDialog.set(false);
   }
 
   async save() {
-    let genres = await firstValueFrom(
-      this.http.get<Genre[]>('http://localhost:8080/refresh-booktree')
-    );
-    console.log("data opgehaald")
-    console.log(genres);
+    await this.ebookService.refreshDatabase();
     this.displayYesNoDbDialog.set(false);
   }
 
