@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {ButtonDirective} from 'primeng/button';
+import {ButtonDirective, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {SettingService} from '../../services/settings.service';
 import {CopyService} from '../../services/copy.service';
@@ -18,7 +18,8 @@ import {Send} from '../../data/send.model';
     Ripple,
     Card,
     ReactiveFormsModule,
-    InputText
+    InputText,
+    ButtonLabel
   ],
   templateUrl: './copy.dialog.html',
   styleUrl: './copy.dialog.css',
@@ -51,7 +52,7 @@ export class CopyDialog implements OnInit {
   }
 
   getBookToCopy() {
-    return this.ebookService.getAuthors() + " - " + this.ebookService.getTitle();
+    return this.ebookService.getFirstAuthor() + " - " + this.ebookService.getTitle();
   }
 
   copyBook() {

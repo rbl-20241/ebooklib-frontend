@@ -1,5 +1,5 @@
 import {Component, inject, OnInit} from '@angular/core';
-import {ButtonDirective} from 'primeng/button';
+import {ButtonDirective, ButtonLabel} from 'primeng/button';
 import {Card} from 'primeng/card';
 import {Dialog} from 'primeng/dialog';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -19,7 +19,8 @@ import {MailService} from '../../services/mail.service';
     FormsModule,
     InputText,
     ReactiveFormsModule,
-    Ripple
+    Ripple,
+    ButtonLabel
   ],
   templateUrl: './mail.dialog.html',
   styleUrl: './mail.dialog.css',

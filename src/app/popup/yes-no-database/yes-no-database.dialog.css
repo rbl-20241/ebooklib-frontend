@@ -1,27 +1,26 @@
 :host ::ng-deep .p-dialog {
-  background-color: crimson;
-  color: blanchedalmond;
+  background-color: var(--dialog-achtergrond);
+  color: var(--dialog-kleur);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
-.settings-button {
-  background-color: blanchedalmond;
-  border-color: blanchedalmond;
-  color: #363636;
+.yes-no-dialog-button {
+  background-color: var(--button-achtergrond);
+  border-color: var(--button-achtergrond);
+  color: var(--button-kleur);
   margin-right: 0.5rem;
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-
   &:enabled:hover {
-    background-color: gray;
-    border-color: gray;
+    background-color: var(--button-hover-achtergrond);
+    border-color: var(--button-hover-achtergrond);
+    color: var(--button-hover-kleur);
   }
-
   &:enabled:active {
-    background-color: darkred;
-    color: white;
+    background-color: var(--button-active-achtergrond);
+    border-color: var(--button-active-achtergrond);
+    color: var(--button-active-kleur);
     box-shadow: none;
   }
 }
-
 

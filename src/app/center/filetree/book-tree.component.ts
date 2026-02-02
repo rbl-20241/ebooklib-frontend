@@ -20,7 +20,6 @@ export class BookTreeComponent implements OnInit {
 
   ngOnInit() {
     this.ebookService.loadBookTree();
-    console.log(this.books);
   }
 
   async onBookSelected() {

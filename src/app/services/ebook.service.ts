@@ -23,7 +23,6 @@ export class EbookService {
     const data: Genre[] = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/booktree')
     );
-    console.log(data);
     this.books.set(this.readGenres(data) as TreeNode[]);
     this.isLoading.set(false);
   }
@@ -75,7 +74,6 @@ export class EbookService {
     this.metadata = await firstValueFrom(
       this.http.get<any>('http://localhost:8080/book/' + id)
     );
-    console.log(this.metadata)
   }
 
   async copyBook(payload: Send) {
@@ -106,12 +104,8 @@ export class EbookService {
     return this.metadata?.title;
   }
 
-  public getAuthors() {
-    return this.metadata?.authors;
-  }
-
   public getFirstAuthor() {
-    return this.metadata?.authors[0];
+    return this.metadata?.authors[0].firstname + ' ' + this.metadata?.authors[0].lastname;
   }
 
   public isButtonDisabled() {

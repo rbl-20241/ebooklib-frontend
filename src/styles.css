@@ -1,25 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
 
+:root {
+  --button-achtergrond: #363636;
+  --button-kleur: blanchedalmond;
+  --button-active-achtergrond: royalblue;
+  --button-active-kleur: white;
+  --button-hover-achtergrond: royalblue;
+  --button-hover-kleur: white;
+  --dialog-achtergrond: blanchedalmond;
+  --dialog-kleur: #363636;
+  --form-achtergrond: blanchedalmond;
+  --form-kleur: #363636;
+  --input-achtergrond: #363636;
+  --input-kleur: blanchedalmond;
+}
+
 body {
   background-color: royalblue;
 }
-
-.settings-button {
-  background-color: #363636;
-  border-color: #363636;
-  color: blanchedalmond;
-  margin-right: 0.5rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-  &:enabled:hover {
-    background-color: gray;
-    border-color: gray;
-  }
-  &:enabled:active {
-    background-color: royalblue;
-    color: white;
-    box-shadow: none;
-  }
-}
-

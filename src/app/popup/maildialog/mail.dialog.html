@@ -7,7 +7,7 @@
 >
   <p-card class="mail-form flex justify-content-center">
     <form [formGroup]="mailForm" (ngSubmit)="mailBook()">
-      <div class="field settings-input">
+      <div class="field mail-input">
         <label for="mailTo" class="block">"{{ getBookToMail() }}" kopi&euml;ren naar:</label>
         <input type="text" pInputText formControlName="mailTo" />
         @if(mailForm.get('mailTo')?.invalid && mailForm.get('mailTo')?.dirty) {
@@ -20,18 +20,20 @@
           pButton
           pRipple
           type="button"
-          class="settings-button"
+          class="mail-dialog-button"
           (click)="cancel()"
-        >Annuleer
+        >
+          <span pButtonLabel>Annuleer</span>
         </button>
 
         <button
           pButton
           pRipple
           type="submit"
-          class="settings-button"
+          class="mail-dialog-button"
           (click)="mailBook()"
-        >Mailen
+        >
+          <span pButtonLabel>Mailen</span>
         </button>
 
       </p>

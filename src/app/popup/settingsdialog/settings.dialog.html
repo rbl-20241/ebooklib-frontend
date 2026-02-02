@@ -69,18 +69,20 @@
           pButton
           pRipple
           type="button"
-          class="settings-button"
+          class="settings-dialog-button"
           (click)="cancel()"
-        >Annuleer
+        >
+          <span pButtonLabel>Annuleer</span>
         </button>
 
         <button
           pButton
           pRipple
           type="submit"
-          class="settings-button"
+          class="settings-dialog-button"
           (click)="saveSettings()"
-        >Opslaan
+        >
+          <span pButtonLabel>Opslaan</span>
         </button>
 
       </p>

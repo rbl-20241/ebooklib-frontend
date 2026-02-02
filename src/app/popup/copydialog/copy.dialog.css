@@ -1,28 +1,46 @@
-:host >>> .copy-form {
-  background-color: blanchedalmond;
-  color: #363636;
+:host ::ng-deep .copy-form {
+  background-color: var(--form-achtergrond);
+  color: var(--form-kleur);
 }
 
-:host >>> .p-dialog {
-  background-color: blanchedalmond;
-  color: #363636;
+:host ::ng-deep .p-dialog {
+  background-color: var(--dialog-achtergrond);
+  color: var(--dialog-kleur);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
 }
 
-:host >>> .p-inputtext,
-:host >>> .p-inputtext:focus:enabled,
-:host >>> .p-inputtext:hover {
-  background-color: #363636;
-  border-color: #363636;
-  color: blanchedalmond;
+:host ::ng-deep .p-inputtext,
+:host ::ng-deep .p-inputtext:focus:enabled,
+:host ::ng-deep .p-inputtext:hover {
+  background-color: var(--input-achtergrond);
+  border-color: var(--input-achtergrond);
+  color: var(--input-kleur);
   width: 100%;
 }
 
-/*p-password {*/
-/*  width: 100%;*/
-/*}*/
-
-.settings-input {
+.copy-input {
   padding-bottom: 0.5rem;
 }
+
+.copy-dialog-button {
+  background-color: var(--button-achtergrond);
+  border-color: var(--button-achtergrond);
+  color: var(--button-kleur);
+  margin-right: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  &:enabled:hover {
+    background-color: var(--button-hover-achtergrond);
+    border-color: var(--button-hover-achtergrond);
+    color: var(--button-hover-kleur);
+  }
+  &:enabled:active {
+    background-color: var(--button-active-achtergrond);
+    border-color: var(--button-active-achtergrond);
+    color: var(--button-active-kleur);
+    box-shadow: none;
+  }
+}
+
+
 

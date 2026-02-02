@@ -7,7 +7,7 @@
 >
   <p-card class="copy-form flex justify-content-center">
     <form [formGroup]="copyForm" (ngSubmit)="copyBook()">
-      <div class="field settings-input">
+      <div class="field copy-input">
         <label for="copyTo" class="block">"{{ getBookToCopy() }}" kopi&euml;ren naar:</label>
         <input type="text" pInputText formControlName="copyTo" />
         @if(copyForm.get('copyTo')?.invalid && copyForm.get('copyTo')?.dirty) {
@@ -20,18 +20,20 @@
           pButton
           pRipple
           type="button"
-          class="settings-button"
+          class="copy-dialog-button"
           (click)="cancel()"
-        >Annuleer
+        >
+          <span pButtonLabel>Annuleer</span>
         </button>
 
         <button
           pButton
           pRipple
           type="submit"
-          class="settings-button"
+          class="copy-dialog-button"
           (click)="copyBook()"
-        >Kopi&euml;ren
+        >
+          <span pButtonLabel>Kopi&euml;ren</span>
         </button>
 
       </p>

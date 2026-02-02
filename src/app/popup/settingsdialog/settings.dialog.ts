@@ -3,7 +3,7 @@ import {Dialog} from 'primeng/dialog';
 import {SettingService} from '../../services/settings.service';
 import {InputText} from 'primeng/inputtext';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {ButtonDirective} from 'primeng/button';
+import {ButtonDirective, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
@@ -23,6 +23,7 @@ import {Password} from 'primeng/password';
     ReactiveFormsModule,
     YesNoDatabaseDialog,
     Password,
+    ButtonLabel,
   ],
   templateUrl: './settings.dialog.html',
   styleUrl: './settings.dialog.css',
