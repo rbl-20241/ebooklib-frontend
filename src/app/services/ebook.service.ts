@@ -19,12 +19,16 @@ export class EbookService {
   isLoading = signal(false);
 
   async loadBookTree() {
-    this.isLoading.set(true);
-    const data: Genre[] = await firstValueFrom(
-      this.http.get<any>('http://localhost:8080/booktree')
-    );
-    this.books.set(this.readGenres(data) as TreeNode[]);
-    this.isLoading.set(false);
+    try {
+      this.isLoading.set(true);
+      const tree = await firstValueFrom(
+        this.http.get<Genre[]>('http://localhost:8080/booktree')
+      );
+      this.books.set(this.readGenres(tree) as TreeNode[]);
+    }
+    finally {
+      this.isLoading.set(false);
+    }
   }
 
   async refreshDatabase() {
@@ -53,7 +57,7 @@ export class EbookService {
   bookToTreeNode(book: Book): TreeNode {
     let label = book.author ? book.author + ' - ' + book.title : book.title;
     return {
-      key: book.id,
+      key: book.bookId,
       label: label,
       data: book,
       icon: 'pi pi-file',

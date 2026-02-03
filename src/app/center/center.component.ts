@@ -4,7 +4,7 @@ import {SettingsDialog} from '../popup/settingsdialog/settings.dialog';
 import {DescriptionComponent} from './description/description.component';
 import {Splitter} from 'primeng/splitter';
 import {PrimeTemplate} from 'primeng/api';
-import {BookTreeComponent} from './filetree/book-tree.component';
+import {BookTreeComponent} from './book-tree/book-tree.component';
 
 @Component({
   selector: 'app-center',

@@ -23,7 +23,7 @@ export class BookTreeComponent implements OnInit {
   }
 
   async onBookSelected() {
-    await this.ebookService.getCoverImageURL(this.selectedBook.data.id);
-    await this.ebookService.getBookInfo(this.selectedBook.data.id);
+    await this.ebookService.getCoverImageURL(this.selectedBook.data.bookId);
+    await this.ebookService.getBookInfo(this.selectedBook.data.bookId);
   }
 }
