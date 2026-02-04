@@ -33,7 +33,7 @@ export class ButtonsComponent {
     const metadata = this.ebookService.getMetadata();
     if (!metadata) return;
 
-    const query = encodeURIComponent(`${metadata.title} ${metadata.authors[0].firstname} ${metadata.authors[0].lastname}`)
+    const query = encodeURIComponent(`${metadata.title} ${metadata.author}`)
     window.open(`${this.GOOGLE_SEARCH_URL}?q=${query}`, '_blank');
   }
 

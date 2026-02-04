@@ -108,8 +108,8 @@ export class EbookService {
     return this.metadata?.title;
   }
 
-  public getFirstAuthor() {
-    return this.metadata?.authors[0].firstname + ' ' + this.metadata?.authors[0].lastname;
+  public getAuthor() {
+    return this.metadata?.author;
   }
 
   public isButtonDisabled() {

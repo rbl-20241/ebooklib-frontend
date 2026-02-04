@@ -1,9 +1,7 @@
-import {Author} from './author.model';
-
 export interface Metadata {
   id: string;
   title: string;
-  authors: Author[];
+  author: string;
   isbn: string;
   language: string;
   publisher: string;

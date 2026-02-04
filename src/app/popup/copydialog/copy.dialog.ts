@@ -52,7 +52,7 @@ export class CopyDialog implements OnInit {
   }
 
   getBookToCopy() {
-    return this.ebookService.getFirstAuthor() + " - " + this.ebookService.getTitle();
+    return this.ebookService.getAuthor() + " - " + this.ebookService.getTitle();
   }
 
   copyBook() {
