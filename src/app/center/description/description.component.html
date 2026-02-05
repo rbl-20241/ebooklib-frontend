@@ -22,10 +22,14 @@
                 </tr>
               }
 
-              @if (getAuthor()) {
+              @if (getAuthors()) {
                 <tr>
-                  <td>Auteur:</td>
-                  <td>{{ getAuthor() }}</td>
+                  @if (getAuthors().includes(",")) {
+                    <td>Auteurs:</td>
+                  } @else {
+                    <td>Auteur:</td>
+                  }
+                  <td>{{ getAuthors() }}</td>
                 </tr>
               }
 

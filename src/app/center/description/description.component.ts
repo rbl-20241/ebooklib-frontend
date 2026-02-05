@@ -31,8 +31,8 @@ export class DescriptionComponent {
     return this.metadata?.title ?? "";
   }
 
-  getAuthor(): string {
-    return this.metadata?.author ?? "";
+  getAuthors(): string {
+    return this.metadata?.authors?.join(", ") ?? "";
   }
 
   getPublisher() {

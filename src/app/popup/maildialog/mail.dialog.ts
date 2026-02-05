@@ -52,7 +52,7 @@ export class MailDialog implements OnInit {
   }
 
   getBookToMail() {
-    return this.ebookService.getAuthor() + " - " + this.ebookService.getTitle();
+    return this.ebookService.getFirstAuthor() + " - " + this.ebookService.getTitle();
   }
 
   mailBook() {

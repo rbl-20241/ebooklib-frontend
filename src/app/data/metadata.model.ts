@@ -1,7 +1,7 @@
 export interface Metadata {
   id: string;
   title: string;
-  author: string;
+  authors: string[];
   isbn: string;
   language: string;
   publisher: string;
