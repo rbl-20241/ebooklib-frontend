@@ -1,5 +1,5 @@
 import {Component, inject} from '@angular/core';
-import {ButtonDirective} from 'primeng/button';
+import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Panel} from 'primeng/panel';
 import {Ripple} from 'primeng/ripple';
 import {SettingService} from '../../services/settings.service';
@@ -12,7 +12,9 @@ import {MailService} from '../../services/mail.service';
   imports: [
     ButtonDirective,
     Panel,
-    Ripple
+    Ripple,
+    ButtonIcon,
+    ButtonLabel
   ],
   templateUrl: './buttons.component.html',
   styleUrl: './buttons.component.css',
@@ -43,6 +45,10 @@ export class ButtonsComponent {
 
   onClickMailBook() {
     this.mailService.showMailDialog();
+  }
+
+  onClickSearch() {
+
   }
 
   isButtonDisabled() {

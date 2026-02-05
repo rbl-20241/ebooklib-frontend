@@ -3,33 +3,36 @@
     pButton
     pRipple
     [disabled]="isButtonDisabled()"
-    icon="pi pi-send"
     type="button"
     class="ebook-button left-button"
     (click)="onClickMailBook()"
-  >Mailen
+  >
+    <i class="pi pi-send" pButtonIcon></i>
+    <span pButtonLabel>Mailen</span>
   </button>
 
   <button
     pButton
     pRipple
     [disabled]="isButtonDisabled()"
-    icon="pi pi-copy"
     type="button"
     class="ebook-button left-button"
     (click)="onClickCopyBook()"
-  >Kopi&euml;ren
+  >
+    <i class="pi pi-copy" pButtonIcon></i>
+    <span pButtonLabel>Kopi&euml;ren</span>
   </button>
 
   <button
     pButton
     pRipple
     [disabled]="isButtonDisabled()"
-    icon="pi pi-google"
     type="button"
     class="ebook-button left-button"
     (click)="searchWithBrowser()"
-  >Google
+  >
+    <i class="pi pi-google" pButtonIcon></i>
+    <span pButtonLabel>Google</span>
   </button>
 </p-panel>
 
@@ -37,11 +40,23 @@
   <button
     pButton
     pRipple
-    icon="pi pi-refresh"
+    type="button"
+    class="ebook-button left-button"
+    (click)="onClickSearch()"
+  >
+    <i class="pi pi-search" pButtonIcon></i>
+    <span pButtonLabel>Zoeken</span>
+  </button>
+
+  <button
+    pButton
+    pRipple
     type="button"
     class="ebook-button"
     (click)="saveBooksToDatabase()"
-  >Database verversen
+  >
+    <i class="pi pi-refresh" pButtonIcon></i>
+    <span pButtonLabel>Database verversen</span>
   </button>
 </p-panel>
 
