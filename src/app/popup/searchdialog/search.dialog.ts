@@ -63,7 +63,6 @@ export class SearchDialog {
 
   set displayDialog(value: boolean) {
     this.displaySearchDialog.set(value); // schrijf naar de signal
-    console.log(this.displaySearchDialog);
   }
 
   cancel() {

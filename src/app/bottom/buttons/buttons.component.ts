@@ -34,7 +34,7 @@ export class ButtonsComponent {
   }
 
   searchWithBrowser() {
-    const metadata = this.ebookService.getMetadata();
+    const metadata = this.ebookService.metadata();
     if (!metadata) return;
 
     const query = encodeURIComponent(`${metadata.title} ${this.ebookService.getFirstAuthor()}`)

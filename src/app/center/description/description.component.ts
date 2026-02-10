@@ -1,10 +1,13 @@
-import {Component, inject} from '@angular/core';
+import {Component, effect, inject, signal} from '@angular/core';
 import {EbookService} from '../../services/ebook.service';
-import {Metadata} from '../../data/metadata.model';
 import {TableModule} from 'primeng/table';
 import {ScrollPanel} from 'primeng/scrollpanel';
 import {Panel} from 'primeng/panel';
 import {Image} from 'primeng/image';
+import {FormsModule} from '@angular/forms';
+import {InputText} from 'primeng/inputtext';
+import {IconField} from 'primeng/iconfield';
+import {InputIcon} from 'primeng/inputicon';
 
 @Component({
   selector: 'app-description',
@@ -13,58 +16,57 @@ import {Image} from 'primeng/image';
     ScrollPanel,
     Panel,
     Image,
+    FormsModule,
+    InputText,
+    IconField,
+    InputIcon,
   ],
   templateUrl: './description.component.html',
   styleUrl: './description.component.css',
 })
 export class DescriptionComponent {
+  ebookService = inject(EbookService);
 
-  private ebookService = inject(EbookService);
-  private metadata: Metadata | undefined;
+  metadata = this.ebookService.metadata;
+  searchTerm = signal('');
+  descriptionHtml = signal<string>('');
 
-  getCoverImage() {
-    return this.ebookService.getCoverImage();
+  constructor() {
+
+    // Reageert automatisch op metadata OF searchTerm veranderingen
+    effect(() => {
+      const metadata = this.metadata();
+      const term = this.searchTerm();
+
+      if (!metadata?.description) {
+        this.descriptionHtml.set('');
+        return;
+      }
+
+
+      const description = metadata.description ?? '';
+
+      if (!term) {
+        this.descriptionHtml.set(description);
+        return;
+      }
+
+      const regex = new RegExp(
+        `(${this.escapeRegExp(term)})`,
+        'gi'
+      );
+
+      const highlighted =
+        description.replace(
+          regex,
+          `<span class="highlight">$1</span>`
+        );
+
+      this.descriptionHtml.set(highlighted);
+    });
   }
 
-  getTitle() {
-    this.metadata = this.ebookService.getMetadata();
-    return this.metadata?.title ?? "";
+  private escapeRegExp(text: string): string {
+    return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
-
-  getAuthors(): string {
-    return this.metadata?.authors?.join(", ") ?? "";
-  }
-
-  getPublisher() {
-    return this.metadata?.publisher ?? "";
-  }
-
-  getLanguage() {
-    return this.metadata?.language ?? "";
-  }
-
-  getIsbn() {
-    return this.metadata?.isbn ?? "";
-  }
-
-  getDate() {
-    return this.metadata?.date ?? "";
-  }
-
-  getFormat() {
-    return this.metadata?.format ?? "";
-  }
-
-  getSubjects(): string {
-    return this.metadata?.subjects?.join(", ") ?? "";
-  }
-
-  getDescription() {
-    return this.metadata?.description ?? "";
-  }
-
-  getIdFound() {
-    return this.ebookService.getId() != undefined;
-  }
-
 }

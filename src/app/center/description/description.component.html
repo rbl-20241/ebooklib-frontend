@@ -1,77 +1,79 @@
 <p-panel [showHeader]="false">
-  @if (getIdFound()) {
+
+  @if (metadata(); as meta) {
+
     <div class="metadata-on-top">
+
       <table>
         <tr>
           <td>
             <p-image
-              [src]="getCoverImage()"
+              [src]="ebookService.getCoverImage()"
               alt="Cover"
               width="150px"
-              class="thumbnail"
               [preview]="true"
               appendTo="body"
             />
           </td>
+
           <td>
             <table>
-              @if (getTitle()) {
+
+              @if (meta.title) {
                 <tr>
                   <td>Titel:</td>
-                  <td>{{ getTitle() }}</td>
+                  <td>{{ meta.title }}</td>
                 </tr>
               }
 
-              @if (getAuthors()) {
+              @if (meta.authors.length) {
                 <tr>
-                  @if (getAuthors().includes(",")) {
-                    <td>Auteurs:</td>
-                  } @else {
-                    <td>Auteur:</td>
-                  }
-                  <td>{{ getAuthors() }}</td>
+                  <td>
+                    {{ meta.authors.length > 1 ? 'Auteurs:' : 'Auteur:' }}
+                  </td>
+                  <td>{{ meta.authors.join(', ') }}</td>
                 </tr>
               }
 
-              @if (getPublisher()) {
+              @if (meta.publisher) {
                 <tr>
                   <td>Uitgever:</td>
-                  <td>{{ getPublisher() }}</td>
+                  <td>{{ meta.publisher }}</td>
                 </tr>
               }
 
-              @if (getSubjects()) {
+              @if (meta.subjects.length) {
                 <tr>
                   <td>Trefwoorden:</td>
-                  <td>{{ getSubjects() }}</td>
+                  <td>{{ meta.subjects.join(', ') }}</td>
                 </tr>
               }
 
-              @if (getLanguage()) {
+              @if (meta.language) {
                 <tr>
                   <td>Taal:</td>
-                  <td>{{ getLanguage() }}</td>
+                  <td>{{ meta.language }}</td>
                 </tr>
               }
 
-              @if (getIsbn()) {
+              @if (meta.isbn) {
                 <tr>
                   <td>Isbn:</td>
-                  <td>{{ getIsbn() }}</td>
+                  <td>{{ meta.isbn }}</td>
                 </tr>
               }
 
-              @if (getDate()) {
+              @if (meta.date) {
                 <tr>
                   <td>Datum:</td>
-                  <td>{{ getDate() }}</td>
+                  <td>{{ meta.date }}</td>
                 </tr>
               }
 
-              @if (getFormat()) {
+              @if (meta.format) {
                 <tr>
                   <td>Formaat:</td>
-                  <td>{{ getFormat() }}</td>
+                  <td>{{ meta.format }}</td>
                 </tr>
               }
 
@@ -82,9 +84,32 @@
     </div>
 
     <p-scroll-panel>
-      @if (getDescription()) {
-        <div [innerHtml]="getDescription()"></div>
+
+      <div class="search-box">
+        <p-iconfield class="full-width">
+          <input
+            pInputText
+            type="text"
+            placeholder="Zoek in beschrijving..."
+            [ngModel]="searchTerm()"
+            (ngModelChange)="searchTerm.set($event)"
+          />
+
+          @if (searchTerm()) {
+            <p-inputicon
+              class="pi pi-times clear-icon"
+              (click)="searchTerm.set('')">
+            </p-inputicon>
+          }
+        </p-iconfield>
+      </div>
+
+      @if (meta.description) {
+        <div class="description-container">
+          <p [innerHTML]="descriptionHtml()"></p>
+        </div>
       }
+
     </p-scroll-panel>
   }
 

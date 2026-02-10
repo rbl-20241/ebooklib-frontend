@@ -2,6 +2,23 @@
   height: 450px !important;
 }
 
+:host ::ng-deep .highlight {
+  background-color: aliceblue;
+  color: royalblue;
+  font-weight: bold;
+}
+
+:host ::ng-deep .p-inputtext {
+  background-color: aliceblue;
+  color: black;
+  border: 1px solid royalblue;
+}
+
+:host ::ng-deep .p-inputtext:focus {
+  border-color: darkblue;
+  box-shadow: 0 0 0 2px rgba(65,105,225,0.2);
+}
+
 p-panel {
   background-color: royalblue;
   border-color: aliceblue;
@@ -25,3 +42,17 @@ td {
   cursor: pointer;
 }
 
+.description-container {
+  p {
+    line-height: 1.5;
+  }
+}
+
+.search-box {
+  margin-bottom: 1rem;
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+}

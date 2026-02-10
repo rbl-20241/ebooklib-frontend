@@ -11,7 +11,7 @@ import {Genre} from '../data/genre.model';
 export class EbookService {
 
   private http = inject(HttpClient);
-  private metadata: Metadata | undefined;
+  metadata = signal<Metadata | undefined>(undefined);
   private coverImageURL = "";
   private id: string | undefined;
   books = signal<TreeNode[]>([]);
@@ -74,9 +74,12 @@ export class EbookService {
   }
 
   async getBookInfo(id: string) {
-    this.metadata = await firstValueFrom(
-      this.http.get<any>('http://localhost:8080/book/' + id)
+    this.id = id;
+    const result = await firstValueFrom(
+      this.http.get<Metadata>('http://localhost:8080/book/' + id)
     );
+
+    this.metadata.set(result);
   }
 
   async copyBook(payload: Send) {
@@ -104,10 +107,6 @@ export class EbookService {
     }
   }
 
-  public getMetadata() {
-    return this.metadata;
-  }
-
   public getCoverImage() {
     return this.coverImageURL;
   }
@@ -117,11 +116,11 @@ export class EbookService {
   }
 
   public getTitle() {
-    return this.metadata?.title;
+    return this.metadata()?.title;
   }
 
   public getFirstAuthor() {
-    return this.metadata?.authors[0];
+    return this.metadata()?.authors[0];
   }
 
   public isButtonDisabled() {
