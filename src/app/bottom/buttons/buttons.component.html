@@ -41,6 +41,17 @@
     pButton
     pRipple
     type="button"
+    class="ebook-button"
+    (click)="resetBooktree()"
+  >
+    <i class="pi pi-sync" pButtonIcon></i>
+    <span pButtonLabel>Reset</span>
+  </button>
+
+  <button
+    pButton
+    pRipple
+    type="button"
     class="ebook-button left-button"
     (click)="onClickSearch()"
   >
@@ -58,5 +69,6 @@
     <i class="pi pi-refresh" pButtonIcon></i>
     <span pButtonLabel>Database verversen</span>
   </button>
+
 </p-panel>
 

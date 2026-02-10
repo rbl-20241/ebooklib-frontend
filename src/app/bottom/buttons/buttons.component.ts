@@ -41,6 +41,10 @@ export class ButtonsComponent {
     window.open(`${this.GOOGLE_SEARCH_URL}?q=${query}`, '_blank');
   }
 
+  resetBooktree() {
+    this.ebookService.loadBookTree();
+  }
+
   onClickCopyBook() {
     this.copyService.showCopyDialog();
   }
