@@ -47,6 +47,7 @@ export class MailDialog implements OnInit {
     })
   }
 
+
   cancel() {
     this.displayMailDialog.set(false);
   }

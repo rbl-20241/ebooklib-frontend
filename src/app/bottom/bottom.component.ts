@@ -3,6 +3,7 @@ import {Panel} from 'primeng/panel';
 import {ButtonsComponent} from './buttons/buttons.component';
 import {CopyDialog} from '../popup/copydialog/copy.dialog';
 import {MailDialog} from '../popup/maildialog/mail.dialog';
+import {SearchDialog} from '../popup/searchdialog/search.dialog';
 
 @Component({
     selector: 'app-bottom',
@@ -12,6 +13,7 @@ import {MailDialog} from '../popup/maildialog/mail.dialog';
     ButtonsComponent,
     CopyDialog,
     MailDialog,
+    SearchDialog,
   ],
     styleUrl: './bottom.component.css'
 })

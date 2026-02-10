@@ -6,6 +6,7 @@ import {SettingService} from '../../services/settings.service';
 import {CopyService} from '../../services/copy.service';
 import {EbookService} from '../../services/ebook.service';
 import {MailService} from '../../services/mail.service';
+import {SearchService} from '../../services/search.service';
 
 @Component({
   selector: 'app-buttons',
@@ -25,6 +26,7 @@ export class ButtonsComponent {
   private settingsService = inject(SettingService);
   private copyService = inject(CopyService);
   private mailService = inject(MailService);
+  private searchService = inject(SearchService);
   private ebookService = inject(EbookService);
 
   saveBooksToDatabase() {
@@ -48,7 +50,7 @@ export class ButtonsComponent {
   }
 
   onClickSearch() {
-
+    this.searchService.showSearchDialog();
   }
 
   isButtonDisabled() {

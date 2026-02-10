@@ -1,0 +1,126 @@
+:host ::ng-deep .small-radio .p-radiobutton-box {
+  background-color: var(--form-achtergrond);
+  border-color: var(--input-achtergrond);
+  width: 14px;
+  height: 14px;
+}
+
+:host ::ng-deep .small-radio .p-radiobutton-icon {
+  width: 8px;
+  height: 8px;
+}
+
+:host ::ng-deep .small-radio.p-radiobutton-checked .p-radiobutton-icon {
+  background-color: var(--input-achtergrond);
+}
+
+:host ::ng-deep .small-radio.p-radiobutton-checked .p-radiobutton-box {
+  background-color: var(--form-achtergrond);   /* jouw kleur */
+  border-color: var(--input-achtergrond);
+}
+
+:host ::ng-deep .small-check .p-checkbox-box {
+  background-color: var(--form-achtergrond);
+  border-color: var(--input-achtergrond);
+  width: 14px;
+  height: 14px;
+}
+
+:host ::ng-deep .small-check .p-checkbox-icon {
+  width: 8px;
+  height: 8px;
+}
+
+:host ::ng-deep .small-check.p-checkbox-box-checked .p-checkbox-icon {
+  background-color: var(--input-achtergrond);
+}
+
+:host ::ng-deep .small-check.p-checkbox-box-checked .p-checkbox-box {
+  background-color: var(--form-achtergrond);   /* jouw kleur */
+  border-color: var(--input-achtergrond);
+}
+
+
+:host ::ng-deep .search-form {
+  background-color: var(--form-achtergrond);
+  color: var(--form-kleur);
+}
+
+:host ::ng-deep .p-dialog {
+  background-color: var(--dialog-achtergrond);
+  color: var(--dialog-kleur);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+:host ::ng-deep .p-password,
+:host ::ng-deep .p-inputtext,
+:host ::ng-deep .p-inputtext:focus:enabled,
+:host ::ng-deep .p-inputtext:hover {
+  background-color: var(--input-achtergrond);
+  border-color: var(--input-achtergrond);
+  color: var(--input-kleur);
+  width: 100%;
+}
+
+:host ::ng-deep .custom-checkbox .p-checkbox-box {
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--input-achtergrond);
+  border-radius: 4px;
+  background-color: var(--form-achtergrond);
+}
+
+:host ::ng-deep .custom-checkbox .p-checkbox-box.p-highlight {
+  background-color: var(--input-achtergrond);
+  border-color: var(--input-achtergrond);
+}
+
+:host ::ng-deep .custom-checkbox .p-checkbox-icon {
+  color: #fff;
+  font-size: 14px;
+}
+
+.search-dialog-button {
+  background-color: var(--button-achtergrond);
+  border-color: var(--button-achtergrond);
+  color: var(--button-kleur);
+  margin-right: 0.5rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  &:enabled:hover {
+    background-color: var(--button-hover-achtergrond);
+    border-color: var(--button-hover-achtergrond);
+    color: var(--button-hover-kleur);
+  }
+  &:enabled:active {
+    background-color: var(--button-active-achtergrond);
+    border-color: var(--button-active-achtergrond);
+    color: var(--button-active-kleur);
+    box-shadow: none;
+  }
+}
+
+.search-input {
+  padding-bottom: 0.5rem;
+}
+
+.radio-group {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--input-achtergrond);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.custom-checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;          /* afstand tussen box en tekst */
+}
+
+
+
+
+
+
+

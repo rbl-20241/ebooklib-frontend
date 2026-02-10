@@ -1,6 +1,5 @@
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {inject, Injectable, signal} from '@angular/core';
-
 import {TreeNode} from 'primeng/api';
 import {firstValueFrom} from 'rxjs';
 import {Book} from '../data/book.model';
@@ -90,6 +89,19 @@ export class EbookService {
     await firstValueFrom(
       this.http.post('http://localhost:8080/book/mail', payload)
     )
+  }
+
+  async search(where: string | undefined, params: HttpParams) {
+    try {
+      this.isLoading.set(true);
+      const tree = await firstValueFrom(
+        this.http.get<Genre[]>('http://localhost:8080/search/' + where, {params})
+      );
+      this.books.set(this.readGenres(tree) as TreeNode[]);
+    }
+    finally {
+      this.isLoading.set(false);
+    }
   }
 
   public getMetadata() {
