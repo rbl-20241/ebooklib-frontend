@@ -1,15 +1,22 @@
-.panel-left {
-  background-color: royalblue;
-  border-color: transparent;
-  float: left;
-  bottom: 0;
-}
-
+.panel-left,
 .panel-right {
   background-color: royalblue;
   border-color: transparent;
+  display: flex;
+  gap: 0.5rem; /* ruimte tussen buttons */
+  padding-top: 0.25rem; /* extra compact */
+  padding-bottom: 0.1rem;
+  align-items: flex-start; /* bovenkant uitlijnen */
+}
+
+.panel-left {
+  float: left;
+  /*bottom: 0;*/
+}
+
+.panel-right {
   float: right;
-  bottom: 0;
+  /*bottom: 0;*/
 }
 
 .ebook-button {

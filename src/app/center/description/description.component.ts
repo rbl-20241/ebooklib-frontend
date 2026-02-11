@@ -8,6 +8,7 @@ import {FormsModule} from '@angular/forms';
 import {InputText} from 'primeng/inputtext';
 import {IconField} from 'primeng/iconfield';
 import {InputIcon} from 'primeng/inputicon';
+import {Divider} from 'primeng/divider';
 
 @Component({
   selector: 'app-description',
@@ -20,6 +21,7 @@ import {InputIcon} from 'primeng/inputicon';
     InputText,
     IconField,
     InputIcon,
+    Divider,
   ],
   templateUrl: './description.component.html',
   styleUrl: './description.component.css',
@@ -46,7 +48,7 @@ export class DescriptionComponent {
 
       const description = metadata.description ?? '';
 
-      if (!term) {
+      if (!term || term.length < 2) {
         this.descriptionHtml.set(description);
         return;
       }

@@ -85,32 +85,35 @@
 
     <p-scroll-panel>
 
-      <div class="search-box">
-        <p-iconfield class="full-width">
-          <input
-            pInputText
-            type="text"
-            placeholder="Zoek in beschrijving..."
-            [ngModel]="searchTerm()"
-            (ngModelChange)="searchTerm.set($event)"
-          />
-
-          @if (searchTerm()) {
-            <p-inputicon
-              class="pi pi-times clear-icon"
-              (click)="searchTerm.set('')">
-            </p-inputicon>
-          }
-        </p-iconfield>
-      </div>
 
       @if (meta.description) {
         <div class="description-container">
           <p [innerHTML]="descriptionHtml()"></p>
         </div>
       }
-
     </p-scroll-panel>
+
+    <p-divider></p-divider>
+
+    <div class="search-box">
+      <p-iconfield class="full-width">
+        <input
+          pInputText
+          type="text"
+          placeholder="Zoek in beschrijving..."
+          [ngModel]="searchTerm()"
+          (ngModelChange)="searchTerm.set($event)"
+        />
+
+        @if (searchTerm()) {
+          <p-inputicon
+            class="pi pi-times clear-icon"
+            (click)="searchTerm.set('')">
+          </p-inputicon>
+        }
+      </p-iconfield>
+    </div>
+
   }
 
 </p-panel>

@@ -16,5 +16,7 @@ p-panel {
   border-color: aliceblue;
   border-radius: 12px;
   margin-left: 1rem;
+  min-height: 100%;
+  max-height: 100%;
 }
 

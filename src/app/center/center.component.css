@@ -13,7 +13,7 @@
   margin-left: -1rem;
   position: fixed;
   top: 7rem;
-  bottom: -3rem;
+  bottom: auto;
   width: 100%;
   height: 100%;
 }

@@ -12,11 +12,20 @@
   background-color: aliceblue;
   color: black;
   border: 1px solid royalblue;
+  padding-top: 0.25rem;      /* optioneel, kleiner dan standaard */
+  padding-bottom: 0.25rem;   /* minimaliseer witruimte onderin */
+  margin: 0;                  /* verwijder extra margin */
+  height: auto;               /* zodat padding niet de hoogte te groot maakt */
+  box-sizing: border-box;     /* zodat padding in hoogte blijft */
 }
 
 :host ::ng-deep .p-inputtext:focus {
   border-color: darkblue;
   box-shadow: 0 0 0 2px rgba(65,105,225,0.2);
+}
+
+:host ::ng-deep .p-divider.p-divider-horizontal:before {
+  border-top: 1px solid aliceblue;
 }
 
 p-panel {
@@ -49,10 +58,11 @@ td {
 }
 
 .search-box {
-  margin-bottom: 1rem;
+  margin-bottom: 0;
   input {
     width: 100%;
     padding: 0.5rem;
     font-size: 1rem;
   }
 }
+
