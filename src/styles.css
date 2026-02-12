@@ -5,27 +5,38 @@
 @import "primeicons/primeicons.css";
 
 :root {
-  --button-achtergrond-kleur: #363636;
-  --button-kleur: blanchedalmond;
-  --button-active-achtergrond-kleur: royalblue;
-  --button-active-kleur: white;
-  --button-hover-achtergrond-kleur: royalblue;
-  --button-hover-kleur: white;
+  color: deepskyblue;
+  --app-achtergrond-kleur: deepskyblue;
+  --app-kleur: white;
+  --app-panel-border-kleur: aliceblue;
+  --app-dialog-achtergrond-kleur: blanchedalmond;
+  --app-dialog-kleur: #363636;
+  --app-button-active-kleur: white;
+  --app-button-hover-kleur: white;
 
-  --dialog-achtergrond-kleur: blanchedalmond;
-  --dialog-kleur: #363636;
+  --button-achtergrond-kleur: var(--app-dialog-kleur);
+  --button-kleur: var(--app-dialog-achtergrond-kleur);
+  --button-active-achtergrond-kleur: var(--app-achtergrond-kleur);
+  --button-active-kleur: var(--app-button-active-kleur);
+  --button-hover-achtergrond-kleur: var(--app-achtergrond-kleur);
+  --button-hover-kleur: var(--app-button-hover-kleur);
 
-  --form-achtergrond-kleur: blanchedalmond;
-  --form-kleur: #363636;
+  --dialog-achtergrond-kleur: var(--app-dialog-achtergrond-kleur);
+  --dialog-kleur: var(--app-dialog-kleur);
 
-  --input-achtergrond-kleur: #363636;
-  --input-kleur: blanchedalmond;
+  --form-achtergrond-kleur: var(--app-dialog-achtergrond-kleur);
+  --form-kleur: var(--app-dialog-kleur);
 
-  --panel-achtergrond-kleur: royalblue;
+  --input-achtergrond-kleur: var(--app-dialog-kleur);
+  --input-kleur: var(--app-dialog-achtergrond-kleur);
+
+  --panel-achtergrond-kleur: var(--app-achtergrond-kleur);
+  --panel-kleur: var(--app-kleur);
+  --panel-border: 1px solid var(--app-panel-border-kleur);
 }
 
 body {
-  background-color: var(--panel-achtergrond-kleur);
+  background-color: var(--app-achtergrond-kleur);
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
