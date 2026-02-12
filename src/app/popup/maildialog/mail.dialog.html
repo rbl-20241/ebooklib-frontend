@@ -1,14 +1,15 @@
 <p-dialog
   header="EBook mailen"
-  [styleClass]="changeColor ? 'dialogSettings' : ''"
+  appendTo="body"
   [modal]="true"
   [visible]="displayMailDialog()"
   (visibleChange)="displayMailDialog.set($event)"
   (onHide)="cancel()"
 >
-  <p-card class="mail-form flex justify-content-center">
-    <form [formGroup]="mailForm" (ngSubmit)="mailBook()">
-      <div class="field mail-input">
+  <div class="dialog-form">
+
+  <form [formGroup]="mailForm" (ngSubmit)="mailBook()">
+      <div class="field dialog-input">
         <label for="mailTo" class="block">"{{ getBookToMail() }}" kopi&euml;ren naar:</label>
         <input type="text" pInputText formControlName="mailTo" />
         @if(mailForm.get('mailTo')?.invalid && mailForm.get('mailTo')?.dirty) {
@@ -21,9 +22,10 @@
           pButton
           pRipple
           type="button"
-          class="mail-dialog-button"
+          class="dialog-button"
           (click)="cancel()"
         >
+          <i class="pi pi-times" pButtonIcon></i>
           <span pButtonLabel>Annuleer</span>
         </button>
 
@@ -31,14 +33,15 @@
           pButton
           pRipple
           type="submit"
-          class="mail-dialog-button"
+          class="dialog-button"
           (click)="mailBook()"
         >
+          <i class="pi pi-send" pButtonIcon></i>
           <span pButtonLabel>Mailen</span>
         </button>
 
       </p>
     </form>
-  </p-card>
+  </div>
 </p-dialog>
 

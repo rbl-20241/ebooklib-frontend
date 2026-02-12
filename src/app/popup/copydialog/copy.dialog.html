@@ -1,14 +1,15 @@
 <p-dialog
   header="EBook kopi&euml;ren"
-  [styleClass]="changeColor ? 'dialogSettings' : ''"
+  appendTo="body"
   [modal]="true"
   [visible]="displayCopyDialog()"
   (visibleChange)="displayCopyDialog.set($event)"
   (onHide)="cancel()"
 >
-  <p-card class="copy-form flex justify-content-center">
-    <form [formGroup]="copyForm" (ngSubmit)="copyBook()">
-      <div class="field copy-input">
+  <div class="dialog-form">
+
+  <form [formGroup]="copyForm" (ngSubmit)="copyBook()">
+      <div class="field dialog-input">
         <label for="copyTo" class="block">"{{ getBookToCopy() }}" kopi&euml;ren naar:</label>
         <input type="text" pInputText formControlName="copyTo" />
         @if(copyForm.get('copyTo')?.invalid && copyForm.get('copyTo')?.dirty) {
@@ -21,9 +22,10 @@
           pButton
           pRipple
           type="button"
-          class="copy-dialog-button"
+          class="dialog-button"
           (click)="cancel()"
         >
+          <i class="pi pi-times" pButtonIcon></i>
           <span pButtonLabel>Annuleer</span>
         </button>
 
@@ -31,14 +33,15 @@
           pButton
           pRipple
           type="submit"
-          class="copy-dialog-button"
+          class="dialog-button"
           (click)="copyBook()"
         >
+          <i class="pi pi-copy" pButtonIcon></i>
           <span pButtonLabel>Kopi&euml;ren</span>
         </button>
 
       </p>
     </form>
-  </p-card>
+  </div>
 </p-dialog>
 

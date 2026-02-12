@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {SettingService} from '../../services/settings.service';
-import {ButtonDirective, ButtonLabel} from 'primeng/button';
+import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {EbookService} from '../../services/ebook.service';
 
@@ -11,7 +11,8 @@ import {EbookService} from '../../services/ebook.service';
     Dialog,
     ButtonDirective,
     Ripple,
-    ButtonLabel
+    ButtonLabel,
+    ButtonIcon
   ],
   templateUrl: './yes-no-database.dialog.html',
   styleUrl: './yes-no-database.dialog.css',

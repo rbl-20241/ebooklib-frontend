@@ -1,6 +1,6 @@
 <p-dialog
   header="Wil je de database verversen?"
-  [styleClass]="changeColor ? 'dialogSettings' : ''"
+  appendTo="body"
   [modal]="true"
   [visible]="displayYesNoDbDialog()"
   (visibleChange)="displayYesNoDbDialog.set($event)"
@@ -11,9 +11,10 @@
       pButton
       pRipple
       type="button"
-      class="yes-no-dialog-button"
+      class="dialog-button"
       (click)="cancel()"
     >
+      <i class="pi pi-times" pButtonIcon></i>
       <span pButtonLabel>Nee</span>
     </button>
 
@@ -21,9 +22,10 @@
       pButton
       pRipple
       type="submit"
-      class="yes-no-dialog-button"
+      class="dialog-button"
       (click)="save()"
     >
+      <i class="pi pi-check" pButtonIcon></i>
       <span pButtonLabel>Ja</span>
     </button>
 

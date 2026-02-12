@@ -1,12 +1,11 @@
 import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {ButtonDirective, ButtonLabel} from 'primeng/button';
+import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {SettingService} from '../../services/settings.service';
 import {CopyService} from '../../services/copy.service';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {EbookService} from '../../services/ebook.service';
-import {Card} from 'primeng/card';
 import {InputText} from 'primeng/inputtext';
 import {Send} from '../../data/send.model';
 
@@ -16,10 +15,10 @@ import {Send} from '../../data/send.model';
     Dialog,
     ButtonDirective,
     Ripple,
-    Card,
     ReactiveFormsModule,
     InputText,
-    ButtonLabel
+    ButtonLabel,
+    ButtonIcon
   ],
   templateUrl: './copy.dialog.html',
   styleUrl: './copy.dialog.css',
