@@ -1,7 +1,6 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {TreeNode} from 'primeng/api';
 import {Tree} from 'primeng/tree';
-import {Panel} from 'primeng/panel';
 import {EbookService} from '../../services/ebook.service';
 import {ProgressSpinner} from 'primeng/progressspinner';
 
@@ -9,7 +8,7 @@ import {ProgressSpinner} from 'primeng/progressspinner';
   selector: 'app-booktree',
   templateUrl: './book-tree.component.html',
   styleUrls: ['./book-tree.component.css'],
-  imports: [Tree, Panel, ProgressSpinner],
+  imports: [Tree, ProgressSpinner],
   providers: [BookTreeComponent]
 })
 export class BookTreeComponent implements OnInit {

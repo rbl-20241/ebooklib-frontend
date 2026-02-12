@@ -16,11 +16,11 @@ export class SettingService {
 
 
   showSettingsDialog() {
-    this.showDialog.update((value) => !value);
+    this.showDialog.set(true);
   }
 
   showYesNoDatabaseDialog() {
-    this.showYesNoDbDialog.update((value) => !value);
+    this.showYesNoDbDialog.set(true);
   }
 
   async getCopyToMap() {
@@ -38,7 +38,5 @@ export class SettingService {
 
     return settings.mailTo;
   }
-
-
 
 }

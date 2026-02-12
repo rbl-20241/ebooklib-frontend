@@ -1,6 +1,6 @@
 .panel-left,
 .panel-right {
-  background-color: royalblue;
+  background-color: var(--panel-achtergrond-kleur);
   border-color: transparent;
   display: flex;
   gap: 0.5rem; /* ruimte tussen buttons */

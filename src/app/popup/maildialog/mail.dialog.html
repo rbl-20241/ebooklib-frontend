@@ -2,7 +2,8 @@
   header="EBook mailen"
   [styleClass]="changeColor ? 'dialogSettings' : ''"
   [modal]="true"
-  [(visible)]="displayMailDialog"
+  [visible]="displayMailDialog()"
+  (visibleChange)="displayMailDialog.set($event)"
   (onHide)="cancel()"
 >
   <p-card class="mail-form flex justify-content-center">

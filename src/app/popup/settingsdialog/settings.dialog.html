@@ -1,13 +1,15 @@
 <p-dialog
     header="Instellingen"
-    [styleClass]="changeColor ? 'dialogSettings' : ''"
     [modal]="true"
-    [(visible)]="displaySettingsDialog"
+    appendTo="body"
+    styleClass="dialogSettings"
+    [visible]="displaySettingsDialog()"
+    (visibleChange)="displaySettingsDialog.set($event)"
     (onHide)="cancel()"
 >
-  <p-card class="settings-form flex justify-content-center">
+  <div class="dialog-form">
     <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
-      <div class="field settings-input">
+      <div class="field dialog-input">
         <label for="map" class="block">Folder waar boeken staan:</label>
         <input type="text" pInputText formControlName="map" />
         @if(settingsForm.get('map')?.invalid && settingsForm.get('map')?.dirty) {
@@ -15,7 +17,7 @@
         }
       </div>
 
-      <div class="field settings-input">
+      <div class="field dialog-input">
         <label for="copyTo" class="block">Kopieren naar:</label>
         <input type="text" pInputText formControlName="copyTo" />
         @if(settingsForm.get('copyTo')?.invalid && settingsForm.get('copyTo')?.dirty) {
@@ -23,7 +25,7 @@
         }
       </div>
 
-      <div class="field settings-input">
+      <div class="field dialog-input">
         <label for="mailTo" class="block">Mailen naar:</label>
         <input type="text" pInputText formControlName="mailTo" />
         @if(settingsForm.get('mailTo')?.invalid && settingsForm.get('mailTo')?.dirty) {
@@ -31,7 +33,7 @@
         }
       </div>
 
-      <div class="field settings-input">
+      <div class="field dialog-input">
         <label for="host" class="block">Host:</label>
         <input type="text" pInputText formControlName="host" />
         @if(settingsForm.get('host')?.invalid && settingsForm.get('host')?.dirty) {
@@ -39,7 +41,7 @@
         }
       </div>
 
-      <div class="field settings-input">
+      <div class="field dialog-input">
         <label for="port" class="block">Port:</label>
         <input type="text" pInputText formControlName="port" />
         @if(settingsForm.get('port')?.invalid && settingsForm.get('port')?.dirty) {
@@ -47,7 +49,7 @@
         }
       </div>
 
-      <div class="field settings-input">
+      <div class="field dialog-input">
         <label for="sendBy" class="block">Afzender:</label>
         <input type="text" pInputText formControlName="sendBy" />
         @if(settingsForm.get('sendBy')?.invalid && settingsForm.get('sendBy')?.dirty) {
@@ -55,7 +57,7 @@
         }
       </div>
 
-      <div class="field settings-input">
+      <div class="field dialog-input">
         <label for="password" class="block">Wachtwoord:</label><br/>
         <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
         </p-password>
@@ -69,9 +71,10 @@
           pButton
           pRipple
           type="button"
-          class="settings-dialog-button"
+          class="dialog-button"
           (click)="cancel()"
         >
+          <i class="pi pi-times" pButtonIcon></i>
           <span pButtonLabel>Annuleer</span>
         </button>
 
@@ -79,14 +82,15 @@
           pButton
           pRipple
           type="submit"
-          class="settings-dialog-button"
+          class="dialog-button"
           (click)="saveSettings()"
         >
+          <i class="pi pi-save" pButtonIcon></i>
           <span pButtonLabel>Opslaan</span>
         </button>
 
       </p>
     </form>
-  </p-card>
+  </div>
 </p-dialog>
 <app-yes-no-database></app-yes-no-database>

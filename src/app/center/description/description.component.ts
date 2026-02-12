@@ -1,7 +1,7 @@
 import {Component, effect, inject, signal} from '@angular/core';
 import {EbookService} from '../../services/ebook.service';
 import {TableModule} from 'primeng/table';
-import {ScrollPanel} from 'primeng/scrollpanel';
+import {ScrollPanelModule} from 'primeng/scrollpanel';
 import {Panel} from 'primeng/panel';
 import {Image} from 'primeng/image';
 import {FormsModule} from '@angular/forms';
@@ -14,7 +14,7 @@ import {Divider} from 'primeng/divider';
   selector: 'app-description',
   imports: [
     TableModule,
-    ScrollPanel,
+    ScrollPanelModule,
     Panel,
     Image,
     FormsModule,

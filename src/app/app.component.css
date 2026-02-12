@@ -1,0 +1,53 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ===== TOP ===== */
+.top-panel {
+  height: 7rem;
+  flex-shrink: 0;
+}
+
+/* ===== CENTER ===== */
+.center-panel {
+  flex: 1;
+  min-height: 0;       /* essentieel voor scroll in children */
+  display: flex;
+  overflow: hidden;
+  flex-direction: row;  /* splitter horizontaal */
+  padding: 0;
+  border: none;
+  width: 100%;
+}
+
+/* ===== BOTTOM ===== */
+.bottom-panel {
+  height: 4rem;
+  flex-shrink: 0;
+  background-color: royalblue;
+}
+
+/* ===== SPLITTER ===== */
+:host ::ng-deep .p-splitter {
+  flex: 1;
+  width: 100%;
+  height: calc(100vh - 12rem);
+  background-color: var(--panel-achtergrond-kleur);
+  border: transparent;
+}
+
+:host ::ng-deep .p-splitter-panel {
+  min-width: 0;          /* voorkomt te smalle panels */
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+:host ::ng-deep .p-splitter-gutter {
+  background-color: royalblue;
+}
+
+
+

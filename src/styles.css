@@ -1,21 +1,179 @@
-/* You can add global styles to this file, and also import other style files */
+/* ===================================================== */
+/* GLOBAL STYLES */
+/* ===================================================== */
+
 @import "primeicons/primeicons.css";
 
 :root {
-  --button-achtergrond: #363636;
+  --button-achtergrond-kleur: #363636;
   --button-kleur: blanchedalmond;
-  --button-active-achtergrond: royalblue;
+  --button-active-achtergrond-kleur: royalblue;
   --button-active-kleur: white;
-  --button-hover-achtergrond: royalblue;
+  --button-hover-achtergrond-kleur: royalblue;
   --button-hover-kleur: white;
-  --dialog-achtergrond: blanchedalmond;
+
+  --dialog-achtergrond-kleur: blanchedalmond;
   --dialog-kleur: #363636;
-  --form-achtergrond: blanchedalmond;
+
+  --form-achtergrond-kleur: blanchedalmond;
   --form-kleur: #363636;
-  --input-achtergrond: #363636;
+
+  --input-achtergrond-kleur: #363636;
   --input-kleur: blanchedalmond;
+
+  --panel-achtergrond-kleur: royalblue;
 }
 
 body {
-  background-color: royalblue;
+  background-color: var(--panel-achtergrond-kleur);
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ===================================================== */
+/* GLOBAL DIALOG THEME */
+/* ===================================================== */
+
+.p-dialog {
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: var(--dialog-achtergrond-kleur);
+  color: var(--dialog-kleur);
+
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.35),
+    0 10px 25px rgba(0, 0, 0, 0.25);
+
+  animation: dialogFadeIn 0.2s ease-out;
+}
+
+/* Open animation */
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Blur overlay */
+.p-dialog-mask {
+  backdrop-filter: blur(4px);
+}
+
+/* ===================================================== */
+/* DIALOG STRUCTURE */
+/* ===================================================== */
+
+.p-dialog .p-dialog-header {
+  background-color: var(--dialog-achtergrond-kleur);
+  color: var(--dialog-kleur);
+  padding: 1.2rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.p-dialog .p-dialog-content {
+  background-color: var(--dialog-achtergrond-kleur);
+  padding: 2rem;
+}
+
+.p-dialog .p-dialog-footer {
+  background-color: var(--dialog-achtergrond-kleur);
+  padding: 1.2rem 1.5rem;
+}
+
+/* ===================================================== */
+/* FORM */
+/* ===================================================== */
+.dialog-form {
+  background-color: var(--form-achtergrond-kleur);
+  color: var(--form-kleur);
+  padding: 0; /* geen extra padding meer */
+}
+
+/* spacing tussen velden */
+.dialog-input {
+  margin-bottom: 1rem;
+}
+
+
+/* ===================================================== */
+/* INPUTS */
+/* ===================================================== */
+
+.p-dialog .p-inputtext,
+.p-dialog .p-inputtext:focus,
+.p-dialog .p-inputtext:hover,
+.p-dialog .p-password input {
+  background-color: var(--input-achtergrond-kleur);
+  border-color: var(--input-achtergrond-kleur);
+  color: var(--input-kleur);
+  width: 100%;
+}
+
+/* ===================================================== */
+/* BUTTONS - OVERRIDE PRIMENG */
+/* ===================================================== */
+
+.p-dialog .p-button.dialog-button {
+  background-color: var(--button-achtergrond-kleur) !important;
+  border-color: var(--button-achtergrond-kleur) !important;
+  color: var(--button-kleur) !important;
+
+  border-radius: 12px;
+  margin-right: 0.5rem;
+
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+
+.p-dialog .p-button.dialog-button:hover {
+  background-color: var(--button-hover-achtergrond-kleur) !important;
+  border-color: var(--button-hover-achtergrond-kleur) !important;
+  color: var(--button-hover-kleur) !important;
+  transform: translateY(-1px);
+}
+
+.p-dialog .p-button.dialog-button:active {
+  background-color: var(--button-active-achtergrond-kleur) !important;
+  border-color: var(--button-active-achtergrond-kleur) !important;
+  color: var(--button-active-kleur) !important;
+
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/* ===================================================== */
+/* RADIO GROUP */
+/* ===================================================== */
+
+.radio-group {
+  margin: 1.2rem 0;
+  border: 1px solid var(--input-achtergrond-kleur);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.small-radio .p-radiobutton-box {
+  background-color: var(--form-achtergrond-kleur);
+  border-color: var(--input-achtergrond-kleur);
+  width: 14px;
+  height: 14px;
+}
+
+.small-radio .p-radiobutton-icon {
+  width: 8px;
+  height: 8px;
+}
+
+.small-radio.p-radiobutton-checked .p-radiobutton-icon {
+  background-color: var(--input-achtergrond-kleur);
+}
+
+.small-radio.p-radiobutton-checked .p-radiobutton-box {
+  background-color: var(--form-achtergrond-kleur);
+  border-color: var(--input-achtergrond-kleur);
 }

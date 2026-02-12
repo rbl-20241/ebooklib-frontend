@@ -8,7 +8,7 @@ export class MailService {
   showMail = this.showDialog;
 
   showMailDialog() {
-    this.showDialog.update((value) => !value);
+    this.showDialog.set(true);
   }
 
 }

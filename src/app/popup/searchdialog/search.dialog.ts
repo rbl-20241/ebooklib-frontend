@@ -5,7 +5,6 @@ import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {HttpParams} from '@angular/common/http';
-import {Card} from 'primeng/card';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
 import {SearchService} from '../../services/search.service';
 import {RadioButton} from 'primeng/radiobutton';
@@ -18,7 +17,6 @@ import {EbookService} from '../../services/ebook.service';
     InputText,
     ButtonDirective,
     Ripple,
-    Card,
     ReactiveFormsModule,
     YesNoDatabaseDialog,
     ButtonLabel,
@@ -56,14 +54,6 @@ export class SearchDialog {
     whereToSearch: ['titles', Validators.required],
     isExactMatch: false
   });
-
-  get displayDialog() {
-    return this.displaySearchDialog(); // lees de signal
-  }
-
-  set displayDialog(value: boolean) {
-    this.displaySearchDialog.set(value); // schrijf naar de signal
-  }
 
   cancel() {
     this.displaySearchDialog.set(false);

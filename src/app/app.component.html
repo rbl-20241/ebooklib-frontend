@@ -1,6 +1,30 @@
-<main>
-  <app-top></app-top>
-  <app-center></app-center>
-  <app-bottom></app-bottom>
-</main>
+<div class="layout">
 
+  <!-- TOP -->
+  <div class="top-panel">
+    <app-top></app-top>
+  </div>
+
+  <!-- CENTER -->
+  <div class="center-panel">
+    <p-splitter [panelSizes]="[45, 55]" [minSizes]="[40, 35]">
+
+      <!-- LEFT: BOOK TREE -->
+      <ng-template pTemplate="left">
+        <app-booktree></app-booktree>
+      </ng-template>
+
+      <!-- RIGHT: DESCRIPTION -->
+      <ng-template pTemplate="right">
+        <app-description></app-description>
+      </ng-template>
+
+    </p-splitter>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="bottom-panel">
+    <app-bottom></app-bottom>
+  </div>
+
+</div>

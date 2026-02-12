@@ -3,11 +3,10 @@ import {Dialog} from 'primeng/dialog';
 import {SettingService} from '../../services/settings.service';
 import {InputText} from 'primeng/inputtext';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {ButtonDirective, ButtonLabel} from 'primeng/button';
+import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {Card} from 'primeng/card';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
 import {Settings} from '../../data/settings.model';
 import {Password} from 'primeng/password';
@@ -19,11 +18,11 @@ import {Password} from 'primeng/password';
     InputText,
     ButtonDirective,
     Ripple,
-    Card,
     ReactiveFormsModule,
     YesNoDatabaseDialog,
     Password,
     ButtonLabel,
+    ButtonIcon,
   ],
   templateUrl: './settings.dialog.html',
   styleUrl: './settings.dialog.css',

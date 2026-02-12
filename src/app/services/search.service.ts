@@ -8,7 +8,7 @@ export class SearchService {
   showSearch = this.showDialog;
 
   showSearchDialog() {
-    this.showDialog.update((value) => !value);
+    this.showDialog.set(true);
   }
 
 }

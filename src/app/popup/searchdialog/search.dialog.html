@@ -1,27 +1,38 @@
 <p-dialog
-    header="Zoeken"
-    [styleClass]="changeColor ? 'dialogSearch' : ''"
-    [modal]="true"
-    [(visible)]="displayDialog"
-    (onHide)="cancel()"
+  header="Zoeken"
+  appendTo="body"
+  [modal]="true"
+  [visible]="displaySearchDialog()"
+  (visibleChange)="displaySearchDialog.set($event)"
+  (onHide)="cancel()"
 >
-  <p-card class="search-form flex justify-content-center">
+
+  <div class="dialog-form">
+
     <form [formGroup]="searchForm" (ngSubmit)="search()">
 
-<!-- Zoekargument -->
-      <div class="field search-input">
-        <label for="searchArgument" class="block">Zoekargument:</label>
+      <!-- Zoekargument -->
+      <div class="dialog-input">
+        <label for="searchArgument" class="block">
+          Zoekargument:
+        </label>
+
         <input
           type="text"
-          pInputText formControlName="searchArgument"
+          pInputText
+          formControlName="searchArgument"
         />
-        @if(searchForm.get('searchArgument')?.invalid && searchForm.get('searchArgument')?.dirty) {
-          <small class="p-error block">Zoekargument is verplicht</small>
+
+        @if(searchForm.get('searchArgument')?.invalid &&
+        searchForm.get('searchArgument')?.dirty) {
+          <small class="p-error block">
+            Zoekargument is verplicht
+          </small>
         }
       </div>
 
-<!-- Zoeken in -->
-      <div class="field search-input radio-group">
+      <!-- Zoeken in -->
+      <div class="dialog-input radio-group">
         <label class="block mb-3">Zoeken in:</label>
 
         @for(w of whereToSearchPlaces; track w.value) {
@@ -36,18 +47,19 @@
           </div>
         }
 
-        @if (searchForm.get('whereToSearch')?.invalid
-        && searchForm.get('whereToSearch')?.touched) {
+        @if(searchForm.get('whereToSearch')?.invalid &&
+        searchForm.get('whereToSearch')?.touched) {
           <small class="p-error block">
             Selecteer een rubriek
           </small>
         }
       </div>
 
-
-<!-- Alleen hele woorden zoeken -->
-      <div class="field search-input radio-group">
-        <label class="block mb-3">Alleen hele woorden zoeken:</label>
+      <!-- Hele woorden -->
+      <div class="dialog-input radio-group">
+        <label class="block mb-3">
+          Alleen hele woorden zoeken:
+        </label>
 
         @for(yn of yesNoRadioButtons; track yn.value) {
           <div class="flex align-items-center mb-2">
@@ -60,22 +72,15 @@
             <label class="ml-2">{{ yn.label }}</label>
           </div>
         }
-
-        @if (searchForm.get('isExactMatch')?.invalid
-        && searchForm.get('isExactMatch')?.touched) {
-          <small class="p-error block">
-            Verplichte rubriek
-          </small>
-        }
       </div>
 
-<!-- Butttons -->
-      <p>
+      <!-- Buttons -->
+      <div class="mt-4 text-right">
         <button
           pButton
           pRipple
           type="button"
-          class="search-dialog-button"
+          class="dialog-button"
           (click)="cancel()"
         >
           <i class="pi pi-times" pButtonIcon></i>
@@ -86,15 +91,17 @@
           pButton
           pRipple
           type="submit"
-          class="search-dialog-button"
-          (click)="search()"
+          class="dialog-button"
         >
           <i class="pi pi-search" pButtonIcon></i>
           <span pButtonLabel>Zoeken</span>
         </button>
+      </div>
 
-      </p>
     </form>
-  </p-card>
+
+  </div>
+
 </p-dialog>
+
 <app-yes-no-database></app-yes-no-database>

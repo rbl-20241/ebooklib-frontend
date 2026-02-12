@@ -1,5 +1,59 @@
-:host ::ng-deep .p-scrollpanel {
-  height: 450px !important;
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Panel */
+p-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 0.5rem;
+  border: 1px solid aliceblue;
+  border-radius: 10px;
+  background-color: var(--panel-achtergrond-kleur);
+}
+
+/* Metadata bovenaan */
+.metadata-on-top {
+  flex-shrink: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Scrollbare content */
+.description-container {
+  flex: 1 1 auto;
+  /*min-height: 0;*/
+  height: 420px;
+}
+
+/* Custom scrollpanel styling */
+:host ::ng-deep .custom-scrollpanel {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+/* Zoekbox onderaan */
+.search-box {
+  flex-shrink: 0;
+  margin-top: 0.5rem;
+}
+
+/* Optionele styling input */
+.search-box input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* Divider styling */
+:host ::ng-deep .p-divider.p-divider-horizontal:before {
+  border-top: 1px solid aliceblue;
 }
 
 :host ::ng-deep .highlight {
@@ -22,47 +76,5 @@
 :host ::ng-deep .p-inputtext:focus {
   border-color: darkblue;
   box-shadow: 0 0 0 2px rgba(65,105,225,0.2);
-}
-
-:host ::ng-deep .p-divider.p-divider-horizontal:before {
-  border-top: 1px solid aliceblue;
-}
-
-p-panel {
-  background-color: royalblue;
-  border-color: aliceblue;
-  border-radius: 12px;
-  margin-right: 0;
-  min-height: 100%;
-  max-height: 100%;
-  font-size: 0.9rem;
-}
-
-td {
-  padding-left: 1rem;
-  vertical-align: top;
-}
-
-.metadata-on-top {
-  margin-top: 1rem;
-}
-
-.thumbnail {
-  cursor: pointer;
-}
-
-.description-container {
-  p {
-    line-height: 1.5;
-  }
-}
-
-.search-box {
-  margin-bottom: 0;
-  input {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
 }
 

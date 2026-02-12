@@ -2,7 +2,8 @@
   header="Wil je de database verversen?"
   [styleClass]="changeColor ? 'dialogSettings' : ''"
   [modal]="true"
-  [(visible)]="displayYesNoDbDialog"
+  [visible]="displayYesNoDbDialog()"
+  (visibleChange)="displayYesNoDbDialog.set($event)"
   (onHide)="cancel()"
 >
 <p>

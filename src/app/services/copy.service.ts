@@ -8,7 +8,7 @@ export class CopyService {
   showCopy = this.showDialog;
 
   showCopyDialog() {
-    this.showDialog.update((value) => !value);
+    this.showDialog.set(true);
   }
 
 }

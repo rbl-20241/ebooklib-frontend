@@ -1,22 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0; /* cruciaal voor scroll */
+}
+
+:host ::ng-deep .p-tree {
+  flex: 1;               /* vult beschikbare hoogte */
+  overflow: auto;
+  border: 1px solid aliceblue;
+  border-radius: 10px;
+  padding: 0.5rem;
+  background-color: var(--panel-achtergrond-kleur);;
+}
+
 .p-tree {
-  background-color: royalblue;
-  margin-top: 1rem;
+  margin-top: 0;
   font-size: 0.75rem;
   line-height: 0.3rem;
   padding: 0;
   scrollbar-width: auto;
   --p-tree-node-padding: 0.01rem 0.1rem;
-  --p-inputtext-background: aliceblue;
-  --p-inputtext-color: midnightblue;
-  --p-iconfield-icon-color: midnightblue;
 }
-
-p-panel {
-  background-color: royalblue;
-  border-color: aliceblue;
-  border-radius: 12px;
-  margin-left: 1rem;
-  min-height: 100%;
-  max-height: 100%;
-}
-

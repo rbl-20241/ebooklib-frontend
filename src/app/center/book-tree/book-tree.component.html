@@ -1,4 +1,4 @@
-  <p-panel [showHeader]="false">
+<!--  <p-panel [showHeader]="false">-->
     @if (isReading()) {
       <p>Boeken worden opgehaald</p>
       <p-progressSpinner></p-progressSpinner>
@@ -8,10 +8,9 @@
         selectionMode="single"
         [(selection)]="selectedBook"
         (onNodeSelect)="onBookSelected()"
-        scrollHeight="740px"
         [metaKeySelection]="false"
       />
     }
-  </p-panel>
+<!--  </p-panel>-->
 
 

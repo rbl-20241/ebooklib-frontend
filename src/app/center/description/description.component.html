@@ -1,9 +1,8 @@
 <p-panel [showHeader]="false">
 
+  <!-- Metadata bovenaan -->
   @if (metadata(); as meta) {
-
     <div class="metadata-on-top">
-
       <table>
         <tr>
           <td>
@@ -15,10 +14,8 @@
               appendTo="body"
             />
           </td>
-
           <td>
             <table>
-
               @if (meta.title) {
                 <tr>
                   <td>Titel:</td>
@@ -28,9 +25,7 @@
 
               @if (meta.authors.length) {
                 <tr>
-                  <td>
-                    {{ meta.authors.length > 1 ? 'Auteurs:' : 'Auteur:' }}
-                  </td>
+                  <td>{{ meta.authors.length > 1 ? 'Auteurs:' : 'Auteur:' }}</td>
                   <td>{{ meta.authors.join(', ') }}</td>
                 </tr>
               }
@@ -38,13 +33,14 @@
               @if (meta.publisher) {
                 <tr>
                   <td>Uitgever:</td>
-                  <td>{{ meta.publisher }}</td>
+                  <td>{{ meta.publisher }}
+                  </td>
                 </tr>
               }
 
               @if (meta.subjects.length) {
                 <tr>
-                  <td>Trefwoorden:</td>
+                  <td>Trefwoord(en):</td>
                   <td>{{ meta.subjects.join(', ') }}</td>
                 </tr>
               }
@@ -76,25 +72,26 @@
                   <td>{{ meta.format }}</td>
                 </tr>
               }
-
             </table>
           </td>
         </tr>
       </table>
     </div>
+  }
 
-    <p-scroll-panel>
+  <!-- Scrollbare beschrijving -->
+  <div class="description-container">
+    @if (metadata()?.description) {
+      <p-scrollPanel class="custom-scrollpanel">
+        <p [innerHTML]="descriptionHtml()"></p>
+      </p-scrollPanel>
+    }
+  </div>
 
-
-      @if (meta.description) {
-        <div class="description-container">
-          <p [innerHTML]="descriptionHtml()"></p>
-        </div>
-      }
-    </p-scroll-panel>
-
+  @if (metadata()?.description) {
     <p-divider></p-divider>
 
+    <!-- Zoekbox onderaan -->
     <div class="search-box">
       <p-iconfield class="full-width">
         <input
@@ -104,7 +101,6 @@
           [ngModel]="searchTerm()"
           (ngModelChange)="searchTerm.set($event)"
         />
-
         @if (searchTerm()) {
           <p-inputicon
             class="pi pi-times clear-icon"
@@ -113,7 +109,7 @@
         }
       </p-iconfield>
     </div>
-
   }
+
 
 </p-panel>

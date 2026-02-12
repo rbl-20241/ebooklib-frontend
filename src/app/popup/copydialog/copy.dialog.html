@@ -2,7 +2,8 @@
   header="EBook kopi&euml;ren"
   [styleClass]="changeColor ? 'dialogSettings' : ''"
   [modal]="true"
-  [(visible)]="displayCopyDialog"
+  [visible]="displayCopyDialog()"
+  (visibleChange)="displayCopyDialog.set($event)"
   (onHide)="cancel()"
 >
   <p-card class="copy-form flex justify-content-center">
