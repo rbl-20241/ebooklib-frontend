@@ -10,8 +10,8 @@ header {
   text-align: center;
   background: linear-gradient(
     to bottom,
-    dodgerblue,
-    midnightblue
+    var(--panel-color),
+    var(--panel-background-color)
   );
   padding: 1rem;
   border-bottom-right-radius: 12px;
@@ -28,7 +28,7 @@ h1 {
   font-size: 1.25rem;
   margin: 0;
   padding: 0;
-  color: aliceblue;
+  color: var(--panel-background-color);
 }
 
 p {

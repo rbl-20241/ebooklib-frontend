@@ -10,7 +10,7 @@
 }
 
 p-panel {
-  background-color: var(--panel-achtergrond-kleur);
+  background-color: var(--panel-background-color);
   border-color: transparent;
   margin-top: auto;
   width: 100%;

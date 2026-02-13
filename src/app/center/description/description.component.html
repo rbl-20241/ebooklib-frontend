@@ -2,6 +2,9 @@
 
   <!-- Metadata bovenaan -->
   @if (metadata(); as meta) {
+    <p-panel
+      [showHeader]="false"
+      class="metadata">
     <div class="metadata-on-top">
       <table>
         <tr>
@@ -9,7 +12,7 @@
             <p-image
               [src]="ebookService.getCoverImage()"
               alt="Cover"
-              width="150px"
+              height="220px"
               [preview]="true"
               appendTo="body"
             />
@@ -77,6 +80,7 @@
         </tr>
       </table>
     </div>
+    </p-panel>
   }
 
   <!-- Scrollbare beschrijving -->
@@ -88,11 +92,14 @@
     }
   </div>
 
+  <!-- Zoekbox onderaan -->
+  <p-panel
+    [showHeader]="false"
+    class="search-box"
+  >
   @if (metadata()?.description) {
     <p-divider></p-divider>
 
-    <!-- Zoekbox onderaan -->
-    <div class="search-box">
       <p-iconfield class="full-width">
         <input
           pInputText
@@ -108,8 +115,9 @@
           </p-inputicon>
         }
       </p-iconfield>
-    </div>
   }
+  </p-panel>
+
 
 
 </p-panel>

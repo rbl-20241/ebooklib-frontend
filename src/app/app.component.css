@@ -1,10 +1,17 @@
+/* ===== LAYOUT ===== */
 .layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  align-items: center; /* center-panel horizontaal centreren */
 }
 
 /* ===== TOP ===== */
+.top-panel,
+.bottom-panel {
+  width: 100%; /* top en bottom blijven full-width */
+}
+
 .top-panel {
   height: 7rem;
   flex-shrink: 0;
@@ -13,20 +20,20 @@
 /* ===== CENTER ===== */
 .center-panel {
   flex: 1;
-  min-height: 0;       /* essentieel voor scroll in children */
+  min-height: 0;
   display: flex;
   overflow: hidden;
-  flex-direction: row;  /* splitter horizontaal */
+  flex-direction: row;
   padding: 0;
   border: none;
-  width: 100%;
+  width: 95%; /* wordt nu gecentreerd */
 }
 
 /* ===== BOTTOM ===== */
 .bottom-panel {
   height: 4rem;
   flex-shrink: 0;
-  background-color: var(--panel-achtergrond-kleur);
+  background-color: var(--panel-background-color);
 }
 
 /* ===== SPLITTER ===== */
@@ -34,21 +41,18 @@
   flex: 1;
   width: 100%;
   height: calc(100vh - 12rem);
-  background-color: var(--panel-achtergrond-kleur);
-  color: var(--panel-kleur);
+  background-color: var(--panel-background-color);
+  color: var(--panel-color);
   border: transparent;
 }
 
 :host ::ng-deep .p-splitter-panel {
-  min-width: 0;          /* voorkomt te smalle panels */
+  min-width: 0;
   display: flex;
   flex-direction: column;
   min-height: 0;
 }
 
 :host ::ng-deep .p-splitter-gutter {
-  background-color: var(--panel-achtergrond-kleur);
+  background-color: var(--panel-background-color);
 }
-
-
-

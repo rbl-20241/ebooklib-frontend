@@ -5,111 +5,88 @@
 @import "primeicons/primeicons.css";
 
 :root {
-  color: deepskyblue;
-  --app-achtergrond-kleur: deepskyblue;
-  --app-kleur: white;
-  --app-panel-border-kleur: aliceblue;
-  --app-dialog-achtergrond-kleur: blanchedalmond;
-  --app-dialog-kleur: #363636;
-  --app-button-active-kleur: white;
-  --app-button-hover-kleur: white;
+  --color-panel-background: #2A3439;
+  --color-panel: blanchedalmond;
+  --color-panel-border: blanchedalmond;
+  --color-panel-input-background: blanchedalmond;
+  --color-panel-input: #2A3439;
+  --color-panel-input-focus: darkblue;
+  --color-panel-button-active-background: #2F4FCD;
+  --color-panel-button-active: white;
+  --color-panel-button-hover-background: lightblue;
+  --color-panel-button-hover: #363636;
 
-  --button-achtergrond-kleur: var(--app-dialog-kleur);
-  --button-kleur: var(--app-dialog-achtergrond-kleur);
-  --button-active-achtergrond-kleur: var(--app-achtergrond-kleur);
-  --button-active-kleur: var(--app-button-active-kleur);
-  --button-hover-achtergrond-kleur: var(--app-achtergrond-kleur);
-  --button-hover-kleur: var(--app-button-hover-kleur);
+  --color-dialog-background: blanchedalmond;
+  --color-dialog: #363636;
+  --color-dialog-button-active-background: #2F4FCD;
+  --color-dialog-button-active: blanchedalmond;
+  --color-dialog-button-hover-background: lightblue;
+  --color-dialog-button-hover: #363636;
 
-  --dialog-achtergrond-kleur: var(--app-dialog-achtergrond-kleur);
-  --dialog-kleur: var(--app-dialog-kleur);
+  --dialog-background-color: var(--color-dialog-background);
+  --dialog-color: var(--color-dialog);
+  --dialog-input-background-color: var(--color-dialog);
+  --dialog-input-color: var(--color-dialog-background);
+  --dialog-button-background-color: var(--color-dialog);
+  --dialog-button-color: var(--color-dialog-background);
+  --dialog-button-active-background-color: var(--color-dialog-button-active-background);
+  --dialog-button-active-color: var(--color-dialog-button-active);
+  --dialog-button-hover-background-color: var(--color-dialog-button-hover-background);
+  --dialog-button-hover-color: var(--color-dialog-button-hover);
 
-  --form-achtergrond-kleur: var(--app-dialog-achtergrond-kleur);
-  --form-kleur: var(--app-dialog-kleur);
+  --form-background-color: var(--color-dialog-background);
+  --form-color: var(--color-dialog);
 
-  --input-achtergrond-kleur: var(--app-dialog-kleur);
-  --input-kleur: var(--app-dialog-achtergrond-kleur);
-
-  --panel-achtergrond-kleur: var(--app-achtergrond-kleur);
-  --panel-kleur: var(--app-kleur);
-  --panel-border: 1px solid var(--app-panel-border-kleur);
+  --panel-background-color: var(--color-panel-background);
+  --panel-color: var(--color-panel);
+  --panel-border: 1px solid var(--color-panel-border);
+  --panel-input-background-color: var(--color-panel-input-background);
+  --panel-input-color: var(--color-panel-input);
+  --panel-input-focus-color: var(--color-panel-input-focus);
+  --panel-button-background-color: var(--color-panel);
+  --panel-button-color: var(--color-panel-background);
+  --panel-button-active-background-color: var(--color-panel-button-active-background);
+  --panel-button-active-color: var(--color-panel-button-active);
+  --panel-button-hover-background-color: var(--color-panel-button-hover-background);
+  --panel-button-hover-color: var(--color-panel-button-hover);
 }
 
 body {
-  background-color: var(--app-achtergrond-kleur);
+  background-color: var(--color-panel-background);
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* ===================================================== */
-/* GLOBAL DIALOG THEME */
+/* DIALOG */
 /* ===================================================== */
 
 .p-dialog {
   border-radius: 24px;
   overflow: hidden;
-  background-color: var(--dialog-achtergrond-kleur);
-  color: var(--dialog-kleur);
-
+  background-color: var(--dialog-background-color);
+  color: var(--dialog-color);
   box-shadow:
     0 30px 70px rgba(0, 0, 0, 0.35),
     0 10px 25px rgba(0, 0, 0, 0.25);
-
   animation: dialogFadeIn 0.2s ease-out;
 }
 
-/* Open animation */
 @keyframes dialogFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* Blur overlay */
 .p-dialog-mask {
   backdrop-filter: blur(4px);
 }
 
-/* ===================================================== */
-/* DIALOG STRUCTURE */
-/* ===================================================== */
-
-.p-dialog .p-dialog-header {
-  background-color: var(--dialog-achtergrond-kleur);
-  color: var(--dialog-kleur);
-  padding: 1.2rem 1.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.p-dialog .p-dialog-content {
-  background-color: var(--dialog-achtergrond-kleur);
-  padding: 2rem;
-}
-
+.p-dialog .p-dialog-header,
+.p-dialog .p-dialog-content,
 .p-dialog .p-dialog-footer {
-  background-color: var(--dialog-achtergrond-kleur);
-  padding: 1.2rem 1.5rem;
+  background-color: var(--dialog-background-color);
+  color: var(--dialog-color);
 }
-
-/* ===================================================== */
-/* FORM */
-/* ===================================================== */
-.dialog-form {
-  background-color: var(--form-achtergrond-kleur);
-  color: var(--form-kleur);
-  padding: 0; /* geen extra padding meer */
-}
-
-/* spacing tussen velden */
-.dialog-input {
-  margin-bottom: 1rem;
-}
-
 
 /* ===================================================== */
 /* INPUTS */
@@ -119,72 +96,93 @@ body {
 .p-dialog .p-inputtext:focus,
 .p-dialog .p-inputtext:hover,
 .p-dialog .p-password input {
-  background-color: var(--input-achtergrond-kleur);
-  border-color: var(--input-achtergrond-kleur);
-  color: var(--input-kleur);
+  background-color: var(--dialog-input-background-color);
+  border-color: var(--dialog-input-background-color);
+  color: var(--dialog-input-color);
   width: 100%;
 }
 
 /* ===================================================== */
-/* BUTTONS - OVERRIDE PRIMENG */
+/* BUTTONS */
 /* ===================================================== */
 
 .p-dialog .p-button.dialog-button {
-  background-color: var(--button-achtergrond-kleur) !important;
-  border-color: var(--button-achtergrond-kleur) !important;
-  color: var(--button-kleur) !important;
-
+  background-color: var(--dialog-button-background-color) !important;
+  border-color: var(--dialog-button-background-color) !important;
+  color: var(--dialog-button-color) !important;
   border-radius: 12px;
   margin-right: 0.5rem;
-
   box-shadow: 0 10px 20px rgba(0, 0, 0.3, 0.4);
   transition: all 0.2s ease;
 }
 
 .p-dialog .p-button.dialog-button:hover {
-  background-color: var(--button-hover-achtergrond-kleur) !important;
-  border-color: var(--button-hover-achtergrond-kleur) !important;
-  color: var(--button-hover-kleur) !important;
+  background-color: var(--dialog-button-hover-background-color) !important;
+  border-color: var(--dialog-button-hover-background-color) !important;
+  color: var(--dialog-button-hover-color) !important;
   transform: translateY(-1px);
 }
 
 .p-dialog .p-button.dialog-button:active {
-  background-color: var(--button-active-achtergrond-kleur) !important;
-  border-color: var(--button-active-achtergrond-kleur) !important;
-  color: var(--button-active-kleur) !important;
-
+  background-color: var(--dialog-button-active-background-color) !important;
+  border-color: var(--dialog-button-active-background-color) !important;
+  color: var(--dialog-button-active-color) !important;
   box-shadow: none;
   transform: translateY(0);
 }
 
 /* ===================================================== */
-/* RADIO GROUP */
+/* TREE */
 /* ===================================================== */
 
-.radio-group {
-  margin: 1.2rem 0;
-  border: 1px solid var(--input-achtergrond-kleur);
-  border-radius: 14px;
-  padding: 1rem;
+.p-tree {
+  background: var(--panel-background-color) !important;
+  border: var(--panel-border);
+  border-radius: 10px;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
 }
 
-.small-radio .p-radiobutton-box {
-  background-color: var(--form-achtergrond-kleur);
-  border-color: var(--input-achtergrond-kleur);
-  width: 14px;
-  height: 14px;
+.p-tree .p-tree-container {
+  background: transparent !important;
 }
 
-.small-radio .p-radiobutton-icon {
-  width: 8px;
-  height: 8px;
+/* ===================================================== */
+/* TREE COLOR OVERRIDE — WINT ALLES */
+/* ===================================================== */
+
+body .p-tree * {
+  color: var(--panel-color) !important;
+  fill: var(--panel-color) !important;
 }
 
-.small-radio.p-radiobutton-checked .p-radiobutton-icon {
-  background-color: var(--input-achtergrond-kleur);
+/* ===================================================== */
+/* COMPACT TREE SPACING */
+/* ===================================================== */
+
+body .p-tree .p-treenode-content {
+  min-height: 0 !important;      /* <-- belangrijkste fix */
+  padding: 0.1rem 0 !important;
+  line-height: 1.1 !important;
 }
 
-.small-radio.p-radiobutton-checked .p-radiobutton-box {
-  background-color: var(--form-achtergrond-kleur);
-  border-color: var(--input-achtergrond-kleur);
+body .p-tree .p-treenode {
+  margin: 0 !important;
+}
+
+body .p-tree .p-tree-container > li {
+  padding: 0 !important;
+}
+
+/* Verwijder de flex-gap die PrimeNG gebruikt */
+body .p-tree .p-treenode-content {
+  gap: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  line-height: 0.3rem !important;
+  --p-tree-node-padding: 0.01rem 0.1rem !important;
+
 }

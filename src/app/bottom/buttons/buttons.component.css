@@ -1,6 +1,6 @@
 .panel-left,
 .panel-right {
-  background-color: var(--panel-achtergrond-kleur);
+  background-color: var(--panel-background-color);
   border-color: transparent;
   display: flex;
   gap: 0.5rem; /* ruimte tussen buttons */
@@ -20,8 +20,8 @@
 }
 
 .ebook-button {
-  background: aliceblue;
-  color: black;
+  background: var(--panel-button-background-color);
+  color: var(--panel-button-color);
   font-size: 0.9rem;
   margin-left: 1rem;
   border-radius: 10px;
@@ -29,11 +29,12 @@
   justify-content: center;
   min-width: 110px;
   &:enabled:hover {
-    background: khaki;
+    background: var(--panel-button-hover-background-color);
+    color: var(--panel-button-hover-color);
   }
   &:enabled:active {
-    background: #2F4FCD;
-    color: white;
+    background: var(--panel-button-active-background-color);
+    color: var(--panel-button-active-color);
     box-shadow: none;
   }
 }

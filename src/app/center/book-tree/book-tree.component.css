@@ -5,25 +5,3 @@
   min-height: 0; /* cruciaal voor scroll */
 }
 
-:host ::ng-deep .p-tree {
-  flex: 1;               /* vult beschikbare hoogte */
-  overflow: auto;
-  border: var(--panel-border);
-  border-radius: 10px;
-  padding: 0.5rem;
-  background-color: var(--panel-achtergrond-kleur);
-}
-
-.p-tree {
-  margin-top: 0;
-  font-size: 0.75rem;
-  color: var(--panel-kleur);
-  line-height: 0.3rem;
-  padding: 0;
-  scrollbar-width: auto;
-  --p-tree-node-padding: 0.01rem 0.1rem;
-}
-
-.p-tree .p-treenode-label {
-  color: red;
-}
