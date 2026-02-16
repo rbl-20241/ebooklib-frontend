@@ -21,6 +21,7 @@ p-panel {
 .metadata {
   border: none;
   padding: 0;
+  font-size: 0.9rem;
 }
 
 /* Metadata bovenaan */
@@ -34,7 +35,7 @@ p-panel {
 .description-container {
   flex: 1 1 auto;
   /*min-height: 0;*/
-  height: 420px;
+  height: 47vh;
 }
 
 /* Custom scrollpanel styling */
@@ -95,3 +96,7 @@ p-panel {
   padding: 0 !important;
 }
 
+td {
+  vertical-align: top;
+  padding-top: 0 !important;
+}

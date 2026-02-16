@@ -9,7 +9,7 @@
   <div class="dialog-form">
 
   <form [formGroup]="copyForm" (ngSubmit)="copyBook()">
-      <div class="field dialog-input">
+      <div class="field">
         <label for="copyTo" class="block">"{{ getBookToCopy() }}" kopi&euml;ren naar:</label>
         <input type="text" pInputText formControlName="copyTo" />
         @if(copyForm.get('copyTo')?.invalid && copyForm.get('copyTo')?.dirty) {

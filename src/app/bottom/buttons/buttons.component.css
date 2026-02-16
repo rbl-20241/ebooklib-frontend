@@ -22,6 +22,7 @@
 .ebook-button {
   background: var(--panel-button-background-color);
   color: var(--panel-button-color);
+  border-color: var(--panel-button-background-color);
   font-size: 0.9rem;
   margin-left: 1rem;
   border-radius: 10px;
@@ -31,10 +32,12 @@
   &:enabled:hover {
     background: var(--panel-button-hover-background-color);
     color: var(--panel-button-hover-color);
+    border-color: var(--panel-button-hover-background-color);
   }
   &:enabled:active {
     background: var(--panel-button-active-background-color);
     color: var(--panel-button-active-color);
+    border-color: var(--panel-button-active-background-color);
     box-shadow: none;
   }
 }

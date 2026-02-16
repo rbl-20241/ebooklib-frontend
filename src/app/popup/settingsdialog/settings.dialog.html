@@ -9,7 +9,7 @@
 >
   <div class="dialog-form">
     <form [formGroup]="settingsForm" (ngSubmit)="saveSettings()">
-      <div class="field dialog-input">
+      <div class="field">
         <label for="map" class="block">Folder waar boeken staan:</label>
         <input type="text" pInputText formControlName="map" />
         @if(settingsForm.get('map')?.invalid && settingsForm.get('map')?.dirty) {
@@ -17,7 +17,7 @@
         }
       </div>
 
-      <div class="field dialog-input">
+      <div class="field">
         <label for="copyTo" class="block">Kopieren naar:</label>
         <input type="text" pInputText formControlName="copyTo" />
         @if(settingsForm.get('copyTo')?.invalid && settingsForm.get('copyTo')?.dirty) {
@@ -25,7 +25,7 @@
         }
       </div>
 
-      <div class="field dialog-input">
+      <div class="field">
         <label for="mailTo" class="block">Mailen naar:</label>
         <input type="text" pInputText formControlName="mailTo" />
         @if(settingsForm.get('mailTo')?.invalid && settingsForm.get('mailTo')?.dirty) {
@@ -33,7 +33,7 @@
         }
       </div>
 
-      <div class="field dialog-input">
+      <div class="field">
         <label for="host" class="block">Host:</label>
         <input type="text" pInputText formControlName="host" />
         @if(settingsForm.get('host')?.invalid && settingsForm.get('host')?.dirty) {
@@ -41,7 +41,7 @@
         }
       </div>
 
-      <div class="field dialog-input">
+      <div class="field">
         <label for="port" class="block">Port:</label>
         <input type="text" pInputText formControlName="port" />
         @if(settingsForm.get('port')?.invalid && settingsForm.get('port')?.dirty) {
@@ -49,7 +49,7 @@
         }
       </div>
 
-      <div class="field dialog-input">
+      <div class="field">
         <label for="sendBy" class="block">Afzender:</label>
         <input type="text" pInputText formControlName="sendBy" />
         @if(settingsForm.get('sendBy')?.invalid && settingsForm.get('sendBy')?.dirty) {
@@ -57,7 +57,7 @@
         }
       </div>
 
-      <div class="field dialog-input">
+      <div class="field">
         <label for="password" class="block">Wachtwoord:</label><br/>
         <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
         </p-password>

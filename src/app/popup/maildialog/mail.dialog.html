@@ -9,7 +9,7 @@
   <div class="dialog-form">
 
   <form [formGroup]="mailForm" (ngSubmit)="mailBook()">
-      <div class="field dialog-input">
+      <div class="field">
         <label for="mailTo" class="block">"{{ getBookToMail() }}" kopi&euml;ren naar:</label>
         <input type="text" pInputText formControlName="mailTo" />
         @if(mailForm.get('mailTo')?.invalid && mailForm.get('mailTo')?.dirty) {

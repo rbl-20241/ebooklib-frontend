@@ -9,30 +9,39 @@
   --color-panel: blanchedalmond;
   --color-panel-border: blanchedalmond;
   --color-panel-input-background: blanchedalmond;
-  --color-panel-input: #2A3439;
+  --color-panel-input: var(--color-panel-background);
   --color-panel-input-focus: darkblue;
-  --color-panel-button-active-background: #2F4FCD;
+  --color-panel-button-background: blanchedalmond;
+  --color-panel-button: var(--color-panel-background);
+  --color-panel-button-hover-background: burlywood;
+  --color-panel-button-hover: var(--color-panel-background);;
+  --color-panel-button-active-background: peru;
   --color-panel-button-active: white;
-  --color-panel-button-hover-background: lightblue;
-  --color-panel-button-hover: #363636;
 
   --color-dialog-background: blanchedalmond;
-  --color-dialog: #363636;
-  --color-dialog-button-active-background: #2F4FCD;
-  --color-dialog-button-active: blanchedalmond;
-  --color-dialog-button-hover-background: lightblue;
-  --color-dialog-button-hover: #363636;
+  --color-dialog: var(--color-panel-background);
+  --color-dialog-active-background: slategrey;
+  --color-dialog-active-border: 1px solid blanchedalmond;
+  --color-dialog-active: black;
+  --color-dialog-hover-background: #536878;
+  --color-dialog-hover: #363636;
 
   --dialog-background-color: var(--color-dialog-background);
   --dialog-color: var(--color-dialog);
   --dialog-input-background-color: var(--color-dialog);
   --dialog-input-color: var(--color-dialog-background);
+  --dialog-input-focus-background-color: var(--color-dialog-active-background);
+  --dialog-input-focus-color: var(--color-dialog-active);
+  --dialog-input-focus-border: var(--color-dialog-active-border);
+  --dialog-input-hover-background-color: var(--color-dialog-hover-background);
+  --dialog-input-hover-color: var(--color-dialog-hover);
   --dialog-button-background-color: var(--color-dialog);
   --dialog-button-color: var(--color-dialog-background);
-  --dialog-button-active-background-color: var(--color-dialog-button-active-background);
-  --dialog-button-active-color: var(--color-dialog-button-active);
-  --dialog-button-hover-background-color: var(--color-dialog-button-hover-background);
-  --dialog-button-hover-color: var(--color-dialog-button-hover);
+  --dialog-button-active-background-color: var(--color-dialog-active-background);
+  --dialog-button-active-color: var(--color-dialog-active);
+  --dialog-button-active-border: var(--color-dialog-active-border);
+  --dialog-button-hover-background-color: var(--color-dialog-hover-background);
+  --dialog-button-hover-color: var(--color-dialog-hover);
 
   --form-background-color: var(--color-dialog-background);
   --form-color: var(--color-dialog);
@@ -43,8 +52,8 @@
   --panel-input-background-color: var(--color-panel-input-background);
   --panel-input-color: var(--color-panel-input);
   --panel-input-focus-color: var(--color-panel-input-focus);
-  --panel-button-background-color: var(--color-panel);
-  --panel-button-color: var(--color-panel-background);
+  --panel-button-background-color: var(--color-panel-button-background);
+  --panel-button-color: var(--color-panel-button);
   --panel-button-active-background-color: var(--color-panel-button-active-background);
   --panel-button-active-color: var(--color-panel-button-active);
   --panel-button-hover-background-color: var(--color-panel-button-hover-background);
@@ -93,13 +102,25 @@ body {
 /* ===================================================== */
 
 .p-dialog .p-inputtext,
-.p-dialog .p-inputtext:focus,
-.p-dialog .p-inputtext:hover,
 .p-dialog .p-password input {
   background-color: var(--dialog-input-background-color);
   border-color: var(--dialog-input-background-color);
   color: var(--dialog-input-color);
   width: 100%;
+}
+
+.p-dialog .p-inputtext:hover {
+  background-color: var(--dialog-input-hover-background-color) !important;
+  border-color: var(--dialog-input-hover-background-color) !important;
+  color: var(--dialog-input-hover-color) !important;
+  transform: translateY(-1px);
+}
+
+.p-dialog .p-inputtext:focus {
+  background-color: var(--dialog-input-focus-background-color) !important;
+  border: var(--dialog-input-focus-border) !important;
+  color: var(--dialog-input-focus-color) !important;
+  transform: translateY(-1px);
 }
 
 /* ===================================================== */
@@ -125,12 +146,60 @@ body {
 
 .p-dialog .p-button.dialog-button:active {
   background-color: var(--dialog-button-active-background-color) !important;
-  border-color: var(--dialog-button-active-background-color) !important;
+  border: var(--dialog-button-active-border) !important;
   color: var(--dialog-button-active-color) !important;
   box-shadow: none;
   transform: translateY(0);
 }
 
+/* ===================================================== */
+/* RADIO GROUP — Angular 20 / PrimeNG 17+               */
+/* ===================================================== */
+
+.radio-group {
+  margin: 1.2rem 0;
+  border: 1px solid var(--dialog-input-background-color);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+/* Basis radio */
+.small-radio .p-radiobutton-box {
+  width: 14px;
+  height: 14px;
+  background-color: var(--form-background-color);
+  border: 2px solid var(--dialog-input-background-color);
+  transition: all 0.2s ease;
+}
+
+/* Inner dot */
+.small-radio .p-radiobutton-icon {
+  width: 8px;
+  height: 8px;
+  transition: all 0.2s ease;
+}
+
+/* Hover */
+.small-radio .p-radiobutton:not(.p-disabled):hover .p-radiobutton-box {
+  border-color: var(--dialog-input-hover-background-color);
+}
+
+/* Selected */
+.small-radio .p-radiobutton.p-highlight .p-radiobutton-box {
+  background-color: var(--dialog-input-focus-background-color);
+  border-color: var(--dialog-input-focus-background-color);
+}
+
+
+/* Selected dot */
+.small-radio .p-radiobutton.p-highlight .p-radiobutton-icon {
+  background-color: var(--dialog-input-focus-color);
+}
+
+/* Focus (keyboard) */
+.small-radio .p-radiobutton.p-focus .p-radiobutton-box {
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
+}
 /* ===================================================== */
 /* TREE */
 /* ===================================================== */
