@@ -216,7 +216,7 @@ body {
 
 .p-tree {
   background: var(--panel-background-color) !important;
-  border: var(--panel-border);
+  border: var(--panel-border) !important;
   border-radius: 10px;
   padding: 0.5rem;
   font-size: 0.8rem;
