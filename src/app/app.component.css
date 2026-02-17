@@ -1,15 +1,18 @@
 /* ===== LAYOUT ===== */
+
 .layout {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  align-items: center; /* center-panel horizontaal centreren */
+  align-items: center;
 }
 
+
 /* ===== TOP ===== */
+
 .top-panel,
 .bottom-panel {
-  width: 100%; /* top en bottom blijven full-width */
+  width: 100%;
 }
 
 .top-panel {
@@ -17,40 +20,50 @@
   flex-shrink: 0;
 }
 
+
 /* ===== CENTER ===== */
+
 .center-panel {
-  flex: 1;
+  flex: 1 1 auto;
   min-height: 0;
   display: flex;
-  overflow: hidden;
   flex-direction: row;
+  overflow: hidden;
   padding: 0;
   border: none;
-  width: 95%; /* wordt nu gecentreerd */
+  width: 95%;
 }
 
+
 /* ===== BOTTOM ===== */
+
 .bottom-panel {
   height: 4rem;
   flex-shrink: 0;
   background-color: var(--panel-background-color);
 }
 
+
 /* ===== SPLITTER ===== */
+
 :host ::ng-deep .p-splitter {
-  flex: 1;
+  flex: 1 1 auto;
   width: 100%;
-  height: calc(100vh - 12rem);
+  min-height: 0;
+  display: flex;              /* 🔥 belangrijk */
+  overflow: hidden;
   background-color: var(--panel-background-color);
-  color: var(--panel-color);
-  border: transparent;
 }
 
+
+/* Beide panels exact gelijk */
 :host ::ng-deep .p-splitter-panel {
-  min-width: 0;
   display: flex;
   flex-direction: column;
+  flex: 1 1 0;                /* 🔥 verdeelt ruimte gelijk */
   min-height: 0;
+  min-width: 0;
+  overflow: hidden;
 }
 
 :host ::ng-deep .p-splitter-gutter {

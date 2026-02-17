@@ -34,8 +34,7 @@ p-panel {
 /* Scrollbare content */
 .description-container {
   flex: 1 1 auto;
-  /*min-height: 0;*/
-  height: 47vh;
+  height: 46vh;
 }
 
 /* Custom scrollpanel styling */
