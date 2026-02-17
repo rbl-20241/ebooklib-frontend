@@ -61,6 +61,10 @@
   --panel-button-hover-background-color: var(--color-panel-button-hover-background);
   --panel-button-hover-color: var(--color-panel-button-hover);
 
+
+
+  --p-tree-node-color: var(--color-panel) !important;
+  --p-tree-node-icon-color: var(--color-panel) !important;
   --p-tree-node-hover-background: var(--color-tree-hover) !important;
   --p-tree-node-hover-color: var(--color-panel) !important;
   --p-tree-node-icon-hover-color:  var(--color-panel) !important;
@@ -216,6 +220,7 @@ body {
 
 .p-tree {
   background: var(--panel-background-color) !important;
+  color: var(--panel-color) !important;
   border: var(--panel-border) !important;
   border-radius: 10px;
   padding: 0.5rem;
