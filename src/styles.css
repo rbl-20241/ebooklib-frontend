@@ -26,6 +26,8 @@
   --color-dialog-hover-background: #536878;
   --color-dialog-hover: #363636;
 
+  --color-tree-hover: #4D5D53;
+
   --dialog-background-color: var(--color-dialog-background);
   --dialog-color: var(--color-dialog);
   --dialog-input-background-color: var(--color-dialog);
@@ -58,6 +60,13 @@
   --panel-button-active-color: var(--color-panel-button-active);
   --panel-button-hover-background-color: var(--color-panel-button-hover-background);
   --panel-button-hover-color: var(--color-panel-button-hover);
+
+  --p-tree-node-hover-background: var(--color-tree-hover) !important;
+  --p-tree-node-hover-color: var(--color-panel) !important;
+  --p-tree-node-icon-hover-color:  var(--color-panel) !important;
+  --p-tree-node-selected-background: var(--color-panel) !important;
+  --p-tree-node-selected-color: var(--color-panel-background)  !important;
+  --p-tree-node-icon-selected-color: var(--color-panel-background)  !important;
 }
 
 body {
@@ -200,6 +209,7 @@ body {
 .small-radio .p-radiobutton.p-focus .p-radiobutton-box {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
 }
+
 /* ===================================================== */
 /* TREE */
 /* ===================================================== */
@@ -213,45 +223,9 @@ body {
   flex: 1;
   min-height: 0;
   overflow: auto;
+
 }
 
 .p-tree .p-tree-container {
   background: transparent !important;
-}
-
-/* ===================================================== */
-/* TREE COLOR OVERRIDE — WINT ALLES */
-/* ===================================================== */
-
-body .p-tree * {
-  color: var(--panel-color) !important;
-  fill: var(--panel-color) !important;
-}
-
-/* ===================================================== */
-/* COMPACT TREE SPACING */
-/* ===================================================== */
-
-body .p-tree .p-treenode-content {
-  min-height: 0 !important;      /* <-- belangrijkste fix */
-  padding: 0.1rem 0 !important;
-  line-height: 1.1 !important;
-}
-
-body .p-tree .p-treenode {
-  margin: 0 !important;
-}
-
-body .p-tree .p-tree-container > li {
-  padding: 0 !important;
-}
-
-/* Verwijder de flex-gap die PrimeNG gebruikt */
-body .p-tree .p-treenode-content {
-  gap: 0 !important;
-  min-height: 0 !important;
-  padding: 0 !important;
-  line-height: 0.3rem !important;
-  --p-tree-node-padding: 0.01rem 0.1rem !important;
-
 }
