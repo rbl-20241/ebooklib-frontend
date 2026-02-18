@@ -77,6 +77,49 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  background-color: var(--panel-background-color);
+}
+
+/* ===== TOP ===== */
+
+.top-panel,
+.bottom-panel {
+  width: 100%;
+}
+
+.top-panel {
+  height: 7rem;
+  flex-shrink: 0;
+}
+
+
+/* ===== CENTER ===== */
+
+.center-panel {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  padding: 0;
+  border: none;
+  width: 95%;
+}
+
+
+/* ===== BOTTOM ===== */
+
+.bottom-panel {
+  height: 4rem;
+  flex-shrink: 0;
+  background-color: var(--panel-background-color);
+}
+
 /* ===================================================== */
 /* DIALOG */
 /* ===================================================== */
@@ -231,4 +274,31 @@ body {
 
 .p-tree .p-tree-container {
   background: transparent !important;
+}
+
+/* ===== SPLITTER ===== */
+
+.p-splitter {
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+  border: none !important;
+  background: var(--panel-background-color) !important;
+}
+
+
+/* Beide panels exact gelijk */
+.p-splitter-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;                /* 🔥 verdeelt ruimte gelijk */
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.p-splitter-gutter {
+  background-color: var(--panel-background-color) !important;
 }
