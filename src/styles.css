@@ -17,6 +17,8 @@
   --color-panel-button-hover: var(--color-panel-background);;
   --color-panel-button-active-background: peru;
   --color-panel-button-active: white;
+  --color-panel-button-disabled-background: gray;
+  --color-panel-button-disabled: var(--color-panel-background);;
 
   --color-dialog-background: blanchedalmond;
   --color-dialog: var(--color-panel-background);
@@ -60,6 +62,8 @@
   --panel-button-active-color: var(--color-panel-button-active);
   --panel-button-hover-background-color: var(--color-panel-button-hover-background);
   --panel-button-hover-color: var(--color-panel-button-hover);
+  --panel-button-disabled-background-color: var(--color-panel-button-disabled-background);
+  --panel-button-disabled-color: var(--color-panel-button-disabled);
 
   --p-tree-node-color: var(--color-panel) !important;
   --p-tree-node-icon-color: var(--color-panel) !important;
@@ -177,14 +181,10 @@ body {
 }
 
 .p-panel .p-button.panel-button:disabled {
-  background: gray;
-  color: var(--panel-button-hover-color);
-  border-color: gray;
+  background: var(--panel-button-disabled-background-color);
+  color: var(--panel-button-disabled-color);
+  border-color: var(--panel-button-disabled-background-color);
 }
-
-
-
-
 
 .bottom-panel .panel-left .p-panel-content,
 .bottom-panel .panel-right .p-panel-content {
