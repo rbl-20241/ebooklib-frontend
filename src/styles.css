@@ -101,7 +101,6 @@ body {
   flex-shrink: 0;
 }
 
-
 /* ===== CENTER ===== */
 
 .center-panel {
@@ -152,7 +151,6 @@ body {
   padding-top: 0 !important;
 }
 
-
 .description-panel .search-box-panel {
   flex-shrink: 0;
   margin-top: 0;
@@ -177,8 +175,6 @@ body {
   font-weight: bold;
 }
 
-
-
 .search-box-panel input {
   width: 100%;
   padding: 0.5rem;
@@ -198,19 +194,17 @@ body {
   background-color: var(--panel-input-background-color);
   color: var(--panel-input-color);
   border: var(--panel-border);
-  padding-top: 0.25rem;      /* optioneel, kleiner dan standaard */
-  padding-bottom: 0.25rem;   /* minimaliseer witruimte onderin */
-  margin: 0;                  /* verwijder extra margin */
-  height: auto;               /* zodat padding niet de hoogte te groot maakt */
-  box-sizing: border-box;     /* zodat padding in hoogte blijft */
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  margin: 0;
+  height: auto;
+  box-sizing: border-box;
 }
 
 .search-box-panel .p-inputtext:focus {
   border-color: var(--panel-input-focus-color);
   box-shadow: 0 0 0 2px rgba(65,105,225,0.2);
 }
-
-
 
 /* ===== BOTTOM ===== */
 
@@ -233,10 +227,10 @@ body {
   background-color: var(--panel-background-color);
   border-color: transparent;
   display: flex;
-  gap: 0.5rem; /* ruimte tussen buttons */
-  padding-top: 0.25rem; /* extra compact */
+  gap: 0.5rem;
+  padding-top: 0.25rem;
   padding-bottom: 0.1rem;
-  align-items: flex-start; /* bovenkant uitlijnen */
+  align-items: flex-start;
 }
 
 .bottom-panel .panel-left {
@@ -284,7 +278,7 @@ body {
 
 .bottom-panel .panel-left .p-panel-content,
 .bottom-panel .panel-right .p-panel-content {
-  padding-top: 0; /* of 0 als je echt strak wilt */
+  padding-top: 0;
   padding-bottom: 0.05rem;
 }
 
@@ -292,8 +286,6 @@ body {
 .panel-right button:first-child {
   margin-top: 0.5rem; /* haalt ruimte boven de eerste button weg */
 }
-
-
 
 /* ===================================================== */
 /* DIALOG */
@@ -465,12 +457,10 @@ body {
   background: var(--panel-background-color) !important;
 }
 
-
-/* Beide panels exact gelijk */
 .p-splitter-panel {
   display: flex;
   flex-direction: column;
-  flex: 1 1 0;                /* 🔥 verdeelt ruimte gelijk */
+  flex: 1 1 0;
   min-height: 0;
   min-width: 0;
   overflow: hidden;
