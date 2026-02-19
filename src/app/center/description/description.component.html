@@ -1,10 +1,13 @@
-<p-panel [showHeader]="false">
+<p-panel
+  [showHeader]="false"
+  class="description-panel"
+>
 
   <!-- Metadata bovenaan -->
   @if (metadata(); as meta) {
     <p-panel
       [showHeader]="false"
-      class="metadata">
+      class="metadata-panel">
     <div class="metadata-on-top">
       <table>
         <tr>
@@ -86,7 +89,7 @@
   <!-- Scrollbare beschrijving -->
   <div class="description-container">
     @if (metadata()?.description) {
-      <p-scrollPanel class="custom-scrollpanel">
+      <p-scrollPanel class="description-scrollpanel">
         <p [innerHTML]="descriptionHtml()"></p>
       </p-scrollPanel>
     }
@@ -95,7 +98,7 @@
   <!-- Zoekbox onderaan -->
   <p-panel
     [showHeader]="false"
-    class="search-box"
+    class="search-box-panel"
   >
   @if (metadata()?.description) {
     <p-divider></p-divider>
