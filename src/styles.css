@@ -128,6 +128,64 @@ body {
   width: 100%;
 }
 
+.bottom-panel .panel-left,
+.bottom-panel .panel-right {
+  background-color: var(--panel-background-color);
+  border-color: transparent;
+  display: flex;
+  gap: 0.5rem; /* ruimte tussen buttons */
+  padding-top: 0.25rem; /* extra compact */
+  padding-bottom: 0.1rem;
+  align-items: flex-start; /* bovenkant uitlijnen */
+}
+
+.bottom-panel .panel-left {
+  float: left;
+}
+
+.bottom-panel .panel-right {
+  float: right;
+}
+
+.bottom-panel .left-button {
+  width: 100px;
+}
+
+.p-panel .p-button.panel-button {
+  background: var(--panel-button-background-color);
+  color: var(--panel-button-color);
+  border-color: var(--panel-button-background-color);
+  font-size: 0.9rem;
+  margin-left: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  min-width: 110px;
+}
+
+.p-panel .p-button.panel-button:hover {
+    background: var(--panel-button-hover-background-color);
+    color: var(--panel-button-hover-color);
+    border-color: var(--panel-button-hover-background-color);
+}
+
+.p-panel .p-button.panel-button:active {
+    background: var(--panel-button-active-background-color);
+    color: var(--panel-button-active-color);
+    border-color: var(--panel-button-active-background-color);
+    box-shadow: none;
+}
+
+.p-panel .p-button.panel-button:disabled {
+  background: gray;
+  color: var(--panel-button-hover-color);
+  border-color: gray;
+}
+
+
+
+
+
 .bottom-panel .panel-left .p-panel-content,
 .bottom-panel .panel-right .p-panel-content {
   padding-top: 0; /* of 0 als je echt strak wilt */

@@ -1,48 +1,48 @@
-.panel-left,
-.panel-right {
-  background-color: var(--panel-background-color);
-  border-color: transparent;
-  display: flex;
-  gap: 0.5rem; /* ruimte tussen buttons */
-  padding-top: 0.25rem; /* extra compact */
-  padding-bottom: 0.1rem;
-  align-items: flex-start; /* bovenkant uitlijnen */
-}
+/*.panel-left,*/
+/*.panel-right {*/
+/*  background-color: var(--panel-background-color);*/
+/*  border-color: transparent;*/
+/*  display: flex;*/
+/*  gap: 0.5rem; !* ruimte tussen buttons *!*/
+/*  padding-top: 0.25rem; !* extra compact *!*/
+/*  padding-bottom: 0.1rem;*/
+/*  align-items: flex-start; !* bovenkant uitlijnen *!*/
+/*}*/
 
-.panel-left {
-  float: left;
-  /*bottom: 0;*/
-}
+/*.panel-left {*/
+/*  float: left;*/
+/*  !*bottom: 0;*!*/
+/*}*/
 
-.panel-right {
-  float: right;
-  /*bottom: 0;*/
-}
+/*.panel-right {*/
+/*  float: right;*/
+/*  !*bottom: 0;*!*/
+/*}*/
 
-.ebook-button {
-  background: var(--panel-button-background-color);
-  color: var(--panel-button-color);
-  border-color: var(--panel-button-background-color);
-  font-size: 0.9rem;
-  margin-left: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  min-width: 110px;
-  &:enabled:hover {
-    background: var(--panel-button-hover-background-color);
-    color: var(--panel-button-hover-color);
-    border-color: var(--panel-button-hover-background-color);
-  }
-  &:enabled:active {
-    background: var(--panel-button-active-background-color);
-    color: var(--panel-button-active-color);
-    border-color: var(--panel-button-active-background-color);
-    box-shadow: none;
-  }
-}
+/*.panel-button {*/
+/*  background: var(--panel-button-background-color);*/
+/*  color: var(--panel-button-color);*/
+/*  border-color: var(--panel-button-background-color);*/
+/*  font-size: 0.9rem;*/
+/*  margin-left: 1rem;*/
+/*  border-radius: 10px;*/
+/*  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);*/
+/*  justify-content: center;*/
+/*  min-width: 110px;*/
+/*  &:enabled:hover {*/
+/*    background: var(--panel-button-hover-background-color);*/
+/*    color: var(--panel-button-hover-color);*/
+/*    border-color: var(--panel-button-hover-background-color);*/
+/*  }*/
+/*  &:enabled:active {*/
+/*    background: var(--panel-button-active-background-color);*/
+/*    color: var(--panel-button-active-color);*/
+/*    border-color: var(--panel-button-active-background-color);*/
+/*    box-shadow: none;*/
+/*  }*/
+/*}*/
 
-.left-button {
-  width: 100px;
-}
+/*.left-button {*/
+/*  width: 100px;*/
+/*}*/
 
