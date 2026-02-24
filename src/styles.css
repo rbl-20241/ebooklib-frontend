@@ -160,7 +160,7 @@ body {
 
 .description-panel .description-container {
   flex: 1 1 auto;
-  height: 46vh;
+  height: 50vh;
 }
 
 .description-container .description-scrollpanel {
