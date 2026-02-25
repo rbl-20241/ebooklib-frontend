@@ -1,0 +1,42 @@
+.about-title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.about-copyright {
+  padding-top: 1rem;
+  font-size: small;
+}
+
+.dialog-content {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: flex-end; /* onderkant foto = onderkant oranje vlak */
+  gap: 20px;
+}
+
+/* FOTO LINKS */
+.dialog-image {
+  width: auto;
+  height: 400px;
+  border-radius: 6px;
+}
+
+/* ORANJE VLAK RECHTS */
+.dialog-text {
+  /*background: #f7a84c;*/
+  border-radius: 8px;
+  flex: 1;
+  height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* BUTTON */
+.dialog-button {
+  align-self: flex-end;
+  margin-top: 20px;
+}
+
