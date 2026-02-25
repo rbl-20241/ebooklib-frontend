@@ -35,7 +35,6 @@ export class SettingsDialog implements OnInit{
   private fb = inject(FormBuilder);
 
   displaySettingsDialog = this.settingsService.showSettings;
-  changeColor = true;
 
   settingsForm = this.fb.nonNullable.group({
     map: ['', Validators.required],

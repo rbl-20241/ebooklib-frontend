@@ -36,7 +36,6 @@ export class SearchDialog {
 
 
   displaySearchDialog = this.searchService.showSearch;
-  changeColor = true;
 
   whereToSearchPlaces = [
     { label: 'Titels', value: 'titles'},

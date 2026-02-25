@@ -2,6 +2,7 @@ import {Component, inject} from '@angular/core';
 import {Popover} from 'primeng/popover';
 import {MenuItem} from 'primeng/api';
 import {SettingService} from '../../services/settings.service';
+import {AboutService} from '../../services/about.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,6 +13,7 @@ import {SettingService} from '../../services/settings.service';
 })
 export class MenuComponent {
   private settingsService = inject(SettingService);
+  private aboutService = inject(AboutService);
 
   items: MenuItem[] = [
     { label: 'Login', icon: 'pi pi-sign-in', target: 'login' },
@@ -25,5 +27,10 @@ export class MenuComponent {
     if (item.target == 'settings') {
       this.settingsService.showSettingsDialog();
     }
+    else if (item.target == 'about') {
+      this.aboutService.showAboutDialog();
+    }
+
   }
+
 }

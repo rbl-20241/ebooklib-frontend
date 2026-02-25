@@ -32,7 +32,6 @@ export class CopyDialog implements OnInit {
   private fb = inject(FormBuilder);
 
   displayCopyDialog = this.copyService.showCopy;
-  changeColor = true;
 
   copyForm = this.fb.nonNullable.group({
     copyTo: ['', Validators.required]

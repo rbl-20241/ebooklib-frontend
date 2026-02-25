@@ -32,7 +32,6 @@ export class MailDialog implements OnInit {
   private fb = inject(FormBuilder);
 
   displayMailDialog = this.mailService.showMail;
-  changeColor = true;
 
   mailForm = this.fb.nonNullable.group({
     mailTo: ['', Validators.required]

@@ -21,7 +21,6 @@ export class YesNoDatabaseDialog {
   private settingsService = inject(SettingService);
   private ebookService = inject(EbookService);
   displayYesNoDbDialog = this.settingsService.showYesNoDbSettings;
-  changeColor = true;
 
   cancel() {
     this.displayYesNoDbDialog.set(false);
