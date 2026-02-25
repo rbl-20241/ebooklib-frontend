@@ -2,8 +2,6 @@
 /* GLOBAL STYLES */
 /* ===================================================== */
 
-@import "primeicons/primeicons.css";
-
 :root {
   --color-panel-background: #2A3439;
   --color-panel: blanchedalmond;
@@ -73,6 +71,8 @@
   --p-tree-node-selected-background: var(--color-panel) !important;
   --p-tree-node-selected-color: var(--color-panel-background)  !important;
   --p-tree-node-icon-selected-color: var(--color-panel-background)  !important;
+
+  --p-popover-background: var(--color-dialog-background) !important;
 }
 
 body {

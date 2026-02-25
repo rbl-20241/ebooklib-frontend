@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {HeaderComponent} from './header/header.component';
 import {Panel} from 'primeng/panel';
-import {SettingsComponent} from './settings/settings.component';
 import {SettingsDialog} from '../popup/settingsdialog/settings.dialog';
+import {MenuComponent} from './menu/menu.component';
 
 @Component({
   selector: 'app-top',
   imports: [
     HeaderComponent,
     Panel,
-    SettingsComponent,
-    SettingsDialog
+    SettingsDialog,
+    MenuComponent
   ],
   templateUrl: './top.component.html',
   styleUrl: './top.component.css'
