@@ -26,8 +26,8 @@ export class AboutDialog implements OnInit {
   aboutService = inject(AboutService);
   private http = inject(HttpClient);
   user: string | undefined;
+  version: string | undefined;
   operatingSystem: string | undefined;
-  developer: string | undefined;
   copyright: string | undefined;
 
   displayAboutDialog = this.aboutService.showAbout;
@@ -37,14 +37,14 @@ export class AboutDialog implements OnInit {
       .subscribe({
         next: about => {
           this.user = about.user;
+          this.version = about.version;
           this.operatingSystem = about.operatingSystem;
-          this.developer = about.developer;
           this.copyright = about.copyright;
         },
         error: () => {
           this.user = "Nobody";
           this.operatingSystem = "Unknown";
-          this.developer = "Someone";
+          this.version = "0.0.0";
           this.copyright = "&copy";
         }
       });

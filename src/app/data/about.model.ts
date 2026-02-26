@@ -1,6 +1,6 @@
 export interface About {
   user: string;
+  version: string;
   operatingSystem: string;
-  developer: string;
   copyright: string;
 }
