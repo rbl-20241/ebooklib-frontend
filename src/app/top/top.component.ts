@@ -3,7 +3,7 @@ import {HeaderComponent} from './header/header.component';
 import {Panel} from 'primeng/panel';
 import {SettingsDialog} from '../popup/settingsdialog/settings.dialog';
 import {MenuComponent} from './menu/menu.component';
-import {AboutDialog} from '../popup/about/about.dialog';
+import {AboutDialog} from '../popup/aboutdialog/about.dialog';
 
 @Component({
   selector: 'app-top',

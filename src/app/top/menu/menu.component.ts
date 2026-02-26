@@ -18,7 +18,7 @@ export class MenuComponent {
   items: MenuItem[] = [
     { label: 'Login', icon: 'pi pi-sign-in', target: 'login' },
     { label: 'Instellingen', icon: 'pi pi-wrench', target: 'settings' },
-    { label: 'Over', icon: 'pi pi-info-circle', target: 'about' }
+    { label: 'Over', icon: 'pi pi-info-circle', target: 'aboutdialog' }
   ];
 
   navigate(item: MenuItem, popover: any) {
@@ -27,7 +27,7 @@ export class MenuComponent {
     if (item.target == 'settings') {
       this.settingsService.showSettingsDialog();
     }
-    else if (item.target == 'about') {
+    else if (item.target == 'aboutdialog') {
       this.aboutService.showAboutDialog();
     }
 
