@@ -6,17 +6,16 @@
   (visibleChange)="displayAboutDialog.set($event)"
   (onHide)="cancel()"
 >
-  <div class="dialog-content">
+  <div class="about-dialog-content">
 
-    <!-- FOTO LINKS -->
     <p-image
       src="shakespeare.jpg"
       alt="Shakespeare"
-      class="dialog-image"
+      class="about-dialog-image"
+      height="400px"
     ></p-image>
 
-    <!-- ORANJE VLAK RECHTS -->
-    <div class="dialog-text">
+    <div class="about-dialog-text">
 
       <table>
         <tr><td colspan="2" class="about-title">eBook Library</td></tr>
@@ -26,13 +25,11 @@
         <tr><td colspan="2" class="about-copyright">Copyright {{ copyright }}</td></tr>
       </table>
 
-
-      <!-- BUTTON ONDERAAN ORANJE VLAK -->
       <button
         pButton
         pRipple
         type="button"
-        class="dialog-button"
+        class="dialog-button about-dialog-button"
         (click)="cancel()"
       >
         <i class="pi pi-times" pButtonIcon></i>

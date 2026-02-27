@@ -1,0 +1,79 @@
+<p-dialog
+  [showHeader]="false"
+  appendTo="body"
+  [modal]="true"
+  [visible]="displayLoginDialog()"
+  (visibleChange)="displayLoginDialog.set($event)"
+  (onHide)="cancel()"
+>
+  <div class="login-dialog-content">
+
+    <p-image
+      src="guust-flater.jpg"
+      alt="Guust Flater"
+      class="login-dialog-image"
+      height="400px"
+    ></p-image>
+
+    <div class="login-dialog-text">
+      <div>
+        <p class="login-title">eBook Library</p>
+
+        <div class="dialog-form">
+          <form [formGroup]="loginForm" (ngSubmit)="getSettings()">
+            <div class="field">
+              <label for="username" class="block">Gebruikersnaam:</label>
+              <input type="text" pInputText formControlName="username" />
+              @if(loginForm.get('username')?.invalid && loginForm.get('username')?.dirty) {
+                <small class="p-error block">Gebruikersnaam is verplicht</small>
+              }
+            </div>
+
+            <div class="field">
+              <label for="password" class="block">Wachtwoord:</label><br/>
+              <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
+              </p-password>
+              @if(loginForm.get('password')?.invalid && loginForm.get('password')?.dirty) {
+                <small class="p-error block">Wachtwoord is verplicht</small>
+              }
+            </div>
+          </form>
+
+          <div>
+            <button
+              class="logon-button"
+              (click)="openCreateAccount();"
+            >
+              <span>Account aanmaken</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="login-dialog-button">
+        <button
+          pButton
+          pRipple
+          type="button"
+          class="dialog-button"
+          (click)="cancel()"
+        >
+          <i class="pi pi-check" pButtonIcon></i>
+          <span pButtonLabel>Ok</span>
+        </button>
+
+        <button
+          pButton
+          pRipple
+          type="button"
+          class="dialog-button"
+          (click)="cancel()"
+        >
+          <i class="pi pi-times" pButtonIcon></i>
+          <span pButtonLabel>Annuleren</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</p-dialog>

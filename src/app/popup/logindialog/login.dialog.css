@@ -1,27 +1,22 @@
-.about-title {
+.login-title {
   font-size: x-large;
   font-weight: bold;
 }
 
-.about-copyright {
-  padding-top: 1rem;
-  font-size: small;
-}
-
-.about-dialog-content {
+.login-dialog-content {
   margin-top: 1.5rem;
   display: flex;
   align-items: flex-end; /* onderkant foto = onderkant oranje vlak */
   gap: 20px;
 }
 
-.about-dialog-image {
+.login-dialog-image {
   width: auto;
   height: 400px;
   border-radius: 6px;
 }
 
-.about-dialog-text {
+.login-dialog-text {
   border-radius: 8px;
   flex: 1;
   height: 400px;
@@ -31,8 +26,24 @@
   justify-content: space-between;
 }
 
-.about-dialog-button {
+.login-dialog-button {
   align-self: flex-end;
   margin-top: 20px;
 }
 
+.logon-button {
+  background-color: var(--dialog-background-color);
+  color: var(--dialog-color);
+  border: none;
+  padding-top: 2rem;
+  text-decoration: underline;
+}
+
+.logon-button:hover {
+  color: #4D5D53;
+  text-decoration: none;
+}
+
+.logon-button:active {
+  color: #536878;
+}
