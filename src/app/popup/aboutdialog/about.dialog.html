@@ -1,6 +1,7 @@
 <p-dialog
   [showHeader]="false"
   appendTo="body"
+  (onShow)="onShowDialog()"
   [modal]="true"
   [visible]="displayAboutDialog()"
   (visibleChange)="displayAboutDialog.set($event)"

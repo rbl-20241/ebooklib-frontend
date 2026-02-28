@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {AboutService} from '../../services/about.service';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
@@ -7,6 +7,7 @@ import {TableModule} from 'primeng/table';
 import {Image} from 'primeng/image';
 import {HttpClient} from '@angular/common/http';
 import {About} from '../../data/about.model';
+import {LoginService} from '../../services/login.service';
 
 @Component({
   selector: 'app-aboutdialog',
@@ -22,8 +23,9 @@ import {About} from '../../data/about.model';
   templateUrl: './about.dialog.html',
   styleUrl: './about.dialog.css',
 })
-export class AboutDialog implements OnInit {
+export class AboutDialog {
   aboutService = inject(AboutService);
+  loginService = inject(LoginService);
   private http = inject(HttpClient);
   user: string | undefined;
   version: string | undefined;
@@ -32,11 +34,11 @@ export class AboutDialog implements OnInit {
 
   displayAboutDialog = this.aboutService.showAbout;
 
-  ngOnInit() {
+  onShowDialog() {
     this.http.get<About>('http://localhost:8080/about')
       .subscribe({
         next: about => {
-          this.user = about.user;
+          this.user = this.loginService.getActiveUser();
           this.version = about.version;
           this.operatingSystem = about.operatingSystem;
           this.copyright = about.copyright;
