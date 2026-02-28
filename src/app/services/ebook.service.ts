@@ -88,7 +88,8 @@ export class EbookService {
     )
   }
 
-  async mailBook(payload: Send) {
+  async mailBook(payload: Send)
+  {
     await firstValueFrom(
       this.http.post('http://localhost:8080/book/mail', payload)
     )

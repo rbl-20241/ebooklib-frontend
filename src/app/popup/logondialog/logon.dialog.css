@@ -1,0 +1,43 @@
+.logon-title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.logon-dialog-content {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: flex-end; /* onderkant foto = onderkant oranje vlak */
+  gap: 20px;
+}
+
+.logon-dialog-text {
+  border-radius: 8px;
+  flex: 1;
+  height: 400px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logon-dialog-button {
+  align-self: flex-end;
+  margin-top: 20px;
+}
+
+.logon-button {
+  background-color: var(--dialog-background-color);
+  color: var(--dialog-color);
+  border: none;
+  padding-top: 2rem;
+  text-decoration: underline;
+}
+
+.logon-button:hover {
+  color: #4D5D53;
+  text-decoration: none;
+}
+
+.logon-button:active {
+  color: #536878;
+}

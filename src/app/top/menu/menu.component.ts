@@ -35,7 +35,10 @@ export class MenuComponent {
     else if (item.target == 'about') {
       this.aboutService.showAboutDialog();
     }
+  }
 
+  getActiveUser() {
+    return this.loginService.getActiveUser();
   }
 
 }

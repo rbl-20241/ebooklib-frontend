@@ -2,6 +2,7 @@
   header="EBook kopi&euml;ren"
   appendTo="body"
   [modal]="true"
+  (onShow)="onShowDialog()"
   [visible]="displayCopyDialog()"
   (visibleChange)="displayCopyDialog.set($event)"
   (onHide)="cancel()"

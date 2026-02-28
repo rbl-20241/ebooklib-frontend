@@ -1,6 +1,7 @@
 <p-dialog
     header="Instellingen"
     [modal]="true"
+    (onShow)="onShowDialog()"
     appendTo="body"
     styleClass="dialogSettings"
     [visible]="displaySettingsDialog()"

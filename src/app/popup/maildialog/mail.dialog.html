@@ -2,6 +2,7 @@
   header="EBook mailen"
   appendTo="body"
   [modal]="true"
+  (onShow)="onShowDialog()"
   [visible]="displayMailDialog()"
   (visibleChange)="displayMailDialog.set($event)"
   (onHide)="cancel()"

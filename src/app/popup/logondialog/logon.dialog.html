@@ -2,29 +2,22 @@
   [showHeader]="false"
   appendTo="body"
   [modal]="true"
-  [visible]="displayLoginDialog()"
-  (visibleChange)="displayLoginDialog.set($event)"
+  [visible]="displayLogonDialog()"
+  (visibleChange)="displayLogonDialog.set($event)"
   (onHide)="cancel()"
 >
-  <div class="login-dialog-content">
+  <div class="logon-dialog-content">
 
-    <p-image
-      src="guust-flater.jpg"
-      alt="Guust Flater"
-      class="login-dialog-image"
-      height="400px"
-    ></p-image>
-
-    <div class="login-dialog-text">
+    <div class="logon-dialog-text">
       <div>
-        <p class="login-title">eBook Library</p>
+        <p class="logon-title">Nieuw account voor eBook Library</p>
 
         <div class="dialog-form">
-          <form [formGroup]="loginForm" (ngSubmit)="getAccount()">
+          <form [formGroup]="logonForm" (ngSubmit)="saveAccount()">
             <div class="field">
               <label for="username" class="block">Gebruikersnaam:</label>
               <input type="text" pInputText formControlName="username" />
-              @if(loginForm.get('username')?.invalid && loginForm.get('username')?.dirty) {
+              @if(logonForm.get('username')?.invalid && logonForm.get('username')?.dirty) {
                 <small class="p-error block">Gebruikersnaam is verplicht</small>
               }
             </div>
@@ -33,30 +26,21 @@
               <label for="password" class="block">Wachtwoord:</label><br/>
               <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
               </p-password>
-              @if(loginForm.get('password')?.invalid && loginForm.get('password')?.dirty) {
+              @if(logonForm.get('password')?.invalid && logonForm.get('password')?.dirty) {
                 <small class="p-error block">Wachtwoord is verplicht</small>
               }
             </div>
           </form>
-
-          <div>
-            <button
-              class="logon-button"
-              (click)="openCreateAccount();"
-            >
-              <span>Account aanmaken</span>
-            </button>
-          </div>
         </div>
       </div>
 
-      <div class="login-dialog-button">
+      <div class="logon-dialog-button">
         <button
           pButton
           pRipple
           type="button"
           class="dialog-button"
-          (click)="getAccount()"
+          (click)="saveAccount()"
         >
           <i class="pi pi-check" pButtonIcon></i>
           <span pButtonLabel>Ok</span>
@@ -77,4 +61,3 @@
     </div>
   </div>
 </p-dialog>
-<app-logondialog></app-logondialog>

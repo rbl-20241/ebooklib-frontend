@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {SettingService} from '../../services/settings.service';
 import {InputText} from 'primeng/inputtext';
@@ -10,6 +10,7 @@ import {HttpClient} from '@angular/common/http';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
 import {Settings} from '../../data/settings.model';
 import {Password} from 'primeng/password';
+import {LoginService} from '../../services/login.service';
 
 @Component({
   selector: 'app-settingsdialog',
@@ -28,10 +29,11 @@ import {Password} from 'primeng/password';
   styleUrl: './settings.dialog.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsDialog implements OnInit{
+export class SettingsDialog {
 
   private http = inject(HttpClient);
   private settingsService = inject(SettingService);
+  private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
 
   displaySettingsDialog = this.settingsService.showSettings;
@@ -46,8 +48,9 @@ export class SettingsDialog implements OnInit{
     password: ['', Validators.required]
   });
 
-  ngOnInit() {
-    this.http.get<Settings>('http://localhost:8080/settings')
+  onShowDialog() {
+    const activeUser = this.loginService.getActiveUser();
+    this.http.get<Settings>('http://localhost:8080/settings/' + activeUser)
       .subscribe({
         next: settings => {
           this.settingsForm.patchValue(settings);
@@ -71,9 +74,10 @@ export class SettingsDialog implements OnInit{
   }
 
   async saveSettings() {
+    const activeUser = this.loginService.getActiveUser();
     const payload = this.settingsForm.value;
     await firstValueFrom(
-      this.http.post('http://localhost:8080/settings', payload)
+      this.http.post('http://localhost:8080/settings/' + activeUser, payload)
     );
     this.displaySettingsDialog.set(false);
   }

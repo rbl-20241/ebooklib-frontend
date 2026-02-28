@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, inject, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
@@ -8,6 +8,7 @@ import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {EbookService} from '../../services/ebook.service';
 import {InputText} from 'primeng/inputtext';
 import {Send} from '../../data/send.model';
+import {LoginService} from '../../services/login.service';
 
 @Component({
   selector: 'app-copydialog',
@@ -24,11 +25,12 @@ import {Send} from '../../data/send.model';
   styleUrl: './copy.dialog.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CopyDialog implements OnInit {
+export class CopyDialog {
 
   private copyService = inject(CopyService);
   private ebookService = inject(EbookService);
   private settingService = inject(SettingService);
+  private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
 
   displayCopyDialog = this.copyService.showCopy;
@@ -37,7 +39,7 @@ export class CopyDialog implements OnInit {
     copyTo: ['', Validators.required]
   });
 
-  ngOnInit() {
+  onShowDialog() {
     this.settingService.getCopyToMap().then(copyTo => {
       this.copyForm.patchValue({
         copyTo: copyTo
@@ -59,6 +61,7 @@ export class CopyDialog implements OnInit {
 
     let send: Send = {
       id: id,
+      username: this.loginService.getActiveUser(),
       to: this.copyForm.controls['copyTo'].value
     }
 

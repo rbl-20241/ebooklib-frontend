@@ -1,4 +1,4 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Dialog} from 'primeng/dialog';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -8,6 +8,7 @@ import {EbookService} from '../../services/ebook.service';
 import {SettingService} from '../../services/settings.service';
 import {Send} from '../../data/send.model';
 import {MailService} from '../../services/mail.service';
+import {LoginService} from '../../services/login.service';
 
 @Component({
   selector: 'app-maildialog',
@@ -24,11 +25,12 @@ import {MailService} from '../../services/mail.service';
   templateUrl: './mail.dialog.html',
   styleUrl: './mail.dialog.css',
 })
-export class MailDialog implements OnInit {
+export class MailDialog {
 
   private mailService = inject(MailService);
   private ebookService = inject(EbookService);
   private settingService = inject(SettingService);
+  private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
 
   displayMailDialog = this.mailService.showMail;
@@ -37,12 +39,12 @@ export class MailDialog implements OnInit {
     mailTo: ['', Validators.required]
   });
 
-  ngOnInit() {
+  onShowDialog() {
     this.settingService.getMailTo().then(mailTo => {
       this.mailForm.patchValue({
         mailTo: mailTo
       });
-    })
+    });
   }
 
 
@@ -60,6 +62,7 @@ export class MailDialog implements OnInit {
 
     let send: Send = {
       id: id,
+      username: this.loginService.getActiveUser(),
       to: this.mailForm.controls['mailTo'].value
     }
 
