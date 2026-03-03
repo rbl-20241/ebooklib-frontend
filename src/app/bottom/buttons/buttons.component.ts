@@ -21,8 +21,6 @@ import {SearchService} from '../../services/search.service';
   styleUrl: './buttons.component.css',
 })
 export class ButtonsComponent {
-  private GOOGLE_SEARCH_URL = "https://www.google.nl/search";
-
   private settingsService = inject(SettingService);
   private copyService = inject(CopyService);
   private mailService = inject(MailService);
@@ -38,7 +36,7 @@ export class ButtonsComponent {
     if (!metadata) return;
 
     const query = encodeURIComponent(`${metadata.title} ${this.ebookService.getFirstAuthor()}`)
-    window.open(`${this.GOOGLE_SEARCH_URL}?q=${query}`, '_blank');
+    window.open(`${this.settingsService.getSearchUrl()}?q=${query}`, '_blank');
   }
 
   resetBooktree() {

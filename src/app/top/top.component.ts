@@ -4,6 +4,8 @@ import {Panel} from 'primeng/panel';
 import {MenuComponent} from './menu/menu.component';
 import {AboutDialog} from '../popup/aboutdialog/about.dialog';
 import {LoginDialog} from '../popup/logindialog/login.dialog';
+import {MainsettingsDialog} from '../popup/mainsettingsdialog/mainsettings.dialog';
+import {UsersettingsDialog} from '../popup/usersettingsdialog/usersettings.dialog';
 
 @Component({
   selector: 'app-top',
@@ -12,7 +14,9 @@ import {LoginDialog} from '../popup/logindialog/login.dialog';
     Panel,
     MenuComponent,
     AboutDialog,
-    LoginDialog
+    LoginDialog,
+    MainsettingsDialog,
+    UsersettingsDialog
   ],
   templateUrl: './top.component.html',
   styleUrl: './top.component.css'

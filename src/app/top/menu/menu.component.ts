@@ -19,6 +19,7 @@ export class MenuComponent {
 
   items: MenuItem[] = [
     { label: 'Aanmelden', icon: 'pi pi-sign-in', target: 'login' },
+    { label: 'Algemene instellingen', icon: 'pi pi-wrench', target: 'mainsettings' },
     { label: 'Gebruikersinstellingen', icon: 'pi pi-wrench', target: 'usersettings' },
     { label: 'Over', icon: 'pi pi-info-circle', target: 'about' }
   ];
@@ -28,6 +29,9 @@ export class MenuComponent {
 
     if (item.target == 'login') {
       this.loginService.showLoginDialog();
+    }
+    else if (item.target == 'mainsettings') {
+      this.settingsService.showMainSettingsDialog();
     }
     else if (item.target == 'usersettings') {
       this.settingsService.showUserSettingsDialog();

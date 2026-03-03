@@ -1,0 +1,47 @@
+<p-dialog
+    header="Algemene instellingen"
+    [modal]="true"
+    (onShow)="onShowDialog()"
+    appendTo="body"
+    styleClass="dialogSettings"
+    [visible]="displaySettingsDialog()"
+    (visibleChange)="displaySettingsDialog.set($event)"
+    (onHide)="cancel()"
+>
+  <div class="dialog-form">
+    <form [formGroup]="mainSettingsForm" (ngSubmit)="saveSettings()">
+      <div class="field">
+        <label for="map" class="block">Folder waar boeken staan:</label>
+        <input type="text" pInputText formControlName="map" />
+        @if(mainSettingsForm.get('map')?.invalid && mainSettingsForm.get('map')?.dirty) {
+          <small class="p-error block">Folder is verplicht</small>
+        }
+      </div>
+
+      <p>
+        <button
+          pButton
+          pRipple
+          type="button"
+          class="dialog-button"
+          (click)="cancel()"
+        >
+          <i class="pi pi-times" pButtonIcon></i>
+          <span pButtonLabel>Annuleer</span>
+        </button>
+
+        <button
+          pButton
+          pRipple
+          type="submit"
+          class="dialog-button"
+          (click)="saveSettings()"
+        >
+          <i class="pi pi-save" pButtonIcon></i>
+          <span pButtonLabel>Opslaan</span>
+        </button>
+
+      </p>
+    </form>
+  </div>
+</p-dialog>

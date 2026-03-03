@@ -1,5 +1,5 @@
 <p-dialog
-    header="Gebruikersinstellingen"
+    [header]=getTitle()
     [modal]="true"
     (onShow)="onShowDialog()"
     appendTo="body"

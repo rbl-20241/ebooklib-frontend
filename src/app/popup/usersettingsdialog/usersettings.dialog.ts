@@ -48,6 +48,14 @@ export class UsersettingsDialog {
     password: ['', Validators.required]
   });
 
+  getTitle() {
+    const activeUser = this.loginService.getActiveUser();
+    if (activeUser == 'default') {
+      return 'Standaardinstellingen';
+    }
+    return 'Instellingen voor ' + activeUser;
+  }
+
   onShowDialog() {
     const activeUser = this.loginService.getActiveUser();
     this.http.get<UserSettings>('http://localhost:8080/usersettings/' + activeUser)
