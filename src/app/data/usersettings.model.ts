@@ -1,6 +1,6 @@
-export interface Settings {
+export interface UserSettings {
   user: string;
-  map: string;
+  searchUrl: string;
   copyTo: string;
   mailTo: string;
   host: string;

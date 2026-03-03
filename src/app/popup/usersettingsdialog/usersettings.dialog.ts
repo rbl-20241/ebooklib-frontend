@@ -8,12 +8,12 @@ import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
-import {Settings} from '../../data/settings.model';
+import {UserSettings} from '../../data/usersettings.model';
 import {Password} from 'primeng/password';
 import {LoginService} from '../../services/login.service';
 
 @Component({
-  selector: 'app-settingsdialog',
+  selector: 'app-usersettingsdialog',
   imports: [
     Dialog,
     InputText,
@@ -25,21 +25,21 @@ import {LoginService} from '../../services/login.service';
     ButtonLabel,
     ButtonIcon,
   ],
-  templateUrl: './settings.dialog.html',
-  styleUrl: './settings.dialog.css',
+  templateUrl: './usersettings.dialog.html',
+  styleUrl: './usersettings.dialog.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SettingsDialog {
+export class UsersettingsDialog {
 
   private http = inject(HttpClient);
   private settingsService = inject(SettingService);
   private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
 
-  displaySettingsDialog = this.settingsService.showSettings;
+  displaySettingsDialog = this.settingsService.showUserSettings;
 
-  settingsForm = this.fb.nonNullable.group({
-    map: ['', Validators.required],
+  userSettingsForm = this.fb.nonNullable.group({
+    searchUrl: ['', Validators.required],
     copyTo: ['', Validators.required],
     mailTo: ['', Validators.required],
     host: ['', Validators.required],
@@ -50,14 +50,14 @@ export class SettingsDialog {
 
   onShowDialog() {
     const activeUser = this.loginService.getActiveUser();
-    this.http.get<Settings>('http://localhost:8080/settings/' + activeUser)
+    this.http.get<UserSettings>('http://localhost:8080/usersettings/' + activeUser)
       .subscribe({
         next: settings => {
-          this.settingsForm.patchValue(settings);
+          this.userSettingsForm.patchValue(settings);
         },
         error: () => {
-          this.settingsForm.patchValue({
-            map: '/home/rene/boekjes',
+          this.userSettingsForm.patchValue({
+            searchUrl: 'https://seach.com',
             copyTo: '/home/rene/temp',
             mailTo: 'iemand@mail.com',
             host: 'host',
@@ -75,9 +75,9 @@ export class SettingsDialog {
 
   async saveSettings() {
     const activeUser = this.loginService.getActiveUser();
-    const payload = this.settingsForm.value;
+    const payload = this.userSettingsForm.value;
     await firstValueFrom(
-      this.http.post('http://localhost:8080/settings/' + activeUser, payload)
+      this.http.post('http://localhost:8080/usersettings/' + activeUser, payload)
     );
     this.displaySettingsDialog.set(false);
   }
