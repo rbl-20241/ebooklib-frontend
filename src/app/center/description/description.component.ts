@@ -30,15 +30,15 @@ export class DescriptionComponent {
   ebookService = inject(EbookService);
 
   metadata = this.ebookService.metadata;
-  searchTerm = signal('');
+  searchArgument = this.ebookService.searchArgument;
   descriptionHtml = signal<string>('');
 
   constructor() {
 
-    // Reageert automatisch op metadata OF searchTerm veranderingen
+    // Reageert automatisch op metadata OF searchArgument veranderingen
     effect(() => {
       const metadata = this.metadata();
-      const term = this.searchTerm();
+      const term = this.searchArgument();
 
       if (!metadata?.description) {
         this.descriptionHtml.set('');

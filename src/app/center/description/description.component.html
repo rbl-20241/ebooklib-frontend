@@ -108,13 +108,13 @@
           pInputText
           type="text"
           placeholder="Zoek in beschrijving..."
-          [ngModel]="searchTerm()"
-          (ngModelChange)="searchTerm.set($event)"
+          [ngModel]="searchArgument()"
+          (ngModelChange)="searchArgument.set($event)"
         />
-        @if (searchTerm()) {
+        @if (searchArgument()) {
           <p-inputicon
             class="pi pi-times clear-icon"
-            (click)="searchTerm.set('')">
+            (click)="searchArgument.set('')">
           </p-inputicon>
         }
       </p-iconfield>

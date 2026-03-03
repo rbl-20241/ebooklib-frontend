@@ -16,6 +16,7 @@ export class EbookService {
   private id: string | undefined;
   books = signal<TreeNode[]>([]);
   isLoading = signal(false);
+  searchArgument = signal("");
 
   async loadBookTree() {
     try {

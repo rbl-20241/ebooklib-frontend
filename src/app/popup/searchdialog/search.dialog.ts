@@ -34,7 +34,6 @@ export class SearchDialog {
   private ebookService = inject(EbookService);
   private fb = inject(FormBuilder);
 
-
   displaySearchDialog = this.searchService.showSearch;
 
   whereToSearchPlaces = [
@@ -67,5 +66,10 @@ export class SearchDialog {
       .set('exact', isExact);
     await this.ebookService.search(where, params);
     this.displaySearchDialog.set(false);
+    if (where == 'descriptions') {
+      this.ebookService.searchArgument.set(searchTerm);
+    } else {
+      this.ebookService.searchArgument.set('');
+    }
   }
 }
