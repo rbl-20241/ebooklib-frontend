@@ -63,6 +63,7 @@
   --panel-button-disabled-background-color: var(--color-panel-button-disabled-background);
   --panel-button-disabled-color: var(--color-panel-button-disabled);
 
+  /* Treenode */
   --p-tree-node-color: var(--color-panel) !important;
   --p-tree-node-icon-color: var(--color-panel) !important;
   --p-tree-node-hover-background: var(--color-tree-hover) !important;
@@ -73,6 +74,15 @@
   --p-tree-node-icon-selected-color: var(--color-panel-background)  !important;
 
   --p-popover-background: var(--color-dialog-background) !important;
+
+  /* Radiobuttons */
+  --p-radiobutton-checked-background: var(--color-dialog-background) !important;
+  --p-radiobutton-checked-border-color: var(--color-dialog) !important;
+  --p-radiobutton-checked-hover-border-color: var(--color-dialog-hover-background) !important;
+  --p-radiobutton-checked-hover-background: var(--color-dialog-active-background) !important;
+  --p-radiobutton-hover-border-color: var(--color-dialog-hover-background) !important;
+  --p-radiobutton-icon-checked-color: var(--color-dialog) !important;
+  --p-radiobutton-icon-checked-hover-color: var(--color-dialog) !important;
 }
 
 body {
