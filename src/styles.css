@@ -12,11 +12,12 @@
   --color-panel-button-background: blanchedalmond;
   --color-panel-button: var(--color-panel-background);
   --color-panel-button-hover-background: burlywood;
-  --color-panel-button-hover: var(--color-panel-background);;
+  --color-panel-button-hover: var(--color-panel-background);
   --color-panel-button-active-background: peru;
   --color-panel-button-active: white;
   --color-panel-button-disabled-background: gray;
-  --color-panel-button-disabled: var(--color-panel-background);;
+  --color-panel-button-disabled: var(--color-panel-background);
+  --color-panel-input-placeholder: gray;
 
   --color-dialog-background: blanchedalmond;
   --color-dialog: var(--color-panel-background);
@@ -83,6 +84,8 @@
   --p-radiobutton-hover-border-color: var(--color-dialog-hover-background) !important;
   --p-radiobutton-icon-checked-color: var(--color-dialog) !important;
   --p-radiobutton-icon-checked-hover-color: var(--color-dialog) !important;
+
+  --p-inputtext-placeholder-color: var(--color-panel-input-placeholder) !important;
 
   --height-header: 7rem;
   --height-footer: 4rem;
