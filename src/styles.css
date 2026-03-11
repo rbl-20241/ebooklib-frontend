@@ -240,29 +240,6 @@ body {
   width: 100%;
 }
 
-.bottom-panel .panel-left,
-.bottom-panel .panel-right {
-  background-color: var(--panel-background-color);
-  border-color: transparent;
-  display: flex;
-  gap: 0.5rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.1rem;
-  align-items: flex-start;
-}
-
-.bottom-panel .panel-left {
-  float: left;
-}
-
-.bottom-panel .panel-right {
-  float: right;
-}
-
-.bottom-panel .left-button {
-  width: 100px;
-}
-
 .p-panel .p-button.panel-button {
   background: var(--panel-button-background-color);
   color: var(--panel-button-color);
@@ -272,7 +249,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
   justify-content: center;
-  min-width: 110px;
+  min-width: 8rem;
 }
 
 .p-panel .p-button.panel-button:hover {
@@ -292,17 +269,6 @@ body {
   background: var(--panel-button-disabled-background-color);
   color: var(--panel-button-disabled-color);
   border-color: var(--panel-button-disabled-background-color);
-}
-
-.bottom-panel .panel-left .p-panel-content,
-.bottom-panel .panel-right .p-panel-content {
-  padding-top: 0;
-  padding-bottom: 0.05rem;
-}
-
-.panel-left button:first-child,
-.panel-right button:first-child {
-  margin-top: 0.5rem; /* haalt ruimte boven de eerste button weg */
 }
 
 /* ===================================================== */

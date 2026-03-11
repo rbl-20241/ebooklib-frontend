@@ -20,7 +20,8 @@ export class MenuComponent {
   items: MenuItem[] = [
     { label: 'Aanmelden', icon: 'pi pi-sign-in', target: 'login' },
     { label: 'Algemene instellingen', icon: 'pi pi-wrench', target: 'mainsettings' },
-    { label: 'Gebruikersinstellingen', icon: 'pi pi-wrench', target: 'usersettings' },
+    { label: 'Gebruikersinstellingen', icon: 'pi pi-user-edit', target: 'usersettings' },
+    { label: 'Database verversen', icon: 'pi pi-refresh', target: 'refresh_db' },
     { label: 'Over', icon: 'pi pi-info-circle', target: 'about' }
   ];
 
@@ -35,6 +36,9 @@ export class MenuComponent {
     }
     else if (item.target == 'usersettings') {
       this.settingsService.showUserSettingsDialog();
+    }
+    else if (item.target == 'refresh_db') {
+      this.settingsService.showYesNoDatabaseDialog();
     }
     else if (item.target == 'about') {
       this.aboutService.showAboutDialog();

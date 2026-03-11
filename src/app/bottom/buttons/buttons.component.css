@@ -1,0 +1,14 @@
+.buttons-left,
+.buttons-right {
+  margin-top: 0.7rem;
+}
+
+.buttons-left {
+  float: left;
+}
+
+.buttons-right {
+  float: right;
+  margin-right: 1rem;
+}
+

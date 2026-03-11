@@ -1,59 +1,9 @@
-<p-panel [showHeader]="false" class="panel-left">
-
-  <button
-    pButton
-    pRipple
-    [disabled]="isButtonDisabled()"
-    type="button"
-    class="panel-button left-button"
-    (click)="onClickMailBook()"
-  >
-    <i class="pi pi-send" pButtonIcon></i>
-    <span pButtonLabel>Mailen</span>
-  </button>
-
-  <button
-    pButton
-    pRipple
-    [disabled]="isButtonDisabled()"
-    type="button"
-    class="panel-button left-button"
-    (click)="onClickCopyBook()"
-  >
-    <i class="pi pi-copy" pButtonIcon></i>
-    <span pButtonLabel>Kopi&euml;ren</span>
-  </button>
-
-  <button
-    pButton
-    pRipple
-    [disabled]="isButtonDisabled()"
-    type="button"
-    class="panel-button left-button"
-    (click)="searchWithBrowser()"
-  >
-    <i class="pi pi-globe" pButtonIcon></i>
-    <span pButtonLabel>Browser</span>
-  </button>
-</p-panel>
-
-<p-panel [showHeader]="false" class="panel-right">
+<div class="buttons-left">
   <button
     pButton
     pRipple
     type="button"
     class="panel-button"
-    (click)="resetBooktree()"
-  >
-    <i class="pi pi-sync" pButtonIcon></i>
-    <span pButtonLabel>Reset</span>
-  </button>
-
-  <button
-    pButton
-    pRipple
-    type="button"
-    class="panel-button left-button"
     (click)="onClickSearch()"
   >
     <i class="pi pi-search" pButtonIcon></i>
@@ -65,11 +15,48 @@
     pRipple
     type="button"
     class="panel-button"
-    (click)="saveBooksToDatabase()"
+    (click)="resetBooktree()"
   >
-    <i class="pi pi-refresh" pButtonIcon></i>
-    <span pButtonLabel>Database verversen</span>
+    <i class="pi pi-sync" pButtonIcon></i>
+    <span pButtonLabel>Reset</span>
+  </button>
+</div>
+
+<div class="buttons-right">
+  <button
+    pButton
+    pRipple
+    [disabled]="isButtonDisabled()"
+    type="button"
+    class="panel-button"
+    (click)="onClickMailBook()"
+  >
+    <i class="pi pi-send" pButtonIcon></i>
+    <span pButtonLabel>Mailen</span>
   </button>
 
-</p-panel>
+  <button
+    pButton
+    pRipple
+    [disabled]="isButtonDisabled()"
+    type="button"
+    class="panel-button"
+    (click)="onClickCopyBook()"
+  >
+    <i class="pi pi-copy" pButtonIcon></i>
+    <span pButtonLabel>Kopi&euml;ren</span>
+  </button>
+
+  <button
+    pButton
+    pRipple
+    [disabled]="isButtonDisabled()"
+    type="button"
+    class="panel-button"
+    (click)="searchWithBrowser()"
+  >
+    <i class="pi pi-globe" pButtonIcon></i>
+    <span pButtonLabel>Browser</span>
+  </button>
+</div>
 
