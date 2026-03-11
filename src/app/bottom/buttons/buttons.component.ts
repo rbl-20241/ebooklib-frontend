@@ -1,6 +1,5 @@
 import {Component, inject} from '@angular/core';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
-import {Panel} from 'primeng/panel';
 import {Ripple} from 'primeng/ripple';
 import {SettingService} from '../../services/settings.service';
 import {CopyService} from '../../services/copy.service';
@@ -12,7 +11,6 @@ import {SearchService} from '../../services/search.service';
   selector: 'app-buttons',
   imports: [
     ButtonDirective,
-    Panel,
     Ripple,
     ButtonIcon,
     ButtonLabel
@@ -27,16 +25,13 @@ export class ButtonsComponent {
   private searchService = inject(SearchService);
   private ebookService = inject(EbookService);
 
-  saveBooksToDatabase() {
-    this.settingsService.showYesNoDatabaseDialog();
-  }
-
-  searchWithBrowser() {
+  async searchWithBrowser() {
     const metadata = this.ebookService.metadata();
     if (!metadata) return;
 
     const query = encodeURIComponent(`${metadata.title} ${this.ebookService.getFirstAuthor()}`)
-    window.open(`${this.settingsService.getSearchUrl()}?q=${query}`, '_blank');
+    const searchUrl = await this.settingsService.getSearchUrl();
+    window.open(`${searchUrl}?q=${query}`, '_blank');
   }
 
   resetBooktree() {
