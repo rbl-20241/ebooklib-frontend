@@ -83,6 +83,10 @@
   --p-radiobutton-hover-border-color: var(--color-dialog-hover-background) !important;
   --p-radiobutton-icon-checked-color: var(--color-dialog) !important;
   --p-radiobutton-icon-checked-hover-color: var(--color-dialog) !important;
+
+  --height-header: 7rem;
+  --height-footer: 4rem;
+  --height-image: 210px;
 }
 
 body {
@@ -107,11 +111,15 @@ body {
 }
 
 .top {
-  height: 7rem;
+  height: var(--height-header);
   flex-shrink: 0;
 }
 
 /* ===== CENTER ===== */
+
+.p-image {
+  height: var(--height-image);
+}
 
 .center-panel {
   flex: 1 1 auto;
@@ -170,7 +178,7 @@ body {
 
 .description-panel .description-container {
   flex: 1 1 auto;
-  height: 50vh;
+  height: calc(100vh - var(--height-header) - var(--height-image) - var(--height-footer) - 6.5rem);
 }
 
 .description-container .description-scrollpanel {
