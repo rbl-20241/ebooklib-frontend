@@ -4,6 +4,7 @@ import {SettingService} from '../../services/settings.service';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {EbookService} from '../../services/ebook.service';
+import {RefresingDbDialog} from '../refresing-db-dialog/refresing-db-dialog';
 
 @Component({
   selector: 'app-yes-no-database',
@@ -12,7 +13,8 @@ import {EbookService} from '../../services/ebook.service';
     ButtonDirective,
     Ripple,
     ButtonLabel,
-    ButtonIcon
+    ButtonIcon,
+    RefresingDbDialog
   ],
   templateUrl: './yes-no-database.dialog.html',
   styleUrl: './yes-no-database.dialog.css',
@@ -27,8 +29,10 @@ export class YesNoDatabaseDialog {
   }
 
   async save() {
-    await this.ebookService.refreshDatabase();
     this.displayYesNoDbDialog.set(false);
+    this.settingsService.showRefreshingDatabaseDialog();
+    await this.ebookService.refreshDatabase();
+    this.settingsService.hideRefreshingDatabaseDialog();
   }
 
 }

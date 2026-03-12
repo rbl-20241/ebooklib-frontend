@@ -16,6 +16,8 @@ export class SettingService {
   showMainSettings = this.showMainDialog;
   private showYesNoDbDialog = signal<boolean>(false);
   showYesNoDbSettings = this.showYesNoDbDialog;
+  private showRefreshingDbDialog = signal<boolean>(false);
+  showRefreshingDbSettings = this.showRefreshingDbDialog;
   private loginService = inject(LoginService);
 
   showUserSettingsDialog() {
@@ -28,6 +30,14 @@ export class SettingService {
 
   showYesNoDatabaseDialog() {
     this.showYesNoDbDialog.set(true);
+  }
+
+  showRefreshingDatabaseDialog() {
+    this.showRefreshingDbDialog.set(true);
+  }
+
+  hideRefreshingDatabaseDialog() {
+    this.showRefreshingDbDialog.set(false);
   }
 
   async getUserSettings() {

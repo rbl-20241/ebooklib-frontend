@@ -1,0 +1,20 @@
+<p-dialog
+  [showHeader]="false"
+  appendTo="body"
+  [modal]="true"
+  [visible]="displayRefreshingDbDialog()"
+  (visibleChange)="displayRefreshingDbDialog.set($event)"
+>
+
+  <div class="refreshing">
+    <h3>Database met boeken wordt opnieuw ingelezen</h3>
+    <p>
+      <p-image
+        src="loading.gif"
+        alt="Even geduld..."
+      ></p-image>
+    </p>
+    <p>Dit kan even duren....</p>
+  </div>
+</p-dialog>
+
