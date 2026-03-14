@@ -3,8 +3,8 @@
   appendTo="body"
   (onShow)="onShowDialog()"
   [modal]="true"
-  [visible]="displayAboutDialog()"
-  (visibleChange)="displayAboutDialog.set($event)"
+  [visible]="visible()"
+  (visibleChange)="visible.set($event)"
   (onHide)="cancel()"
 >
   <div class="about-dialog-content">

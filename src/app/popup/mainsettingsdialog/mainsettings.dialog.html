@@ -4,8 +4,8 @@
     (onShow)="onShowDialog()"
     appendTo="body"
     styleClass="dialogSettings"
-    [visible]="displaySettingsDialog()"
-    (visibleChange)="displaySettingsDialog.set($event)"
+    [visible]="visible()"
+    (visibleChange)="visible.set($event)"
     (onHide)="cancel()"
 >
   <div class="dialog-form">

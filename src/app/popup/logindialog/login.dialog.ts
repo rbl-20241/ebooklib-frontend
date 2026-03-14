@@ -36,7 +36,7 @@ export class LoginDialog {
   logonService = inject(LogonService);
   private fb = inject(FormBuilder);
 
-  displayLoginDialog = this.loginService.showLogin;
+  visible = this.loginService.showLoginDialog;
 
   loginForm = this.fb.nonNullable.group({
     username: ['', Validators.required],
@@ -54,7 +54,7 @@ export class LoginDialog {
       this.loginForm.controls['password'].value == account.password;
 
     if (isOk) {
-      this.displayLoginDialog.set(false);
+      this.visible.set(false);
       this.loginService.setActiveUser(account.username);
     } else {
       console.log("Kan niet aanmelden");
@@ -68,7 +68,7 @@ export class LoginDialog {
   }
 
   cancel() {
-    this.displayLoginDialog.set(false);
+    this.visible.set(false);
   }
 
 }

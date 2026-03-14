@@ -32,7 +32,7 @@ export class AboutDialog {
   operatingSystem: string | undefined;
   copyright: string | undefined;
 
-  displayAboutDialog = this.aboutService.showAbout;
+  visible = this.aboutService.showAboutDialog;
 
   onShowDialog() {
     this.http.get<About>('http://localhost:8080/about')
@@ -53,6 +53,6 @@ export class AboutDialog {
   }
 
   cancel() {
-    this.displayAboutDialog.set(false);
+    this.visible.set(false);
   }
 }

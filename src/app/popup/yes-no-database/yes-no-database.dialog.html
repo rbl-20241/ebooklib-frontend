@@ -2,8 +2,8 @@
   header="Wil je de database verversen?"
   appendTo="body"
   [modal]="true"
-  [visible]="displayYesNoDbDialog()"
-  (visibleChange)="displayYesNoDbDialog.set($event)"
+  [visible]="visibleYesNoDb()"
+  (visibleChange)="visibleYesNoDb.set($event)"
   (onHide)="cancel()"
 >
 <p>

@@ -4,6 +4,7 @@
   [modal]="true"
   [visible]="displayRefreshingDbDialog()"
   (visibleChange)="displayRefreshingDbDialog.set($event)"
+  (onHide)="cancel()"
 >
 
   <div class="refreshing">
@@ -14,7 +15,22 @@
         alt="Even geduld..."
       ></p-image>
     </p>
-    <p>Dit kan even duren....</p>
+    @if (errorMessage()) {
+      <p class="error">{{errorMessage()}}</p>
+      <button
+        pButton
+        pRipple
+        type="button"
+        class="dialog-button"
+        (click)="cancel()"
+      >
+        <i class="pi pi-times" pButtonIcon></i>
+        <span pButtonLabel>Ok</span>
+      </button>
+
+    } @else {
+      <p>Dit kan even duren....</p>
+    }
   </div>
 </p-dialog>
 

@@ -2,8 +2,8 @@
   [showHeader]="false"
   appendTo="body"
   [modal]="true"
-  [visible]="displayLoginDialog()"
-  (visibleChange)="displayLoginDialog.set($event)"
+  [visible]="visible()"
+  (visibleChange)="visible.set($event)"
   (onHide)="cancel()"
 >
   <div class="login-dialog-content">

@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {SettingService} from '../../services/settings.service';
+import {SettingsService} from '../../services/settings.service';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {EbookService} from '../../services/ebook.service';
@@ -20,19 +20,21 @@ import {RefresingDbDialog} from '../refresing-db-dialog/refresing-db-dialog';
   styleUrl: './yes-no-database.dialog.css',
 })
 export class YesNoDatabaseDialog {
-  private settingsService = inject(SettingService);
+  private settingsService = inject(SettingsService);
   private ebookService = inject(EbookService);
-  displayYesNoDbDialog = this.settingsService.showYesNoDbSettings;
+  visibleYesNoDb = this.settingsService.showYesNoDbDialog;
+  visibleRefreshingDb = this.settingsService.showRefreshingDbDialog;
 
   cancel() {
-    this.displayYesNoDbDialog.set(false);
+    this.visibleYesNoDb.set(false);
   }
 
   async save() {
-    this.displayYesNoDbDialog.set(false);
-    this.settingsService.showRefreshingDatabaseDialog();
+    this.visibleYesNoDb.set(false);
+    this.visibleRefreshingDb.set(true);
     await this.ebookService.refreshDatabase();
-    this.settingsService.hideRefreshingDatabaseDialog();
+    // console.log("hide dialog");
+    // this.settingsService.hideRefreshingDatabaseDialog();
   }
 
 }

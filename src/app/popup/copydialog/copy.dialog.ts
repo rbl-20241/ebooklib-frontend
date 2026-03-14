@@ -2,7 +2,7 @@ import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
-import {SettingService} from '../../services/settings.service';
+import {SettingsService} from '../../services/settings.service';
 import {CopyService} from '../../services/copy.service';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {EbookService} from '../../services/ebook.service';
@@ -29,7 +29,7 @@ export class CopyDialog {
 
   private copyService = inject(CopyService);
   private ebookService = inject(EbookService);
-  private settingService = inject(SettingService);
+  private settingService = inject(SettingsService);
   private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
 

@@ -1,4 +1,4 @@
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {inject, Injectable, signal} from '@angular/core';
 import {TreeNode} from 'primeng/api';
 import {firstValueFrom} from 'rxjs';
@@ -6,10 +6,12 @@ import {Book} from '../data/book.model';
 import {Metadata} from '../data/metadata.model';
 import {Send} from '../data/send.model';
 import {Genre} from '../data/genre.model';
+import {SettingsService} from './settings.service';
 
 @Injectable({providedIn: 'root'})
 export class EbookService {
 
+  private settingsService = inject(SettingsService);
   private http = inject(HttpClient);
   metadata = signal<Metadata | undefined>(undefined);
   private coverImageURL = "";
@@ -17,6 +19,8 @@ export class EbookService {
   books = signal<TreeNode[]>([]);
   isLoading = signal(false);
   searchArgument = signal("");
+  errorMessage = signal("");
+  visibleRefreshingDb = this.settingsService.showRefreshingDbDialog;
 
   async loadBookTree() {
     try {
@@ -25,17 +29,31 @@ export class EbookService {
         this.http.get<Genre[]>('http://localhost:8080/booktree')
       );
       this.books.set(this.readGenres(tree) as TreeNode[]);
-    }
-    finally {
+    } finally {
       this.isLoading.set(false);
     }
   }
 
   async refreshDatabase() {
-    await firstValueFrom(
-      this.http.get('http://localhost:8080/refresh-booktree')
-    );
-    await this.loadBookTree();
+    // const tryErrorMessage = true;
+    // if (tryErrorMessage) {
+    //   this.errorMessage.set("Er is iets fout gegaan bij het verwerken van de boeken.");
+    //   console.log(this.errorMessage);
+    // } else {
+      try {
+        await firstValueFrom(
+          this.http.get('http://localhost:8080/refresh-booktree')
+        );
+        await this.loadBookTree();
+      } catch (error) {
+        const httpError = error as HttpErrorResponse;
+        this.errorMessage.set("Er is iets fout gegaan bij het verwerken van de boeken.");
+        console.log('{}: {}', httpError.status, httpError.message);
+      } finally {
+        console.log("hide dialog");
+        this.visibleRefreshingDb.set(false);
+      }
+    // }
   }
 
   readGenres(genres: Genre[]) {
@@ -70,7 +88,7 @@ export class EbookService {
     const response = await fetch('http://localhost:8080/coverimage/' + id);
     const buffer = await response.arrayBuffer();
     const bytes = new Uint8Array(buffer);
-    const blob = new Blob([bytes], { type: 'image/jpeg' });
+    const blob = new Blob([bytes], {type: 'image/jpeg'});
     this.coverImageURL = URL.createObjectURL(blob);
   }
 
@@ -89,8 +107,7 @@ export class EbookService {
     )
   }
 
-  async mailBook(payload: Send)
-  {
+  async mailBook(payload: Send) {
     await firstValueFrom(
       this.http.post('http://localhost:8080/book/mail', payload)
     )
@@ -103,8 +120,7 @@ export class EbookService {
         this.http.get<Genre[]>('http://localhost:8080/search/' + where, {params})
       );
       this.books.set(this.readGenres(tree) as TreeNode[]);
-    }
-    finally {
+    } finally {
       this.isLoading.set(false);
     }
   }

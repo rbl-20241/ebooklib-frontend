@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
-import {SettingService} from '../../services/settings.service';
+import {SettingsService} from '../../services/settings.service';
 import {CopyService} from '../../services/copy.service';
 import {EbookService} from '../../services/ebook.service';
 import {MailService} from '../../services/mail.service';
@@ -19,7 +19,7 @@ import {SearchService} from '../../services/search.service';
   styleUrl: './buttons.component.css',
 })
 export class ButtonsComponent {
-  private settingsService = inject(SettingService);
+  private settingsService = inject(SettingsService);
   private copyService = inject(CopyService);
   private mailService = inject(MailService);
   private searchService = inject(SearchService);

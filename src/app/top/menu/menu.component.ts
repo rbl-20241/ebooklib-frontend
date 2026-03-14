@@ -1,7 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {Popover} from 'primeng/popover';
 import {MenuItem} from 'primeng/api';
-import {SettingService} from '../../services/settings.service';
+import {SettingsService} from '../../services/settings.service';
 import {AboutService} from '../../services/about.service';
 import {LoginService} from '../../services/login.service';
 
@@ -13,7 +13,7 @@ import {LoginService} from '../../services/login.service';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent {
-  private settingsService = inject(SettingService);
+  private settingsService = inject(SettingsService);
   private aboutService = inject(AboutService);
   private loginService = inject(LoginService);
 
@@ -29,19 +29,19 @@ export class MenuComponent {
     popover.hide();
 
     if (item.target == 'login') {
-      this.loginService.showLoginDialog();
+      this.loginService.showLoginDialog.set(true);
     }
     else if (item.target == 'mainsettings') {
-      this.settingsService.showMainSettingsDialog();
+      this.settingsService.showMainDialog.set(true);
     }
     else if (item.target == 'usersettings') {
-      this.settingsService.showUserSettingsDialog();
+      this.settingsService.showUserDialog.set(true);
     }
     else if (item.target == 'refresh_db') {
-      this.settingsService.showYesNoDatabaseDialog();
+      this.settingsService.showYesNoDbDialog.set(true);
     }
     else if (item.target == 'about') {
-      this.aboutService.showAboutDialog();
+      this.aboutService.showAboutDialog.set(true);
     }
   }
 

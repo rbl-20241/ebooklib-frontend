@@ -4,13 +4,8 @@ import {Injectable, signal} from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService {
-  private showDialog = signal<boolean>(false);
+  showLoginDialog = signal<boolean>(false);
   private activeUser = signal<String>("default");
-  showLogin = this.showDialog;
-
-  showLoginDialog() {
-    this.showDialog.set(true);
-  }
 
   setActiveUser(user: String) {
     this.activeUser.set(user);

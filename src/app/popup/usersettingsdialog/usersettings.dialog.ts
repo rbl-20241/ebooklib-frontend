@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {SettingService} from '../../services/settings.service';
+import {SettingsService} from '../../services/settings.service';
 import {InputText} from 'primeng/inputtext';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
@@ -32,11 +32,11 @@ import {LoginService} from '../../services/login.service';
 export class UsersettingsDialog {
 
   private http = inject(HttpClient);
-  private settingsService = inject(SettingService);
+  private settingsService = inject(SettingsService);
   private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
 
-  displaySettingsDialog = this.settingsService.showUserSettings;
+  visible = this.settingsService.showUserDialog;
 
   userSettingsForm = this.fb.nonNullable.group({
     searchUrl: ['', Validators.required],
@@ -78,7 +78,7 @@ export class UsersettingsDialog {
   }
 
   cancel() {
-    this.displaySettingsDialog.set(false);
+    this.visible.set(false);
   }
 
   async saveSettings() {
@@ -87,7 +87,7 @@ export class UsersettingsDialog {
     await firstValueFrom(
       this.http.post('http://localhost:8080/usersettings/' + activeUser, payload)
     );
-    this.displaySettingsDialog.set(false);
+    this.visible.set(false);
   }
 
 }

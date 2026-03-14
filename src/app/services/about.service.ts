@@ -4,11 +4,6 @@ import {Injectable, signal} from '@angular/core';
   providedIn: 'root'
 })
 export class AboutService {
-  private showDialog = signal<boolean>(false);
-  showAbout = this.showDialog;
-
-  showAboutDialog() {
-    this.showDialog.set(true);
-  }
+  showAboutDialog = signal<boolean>(false);
 
 }

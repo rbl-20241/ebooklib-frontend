@@ -7,38 +7,14 @@ import {LoginService} from './login.service';
 @Injectable({
   providedIn: 'root'
 })
-export class SettingService {
+export class SettingsService {
   private http = inject(HttpClient);
 
-  private showUserDialog = signal<boolean>(false);
-  showUserSettings = this.showUserDialog;
-  private showMainDialog = signal<boolean>(false);
-  showMainSettings = this.showMainDialog;
-  private showYesNoDbDialog = signal<boolean>(false);
-  showYesNoDbSettings = this.showYesNoDbDialog;
-  private showRefreshingDbDialog = signal<boolean>(false);
-  showRefreshingDbSettings = this.showRefreshingDbDialog;
+  showUserDialog = signal<boolean>(false);
+  showMainDialog = signal<boolean>(false);
+  showYesNoDbDialog = signal<boolean>(false);
+  showRefreshingDbDialog = signal<boolean>(false);
   private loginService = inject(LoginService);
-
-  showUserSettingsDialog() {
-    this.showUserDialog.set(true);
-  }
-
-  showMainSettingsDialog() {
-    this.showMainDialog.set(true);
-  }
-
-  showYesNoDatabaseDialog() {
-    this.showYesNoDbDialog.set(true);
-  }
-
-  showRefreshingDatabaseDialog() {
-    this.showRefreshingDbDialog.set(true);
-  }
-
-  hideRefreshingDatabaseDialog() {
-    this.showRefreshingDbDialog.set(false);
-  }
 
   async getUserSettings() {
     const username = this.loginService.getActiveUser();

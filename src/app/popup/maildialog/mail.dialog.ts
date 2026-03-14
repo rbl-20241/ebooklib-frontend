@@ -5,7 +5,7 @@ import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {InputText} from 'primeng/inputtext';
 import {Ripple} from 'primeng/ripple';
 import {EbookService} from '../../services/ebook.service';
-import {SettingService} from '../../services/settings.service';
+import {SettingsService} from '../../services/settings.service';
 import {Send} from '../../data/send.model';
 import {MailService} from '../../services/mail.service';
 import {LoginService} from '../../services/login.service';
@@ -29,7 +29,7 @@ export class MailDialog {
 
   private mailService = inject(MailService);
   private ebookService = inject(EbookService);
-  private settingService = inject(SettingService);
+  private settingService = inject(SettingsService);
   private loginService = inject(LoginService);
   private fb = inject(FormBuilder);
 
