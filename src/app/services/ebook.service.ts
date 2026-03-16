@@ -39,24 +39,49 @@ export class EbookService {
   async refreshDatabase() {
     this.errorMessage.set(null);
     this.refreshState.set(RefreshState.LOADING);
-      try {
-        await firstValueFrom(
-          this.http.get('http://localhost:8080/refresh-booktree')
-        );
-        await this.loadBookTree();
-        this.refreshState.set(RefreshState.SUCCESS);
-      } catch (error) {
-        const httpError = error as HttpErrorResponse;
+
+    try {
+      await firstValueFrom(
+        this.http.get('http://localhost:8080/refresh-booktree')
+      );
+
+      await this.loadBookTree();
+      this.refreshState.set(RefreshState.SUCCESS);
+
+    } catch (error) {
+      const httpError = error as HttpErrorResponse;
+
+      if (httpError.error?.message) {
+        this.errorMessage.set(httpError.error.message);
+      } else {
         this.errorMessage.set("Er is iets fout gegaan bij het verwerken van de boeken.");
-        console.log('{}: {}', httpError.status, httpError.message);
-        this.refreshState.set(RefreshState.ERROR);
-      } finally {
-        if (!this.errorMessage()) {
-          console.log("hide dialog");
-          this.visibleRefreshingDb.set(false);
-        }
       }
+
+      console.log(`${httpError.status}: ${httpError.error?.message}`);
+      this.refreshState.set(RefreshState.ERROR);
+    }
   }
+
+  // async refreshDatabase() {
+  //   this.errorMessage.set(null);
+  //   this.refreshState.set(RefreshState.LOADING);
+  //     try {
+  //       await firstValueFrom(
+  //         this.http.get('http://localhost:8080/refresh-booktree')
+  //       );
+  //       await this.loadBookTree();
+  //       this.refreshState.set(RefreshState.SUCCESS);
+  //     } catch (error) {
+  //       const httpError = error as HttpErrorResponse;
+  //       this.errorMessage.set("Er is iets fout gegaan bij het verwerken van de boeken.");
+  //       console.log('{}: {}', httpError.status, httpError.message);
+  //       this.refreshState.set(RefreshState.ERROR);
+  //     // } finally {
+  //     //   if (!this.errorMessage()) {
+  //     //     this.visibleRefreshingDb.set(false);
+  //     //   }
+  //     }
+  // }
 
   readGenres(genres: Genre[]) {
     return genres.map((genre) => this.genreToTreeNode(genre))
