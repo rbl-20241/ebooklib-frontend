@@ -3,20 +3,28 @@
   appendTo="body"
   [modal]="true"
   [visible]="displayRefreshingDbDialog()"
-  (visibleChange)="displayRefreshingDbDialog.set($event)"
   (onHide)="cancel()"
 >
 
   <div class="refreshing">
     <h3>Database met boeken wordt opnieuw ingelezen</h3>
-    <p>
-      <p-image
-        src="loading.gif"
-        alt="Even geduld..."
-      ></p-image>
-    </p>
-    @if (errorMessage(); as error) {
-      <p class="error">{{ error }}</p>
+    @if (refreshState() === RefreshState.LOADING) {
+
+      <p>
+        <p-image src="loading.gif" alt="Even geduld..."></p-image>
+      </p>
+
+      <p>Dit kan even duren...</p>
+    }
+
+    @if (refreshState() === RefreshState.ERROR) {
+
+      <p>
+        <p-image src="error.png" width="100px" alt="Er is iets mis gegaan."></p-image>
+      </p>
+
+      <p class="error">{{ errorMessage() }}</p>
+
       <button
         pButton
         pRipple
@@ -28,8 +36,6 @@
         <span pButtonLabel>Ok</span>
       </button>
 
-    } @else {
-      <p>Dit kan even duren....</p>
     }
   </div>
 </p-dialog>
