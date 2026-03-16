@@ -19,7 +19,7 @@ export class EbookService {
   books = signal<TreeNode[]>([]);
   isLoading = signal(false);
   searchArgument = signal("");
-  errorMessage = signal("");
+  errorMessage = signal<string | null>(null);
   visibleRefreshingDb = this.settingsService.showRefreshingDbDialog;
 
   async loadBookTree() {
@@ -35,11 +35,7 @@ export class EbookService {
   }
 
   async refreshDatabase() {
-    // const tryErrorMessage = true;
-    // if (tryErrorMessage) {
-    //   this.errorMessage.set("Er is iets fout gegaan bij het verwerken van de boeken.");
-    //   console.log(this.errorMessage);
-    // } else {
+    this.errorMessage.set(null);
       try {
         await firstValueFrom(
           this.http.get('http://localhost:8080/refresh-booktree')
@@ -50,10 +46,11 @@ export class EbookService {
         this.errorMessage.set("Er is iets fout gegaan bij het verwerken van de boeken.");
         console.log('{}: {}', httpError.status, httpError.message);
       } finally {
-        console.log("hide dialog");
-        this.visibleRefreshingDb.set(false);
+        if (!this.errorMessage()) {
+          console.log("hide dialog");
+          this.visibleRefreshingDb.set(false);
+        }
       }
-    // }
   }
 
   readGenres(genres: Genre[]) {

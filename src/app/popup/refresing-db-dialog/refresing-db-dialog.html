@@ -15,8 +15,8 @@
         alt="Even geduld..."
       ></p-image>
     </p>
-    @if (errorMessage()) {
-      <p class="error">{{errorMessage()}}</p>
+    @if (errorMessage(); as error) {
+      <p class="error">{{ error }}</p>
       <button
         pButton
         pRipple

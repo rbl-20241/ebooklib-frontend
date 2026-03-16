@@ -29,7 +29,4 @@ export class RefresingDbDialog {
     console.log("cancel");
     this.displayRefreshingDbDialog.set(false);
   }
-
-
-
 }
