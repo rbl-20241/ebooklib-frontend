@@ -6,13 +6,11 @@ import {Book} from '../data/book.model';
 import {Metadata} from '../data/metadata.model';
 import {Send} from '../data/send.model';
 import {Genre} from '../data/genre.model';
-import {SettingsService} from './settings.service';
 import {RefreshState} from '../models/refresh-state';
 
 @Injectable({providedIn: 'root'})
 export class EbookService {
 
-  private settingsService = inject(SettingsService);
   private http = inject(HttpClient);
   metadata = signal<Metadata | undefined>(undefined);
   private coverImageURL = "";
@@ -21,7 +19,6 @@ export class EbookService {
   isLoading = signal(false);
   searchArgument = signal("");
   errorMessage = signal<string | null>(null);
-  visibleRefreshingDb = this.settingsService.showRefreshingDbDialog;
   refreshState = signal<RefreshState>(RefreshState.IDLE);
 
   async loadBookTree() {
@@ -61,27 +58,6 @@ export class EbookService {
       this.refreshState.set(RefreshState.ERROR);
     }
   }
-
-  // async refreshDatabase() {
-  //   this.errorMessage.set(null);
-  //   this.refreshState.set(RefreshState.LOADING);
-  //     try {
-  //       await firstValueFrom(
-  //         this.http.get('http://localhost:8080/refresh-booktree')
-  //       );
-  //       await this.loadBookTree();
-  //       this.refreshState.set(RefreshState.SUCCESS);
-  //     } catch (error) {
-  //       const httpError = error as HttpErrorResponse;
-  //       this.errorMessage.set("Er is iets fout gegaan bij het verwerken van de boeken.");
-  //       console.log('{}: {}', httpError.status, httpError.message);
-  //       this.refreshState.set(RefreshState.ERROR);
-  //     // } finally {
-  //     //   if (!this.errorMessage()) {
-  //     //     this.visibleRefreshingDb.set(false);
-  //     //   }
-  //     }
-  // }
 
   readGenres(genres: Genre[]) {
     return genres.map((genre) => this.genreToTreeNode(genre))
