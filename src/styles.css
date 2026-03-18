@@ -3,17 +3,18 @@
 /* ===================================================== */
 
 :root {
-  --color-panel-background: #2A3439;
+  color: dimgrey;
+  --color-panel-background: #314158;
   --color-panel: blanchedalmond;
   --color-panel-border: blanchedalmond;
   --color-panel-input-background: blanchedalmond;
   --color-panel-input: var(--color-panel-background);
   --color-panel-input-focus: darkblue;
   --color-panel-button-background: blanchedalmond;
-  --color-panel-button: var(--color-panel-background);
-  --color-panel-button-hover-background: burlywood;
-  --color-panel-button-hover: var(--color-panel-background);
-  --color-panel-button-active-background: peru;
+  --color-panel-button: #09090B;
+  --color-panel-button-hover-background: dimgrey;
+  --color-panel-button-hover: var(--color-panel);
+  --color-panel-button-active-background: var(--color-panel-button);
   --color-panel-button-active: white;
   --color-panel-button-disabled-background: gray;
   --color-panel-button-disabled: var(--color-panel-background);
@@ -27,7 +28,7 @@
   --color-dialog-hover-background: #536878;
   --color-dialog-hover: #363636;
 
-  --color-tree-hover: #4D5D53;
+  --color-tree-hover: #09090B;
 
   --dialog-background-color: var(--color-dialog-background);
   --dialog-color: var(--color-dialog);
@@ -71,7 +72,7 @@
   --p-tree-node-hover-color: var(--color-panel) !important;
   --p-tree-node-icon-hover-color:  var(--color-panel) !important;
   --p-tree-node-selected-background: var(--color-panel) !important;
-  --p-tree-node-selected-color: var(--color-panel-background)  !important;
+  --p-tree-node-selected-color: var(--color-tree-hover)  !important;
   --p-tree-node-icon-selected-color: var(--color-panel-background)  !important;
 
   --p-popover-background: var(--color-dialog-background) !important;
@@ -99,9 +100,6 @@ body {
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
-
-/* ===== TOP ===== */
-
 
 /* ===== CENTER ===== */
 
