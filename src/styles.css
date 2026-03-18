@@ -90,6 +90,8 @@
   --height-header: 7rem;
   --height-footer: 4rem;
   --height-image: 210px;
+
+  --panel-border-radius: 15px;
 }
 
 body {
@@ -98,25 +100,8 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.layout {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  align-items: center;
-  background-color: var(--panel-background-color);
-}
-
 /* ===== TOP ===== */
 
-.top,
-.bottom {
-  width: 100%;
-}
-
-.top {
-  height: var(--height-header);
-  flex-shrink: 0;
-}
 
 /* ===== CENTER ===== */
 
@@ -143,7 +128,7 @@ body {
   height: 100%;
   padding: 0.5rem;
   border: var(--panel-border);
-  border-radius: 10px;
+  border-radius: var(--panel-border-radius);
   background-color: var(--panel-background-color);
   color: var(--panel-color);
 }
@@ -225,14 +210,6 @@ body {
 .search-box-panel .p-inputtext:focus {
   border-color: var(--panel-input-focus-color);
   box-shadow: 0 0 0 2px rgba(65,105,225,0.2);
-}
-
-/* ===== BOTTOM ===== */
-
-.bottom {
-  height: 4rem;
-  flex-shrink: 0;
-  background-color: var(--panel-background-color);
 }
 
 .p-panel.top-panel,
@@ -407,29 +384,6 @@ body {
 /* Focus (keyboard) */
 .small-radio .p-radiobutton.p-focus .p-radiobutton-box {
   box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.15);
-}
-
-/* ===================================================== */
-/* TREE */
-/* ===================================================== */
-
-.p-tree {
-  background: var(--panel-background-color) !important;
-  color: var(--panel-color) !important;
-  border: var(--panel-border) !important;
-  border-radius: 10px;
-  padding: 0.5rem;
-  font-size: 0.8rem;
-  flex: 1;
-  min-height: 0;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.p-tree .p-tree-container {
-  background: transparent !important;
 }
 
 /* ===== SPLITTER ===== */

@@ -1,0 +1,19 @@
+.p-tree {
+  background: var(--panel-background-color) !important;
+  color: var(--panel-color) !important;
+  border: var(--panel-border) !important;
+  border-radius: var(--panel-border-radius);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.p-tree .p-tree-container {
+  background: transparent !important;
+}
+

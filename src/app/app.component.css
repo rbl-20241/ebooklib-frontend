@@ -1,0 +1,23 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  align-items: center;
+  background-color: var(--panel-background-color);
+}
+
+.top,
+.bottom {
+  width: 100%;
+}
+
+.top {
+  height: var(--height-header);
+  flex-shrink: 0;
+}
+
+.bottom {
+  height: 4rem;
+  flex-shrink: 0;
+  background-color: var(--panel-background-color);
+}

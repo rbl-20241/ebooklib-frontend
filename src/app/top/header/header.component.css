@@ -16,13 +16,6 @@ header {
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-  /*position: relative;*/
-  /*z-index: 9999 !important;*/
-}
-
-img {
-  width: 3.5rem;
-  object-fit: contain;
 }
 
 h1 {
@@ -32,19 +25,9 @@ h1 {
   color: var(--panel-background-color);
 }
 
-p {
-  margin: 0;
-  font-size: 0.8rem;
-  text-wrap: balance;
-}
-
 @media (min-width: 768px) {
   header {
     padding: 2rem;
-  }
-
-  img {
-    width: 4.5rem;
   }
 
   h1 {
