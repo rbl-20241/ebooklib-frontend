@@ -2,6 +2,7 @@
   header="EBook kopi&euml;ren"
   appendTo="body"
   [modal]="true"
+  closable="false"
   (onShow)="onShowDialog()"
   [visible]="displayCopyDialog()"
   (visibleChange)="displayCopyDialog.set($event)"
@@ -9,16 +10,16 @@
 >
   <div class="dialog-form">
 
-  <form [formGroup]="copyForm" (ngSubmit)="copyBook()">
+    <form [formGroup]="copyForm" (ngSubmit)="copyBook()">
       <div class="field">
         <label for="copyTo" class="block">"{{ getBookToCopy() }}" kopi&euml;ren naar:</label>
-        <input type="text" pInputText formControlName="copyTo" />
-        @if(copyForm.get('copyTo')?.invalid && copyForm.get('copyTo')?.dirty) {
+        <input type="text" pInputText formControlName="copyTo"/>
+        @if (copyForm.get('copyTo')?.invalid && copyForm.get('copyTo')?.dirty) {
           <small class="p-error block">Foldernaam is verplicht</small>
         }
       </div>
 
-      <p>
+      <div class="dialog-button-group">
         <button
           pButton
           pRipple
@@ -41,7 +42,7 @@
           <span pButtonLabel>Kopi&euml;ren</span>
         </button>
 
-      </p>
+      </div>
     </form>
   </div>
 </p-dialog>

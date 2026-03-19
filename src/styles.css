@@ -280,6 +280,11 @@ body {
   color: var(--dialog-color);
 }
 
+.dialog-title {
+  font-size: x-large;
+  font-weight: bold;
+}
+
 /* ===================================================== */
 /* INPUTS */
 /* ===================================================== */
@@ -307,8 +312,15 @@ body {
 }
 
 /* ===================================================== */
-/* BUTTONS */
+/* DIALOG-BUTTONS */
 /* ===================================================== */
+
+.dialog-button-group {
+  display: flex;
+  justify-content: flex-end; /* 👉 dit doet het werk */
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
 
 .p-dialog .p-button.dialog-button {
   background-color: var(--dialog-button-background-color) !important;

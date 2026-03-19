@@ -2,11 +2,12 @@
   header="Wil je de database verversen?"
   appendTo="body"
   [modal]="true"
+  closable="false"
   [visible]="visibleYesNoDb()"
   (visibleChange)="visibleYesNoDb.set($event)"
   (onHide)="cancel()"
 >
-<p>
+  <div class="dialog-button-group">
     <button
       pButton
       pRipple
@@ -29,7 +30,7 @@
       <span pButtonLabel>Ja</span>
     </button>
 
-  </p>
+  </div>
   <app-refresing-db-dialog></app-refresing-db-dialog>
 </p-dialog>
 

@@ -12,7 +12,7 @@
       <div>
         <p class="logon-title">Nieuw account voor eBook Library</p>
 
-        <div class="dialog-form">
+        <div>
           <form [formGroup]="logonForm" (ngSubmit)="saveAccount()">
             <div class="field">
               <label for="username" class="block">Gebruikersnaam:</label>
@@ -40,10 +40,10 @@
           pRipple
           type="button"
           class="dialog-button"
-          (click)="saveAccount()"
+          (click)="cancel()"
         >
-          <i class="pi pi-check" pButtonIcon></i>
-          <span pButtonLabel>Ok</span>
+          <i class="pi pi-times" pButtonIcon></i>
+          <span pButtonLabel>Annuleren</span>
         </button>
 
         <button
@@ -51,10 +51,10 @@
           pRipple
           type="button"
           class="dialog-button"
-          (click)="cancel()"
+          (click)="saveAccount()"
         >
-          <i class="pi pi-times" pButtonIcon></i>
-          <span pButtonLabel>Annuleren</span>
+          <i class="pi pi-check" pButtonIcon></i>
+          <span pButtonLabel>Ok</span>
         </button>
       </div>
 

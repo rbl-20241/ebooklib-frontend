@@ -25,16 +25,18 @@
 
       <p class="error">{{ errorMessage() }}</p>
 
-      <button
-        pButton
-        pRipple
-        type="button"
-        class="dialog-button"
-        (click)="cancel()"
-      >
-        <i class="pi pi-times" pButtonIcon></i>
-        <span pButtonLabel>Ok</span>
-      </button>
+      <div class="dialog-button-group">
+        <button
+          pButton
+          pRipple
+          type="button"
+          class="dialog-button"
+          (click)="cancel()"
+        >
+          <i class="pi pi-times" pButtonIcon></i>
+          <span pButtonLabel>Ok</span>
+        </button>
+      </div>
 
     }
   </div>

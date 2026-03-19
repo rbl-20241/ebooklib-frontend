@@ -1,6 +1,7 @@
 <p-dialog
     [header]=getTitle()
     [modal]="true"
+    closable="false"
     (onShow)="onShowDialog()"
     appendTo="body"
     styleClass="dialogSettings"
@@ -8,7 +9,7 @@
     (visibleChange)="visible.set($event)"
     (onHide)="cancel()"
 >
-  <div class="dialog-form">
+  <div>
     <form [formGroup]="userSettingsForm" (ngSubmit)="saveSettings()">
       <div class="field">
         <label for="searchUrl" class="block">Zoek-url:</label>
@@ -67,7 +68,7 @@
         }
       </div>
 
-      <p>
+      <div class="dialog-button-group">
         <button
           pButton
           pRipple
@@ -90,7 +91,7 @@
           <span pButtonLabel>Opslaan</span>
         </button>
 
-      </p>
+      </div>
     </form>
   </div>
 </p-dialog>

@@ -1,6 +1,7 @@
 <p-dialog
     header="Algemene instellingen"
     [modal]="true"
+    closable="false"
     (onShow)="onShowDialog()"
     appendTo="body"
     styleClass="dialogSettings"
@@ -8,7 +9,7 @@
     (visibleChange)="visible.set($event)"
     (onHide)="cancel()"
 >
-  <div class="dialog-form">
+  <div>
     <form [formGroup]="mainSettingsForm" (ngSubmit)="saveSettings()">
       <div class="field">
         <label for="map" class="block">Folder waar boeken staan:</label>
@@ -18,7 +19,7 @@
         }
       </div>
 
-      <p>
+      <div class="dialog-button-group">
         <button
           pButton
           pRipple
@@ -41,7 +42,7 @@
           <span pButtonLabel>Opslaan</span>
         </button>
 
-      </p>
+      </div>
     </form>
   </div>
 </p-dialog>

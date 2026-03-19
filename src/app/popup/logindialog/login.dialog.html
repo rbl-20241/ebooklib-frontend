@@ -17,9 +17,9 @@
 
     <div class="login-dialog-text">
       <div>
-        <p class="login-title">eBook Library</p>
+        <p class="dialog-title">eBook Library</p>
 
-        <div class="dialog-form">
+        <div>
           <form [formGroup]="loginForm" (ngSubmit)="getAccount()">
             <div class="field">
               <label for="username" class="block">Gebruikersnaam:</label>
@@ -56,10 +56,10 @@
           pRipple
           type="button"
           class="dialog-button"
-          (click)="getAccount()"
+          (click)="cancel()"
         >
-          <i class="pi pi-check" pButtonIcon></i>
-          <span pButtonLabel>Ok</span>
+          <i class="pi pi-times" pButtonIcon></i>
+          <span pButtonLabel>Annuleren</span>
         </button>
 
         <button
@@ -67,10 +67,10 @@
           pRipple
           type="button"
           class="dialog-button"
-          (click)="cancel()"
+          (click)="getAccount()"
         >
-          <i class="pi pi-times" pButtonIcon></i>
-          <span pButtonLabel>Annuleren</span>
+          <i class="pi pi-check" pButtonIcon></i>
+          <span pButtonLabel>Ok</span>
         </button>
       </div>
 

@@ -2,6 +2,7 @@
   header="EBook mailen"
   appendTo="body"
   [modal]="true"
+  closable="false"
   (onShow)="onShowDialog()"
   [visible]="displayMailDialog()"
   (visibleChange)="displayMailDialog.set($event)"
@@ -9,16 +10,16 @@
 >
   <div class="dialog-form">
 
-  <form [formGroup]="mailForm" (ngSubmit)="mailBook()">
+    <form [formGroup]="mailForm" (ngSubmit)="mailBook()">
       <div class="field">
         <label for="mailTo" class="block">"{{ getBookToMail() }}" kopi&euml;ren naar:</label>
-        <input type="text" pInputText formControlName="mailTo" />
-        @if(mailForm.get('mailTo')?.invalid && mailForm.get('mailTo')?.dirty) {
+        <input type="text" pInputText formControlName="mailTo"/>
+        @if (mailForm.get('mailTo')?.invalid && mailForm.get('mailTo')?.dirty) {
           <small class="p-error block">Foldernaam is verplicht</small>
         }
       </div>
 
-      <p>
+      <div class="dialog-button-group">
         <button
           pButton
           pRipple
@@ -41,7 +42,7 @@
           <span pButtonLabel>Mailen</span>
         </button>
 
-      </p>
+      </div>
     </form>
   </div>
 </p-dialog>
