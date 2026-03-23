@@ -2,7 +2,7 @@ main {
   text-align: right;
   color: var(--panel-color);
   margin-right: 1rem;
-  margin-top: -7rem;
+  margin-top: -6rem;
 }
 
 .active-user {

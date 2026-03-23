@@ -50,7 +50,7 @@ export class UsersettingsDialog {
 
   getTitle() {
     const activeUser = this.loginService.getActiveUser();
-    if (activeUser == 'default') {
+    if (activeUser == this.loginService.DEFAULT_USER) {
       return 'Standaardinstellingen';
     }
     return 'Instellingen voor ' + activeUser;

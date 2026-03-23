@@ -4,15 +4,21 @@ import {Injectable, signal} from '@angular/core';
   providedIn: 'root'
 })
 export class LoginService {
-  showLoginDialog = signal<boolean>(false);
-  private activeUser = signal<String>("default");
+  DEFAULT_USER = "default";
 
-  setActiveUser(user: String) {
+  showLoginDialog = signal<boolean>(false);
+  activeUser = signal<string>(this.DEFAULT_USER);
+
+  setActiveUser(user: string) {
     this.activeUser.set(user);
   }
 
   getActiveUser() {
-    return this.activeUser().toString();
+    if (this.activeUser() === this.DEFAULT_USER) {
+      return "Niet aangemeld";
+    } else {
+      return `Aangemeld als ${this.activeUser().toString()}`;
+    }
   }
 
 }
