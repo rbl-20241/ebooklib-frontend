@@ -17,7 +17,7 @@ export class LoginService {
     if (this.activeUser() === this.DEFAULT_USER) {
       return "Niet aangemeld";
     } else {
-      return `Aangemeld als ${this.activeUser().toString()}`;
+      return `Aangemeld als ${this.activeUser()}`;
     }
   }
 

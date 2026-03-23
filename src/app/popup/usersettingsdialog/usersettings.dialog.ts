@@ -49,8 +49,8 @@ export class UsersettingsDialog {
   });
 
   getTitle() {
-    const activeUser = this.loginService.getActiveUser();
-    if (activeUser == this.loginService.DEFAULT_USER) {
+    const activeUser = this.loginService.activeUser();
+    if (activeUser === this.loginService.DEFAULT_USER) {
       return 'Standaardinstellingen';
     }
     return 'Instellingen voor ' + activeUser;

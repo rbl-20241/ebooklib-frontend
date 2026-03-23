@@ -289,6 +289,10 @@ body {
 /* INPUTS */
 /* ===================================================== */
 
+.dialog-input {
+  margin-bottom: 1rem;
+}
+
 .p-dialog .p-inputtext,
 .p-dialog .p-password input {
   background-color: var(--dialog-input-background-color);

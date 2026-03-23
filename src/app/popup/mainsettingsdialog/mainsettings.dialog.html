@@ -4,14 +4,13 @@
     closable="false"
     (onShow)="onShowDialog()"
     appendTo="body"
-    styleClass="dialogSettings"
     [visible]="visible()"
     (visibleChange)="visible.set($event)"
     (onHide)="cancel()"
 >
   <div>
     <form [formGroup]="mainSettingsForm" (ngSubmit)="saveSettings()">
-      <div class="field">
+      <div class="field dialog-input">
         <label for="map" class="block">Folder waar boeken staan:</label>
         <input type="text" pInputText formControlName="map" />
         @if(mainSettingsForm.get('map')?.invalid && mainSettingsForm.get('map')?.dirty) {

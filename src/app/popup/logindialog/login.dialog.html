@@ -21,7 +21,7 @@
 
         <div>
           <form [formGroup]="loginForm" (ngSubmit)="getAccount()">
-            <div class="field">
+            <div class="field dialog-input">
               <label for="username" class="block">Gebruikersnaam:</label>
               <input type="text" pInputText formControlName="username" />
               @if(loginForm.get('username')?.invalid && loginForm.get('username')?.dirty) {
@@ -29,7 +29,7 @@
               }
             </div>
 
-            <div class="field">
+            <div class="field dialog-input">
               <label for="password" class="block">Wachtwoord:</label><br/>
               <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
               </p-password>

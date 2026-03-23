@@ -4,14 +4,13 @@
     closable="false"
     (onShow)="onShowDialog()"
     appendTo="body"
-    styleClass="dialogSettings"
     [visible]="visible()"
     (visibleChange)="visible.set($event)"
     (onHide)="cancel()"
 >
   <div>
     <form [formGroup]="userSettingsForm" (ngSubmit)="saveSettings()">
-      <div class="field">
+      <div class="field dialog-input">
         <label for="searchUrl" class="block">Zoek-url:</label>
         <input type="text" pInputText formControlName="searchUrl" />
         @if(userSettingsForm.get('searchUrl')?.invalid && userSettingsForm.get('searchUrl')?.dirty) {
@@ -19,7 +18,7 @@
         }
       </div>
 
-      <div class="field">
+      <div class="field dialog-input">
         <label for="copyTo" class="block">Kopieren naar:</label>
         <input type="text" pInputText formControlName="copyTo" />
         @if(userSettingsForm.get('copyTo')?.invalid && userSettingsForm.get('copyTo')?.dirty) {
@@ -27,7 +26,7 @@
         }
       </div>
 
-      <div class="field">
+      <div class="field dialog-input">
         <label for="mailTo" class="block">Mailen naar:</label>
         <input type="text" pInputText formControlName="mailTo" />
         @if(userSettingsForm.get('mailTo')?.invalid && userSettingsForm.get('mailTo')?.dirty) {
@@ -35,7 +34,7 @@
         }
       </div>
 
-      <div class="field">
+      <div class="field dialog-input">
         <label for="host" class="block">Host:</label>
         <input type="text" pInputText formControlName="host" />
         @if(userSettingsForm.get('host')?.invalid && userSettingsForm.get('host')?.dirty) {
@@ -43,7 +42,7 @@
         }
       </div>
 
-      <div class="field">
+      <div class="field dialog-input">
         <label for="port" class="block">Port:</label>
         <input type="text" pInputText formControlName="port" />
         @if(userSettingsForm.get('port')?.invalid && userSettingsForm.get('port')?.dirty) {
@@ -51,7 +50,7 @@
         }
       </div>
 
-      <div class="field">
+      <div class="field dialog-input">
         <label for="sendBy" class="block">Afzender:</label>
         <input type="text" pInputText formControlName="sendBy" />
         @if(userSettingsForm.get('sendBy')?.invalid && userSettingsForm.get('sendBy')?.dirty) {
@@ -59,7 +58,7 @@
         }
       </div>
 
-      <div class="field">
+      <div class="field dialog-input">
         <label for="password" class="block">Wachtwoord:</label><br/>
         <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
         </p-password>
