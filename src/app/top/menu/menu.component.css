@@ -29,7 +29,8 @@ main {
   color: var(--dialog-color);
   padding: 6px 10px;
   border-radius: 4px;
-  width: 250px;
+  width: 200px;
+  font-size: smaller;
 }
 
 .menu-link:hover {
@@ -37,6 +38,19 @@ main {
   color: var(--dialog-background-color) !important;
 }
 
+.menu-link.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+  cursor: default;
+}
+
 .menu-link i {
   font-size: 1.2rem;
+}
+
+.menu-divider {
+  height: 1px;
+  background: var(--dialog-color);
+  margin: 0;
+
 }

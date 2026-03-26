@@ -8,7 +8,7 @@ import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
-import {UserSettings} from '../../data/usersettings.model';
+import {UserSettings} from '../../models/usersettings.model';
 import {Password} from 'primeng/password';
 import {LoginService} from '../../services/login.service';
 

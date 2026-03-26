@@ -7,7 +7,7 @@ import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
-import {MainSettings} from '../../data/mainsettings.model';
+import {MainSettings} from '../../models/mainsettings.model';
 
 @Component({
   selector: 'app-mainsettingsdialog',

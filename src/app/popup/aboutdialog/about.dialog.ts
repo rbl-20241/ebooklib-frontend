@@ -6,7 +6,7 @@ import {Ripple} from 'primeng/ripple';
 import {TableModule} from 'primeng/table';
 import {Image} from 'primeng/image';
 import {HttpClient} from '@angular/common/http';
-import {About} from '../../data/about.model';
+import {About} from '../../models/about.model';
 import {LoginService} from '../../services/login.service';
 
 @Component({

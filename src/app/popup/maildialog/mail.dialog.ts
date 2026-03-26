@@ -6,7 +6,7 @@ import {InputText} from 'primeng/inputtext';
 import {Ripple} from 'primeng/ripple';
 import {EbookService} from '../../services/ebook.service';
 import {SettingsService} from '../../services/settings.service';
-import {Send} from '../../data/send.model';
+import {Send} from '../../models/send.model';
 import {MailService} from '../../services/mail.service';
 import {LoginService} from '../../services/login.service';
 

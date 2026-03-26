@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, computed, inject} from '@angular/core';
 import {Popover} from 'primeng/popover';
 import {MenuItem} from 'primeng/api';
 import {SettingsService} from '../../services/settings.service';
@@ -17,13 +17,17 @@ export class MenuComponent {
   private aboutService = inject(AboutService);
   private loginService = inject(LoginService);
 
-  items: MenuItem[] = [
+  items = computed<MenuItem[]>(() => [
     { label: 'Aanmelden', icon: 'pi pi-sign-in', target: 'login' },
+    { label: 'Profiel bewerken', icon: 'pi pi-pen-to-square', target: 'profile', disabled: this.loginService.isDefaultUser()},
+    { divider: true },
     { label: 'Algemene instellingen', icon: 'pi pi-wrench', target: 'mainsettings' },
+    { divider: true },
     { label: 'Gebruikersinstellingen', icon: 'pi pi-user-edit', target: 'usersettings' },
-    { label: 'Database verversen', icon: 'pi pi-refresh', target: 'refresh_db' },
+    { label: 'Database verversen', icon: 'pi pi-refresh', target: 'refresh_db', disabled: !this.loginService.isDefaultUser()},
+    { divider: true },
     { label: 'Over', icon: 'pi pi-info-circle', target: 'about' }
-  ];
+  ]);
 
   navigate(item: MenuItem, popover: any) {
     popover.hide();
@@ -31,11 +35,11 @@ export class MenuComponent {
     if (item.target == 'login') {
       this.loginService.showLoginDialog.set(true);
     }
-    else if (item.target == 'mainsettings') {
-      this.settingsService.showMainDialog.set(true);
-    }
     else if (item.target == 'usersettings') {
       this.settingsService.showUserDialog.set(true);
+    }
+    else if (item.target == 'mainsettings') {
+      this.settingsService.showMainDialog.set(true);
     }
     else if (item.target == 'refresh_db') {
       this.settingsService.showYesNoDbDialog.set(true);

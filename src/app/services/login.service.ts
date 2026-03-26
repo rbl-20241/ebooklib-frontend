@@ -1,4 +1,4 @@
-import {Injectable, signal} from '@angular/core';
+import {computed, Injectable, signal} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +8,14 @@ export class LoginService {
 
   showLoginDialog = signal<boolean>(false);
   activeUser = signal<string>(this.DEFAULT_USER);
+  isDefaultUser = computed(() => this.activeUser() === this.DEFAULT_USER);
 
   setActiveUser(user: string) {
     this.activeUser.set(user);
   }
 
   getActiveUser() {
-    if (this.activeUser() === this.DEFAULT_USER) {
+    if (this.isDefaultUser()) {
       return "Niet aangemeld";
     } else {
       return `Aangemeld als ${this.activeUser()}`;

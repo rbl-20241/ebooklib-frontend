@@ -7,7 +7,7 @@ import {CopyService} from '../../services/copy.service';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {EbookService} from '../../services/ebook.service';
 import {InputText} from 'primeng/inputtext';
-import {Send} from '../../data/send.model';
+import {Send} from '../../models/send.model';
 import {LoginService} from '../../services/login.service';
 
 @Component({

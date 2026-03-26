@@ -1,6 +1,6 @@
 import {inject, Injectable, signal} from '@angular/core';
 import {firstValueFrom} from 'rxjs';
-import {UserSettings} from '../data/usersettings.model';
+import {UserSettings} from '../models/usersettings.model';
 import {HttpClient} from '@angular/common/http';
 import {LoginService} from './login.service';
 

@@ -10,7 +10,7 @@ import {InputText} from 'primeng/inputtext';
 import {Password} from 'primeng/password';
 import {LogonDialog} from '../logondialog/logon.dialog';
 import {LogonService} from '../../services/logon.service';
-import {Account} from '../../data/account.model';
+import {Account} from '../../models/account.model';
 import {firstValueFrom} from 'rxjs';
 
 @Component({

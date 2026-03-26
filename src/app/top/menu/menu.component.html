@@ -5,16 +5,21 @@
   <p-popover #popover>
     <div class="menu-items">
 
-      @for (item of items; track item.label) {
+      @for (item of items(); track item.label) {
+        @if (item["divider"]) {
+          <div class="menu-divider"></div>
+        } @else {
         <a
           class="menu-link"
-          (click)="navigate(item, popover)"
+          [class.disabled]="item.disabled"
+          (click)="!item.disabled && navigate(item, popover)"
           >
           @if (item.icon) {
             <i [class]="item.icon"></i>
           }
           <span>{{ item.label }}</span>
         </a>
+        }
       }
     </div>
   </p-popover>

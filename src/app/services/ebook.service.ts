@@ -2,10 +2,10 @@ import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {inject, Injectable, signal} from '@angular/core';
 import {TreeNode} from 'primeng/api';
 import {firstValueFrom} from 'rxjs';
-import {Book} from '../data/book.model';
-import {Metadata} from '../data/metadata.model';
-import {Send} from '../data/send.model';
-import {Genre} from '../data/genre.model';
+import {Book} from '../models/book.model';
+import {Metadata} from '../models/metadata.model';
+import {Send} from '../models/send.model';
+import {Genre} from '../models/genre.model';
 import {RefreshState} from '../models/refresh-state';
 
 @Injectable({providedIn: 'root'})
