@@ -24,9 +24,9 @@
   --color-dialog: var(--color-panel-background);
   --color-dialog-active-background: slategrey;
   --color-dialog-active-border: 1px solid blanchedalmond;
-  --color-dialog-active: black;
+  --color-dialog-active: var(--color-panel);
   --color-dialog-hover-background: #536878;
-  --color-dialog-hover: #363636;
+  --color-dialog-hover: var(--color-panel);
 
   --color-tree-hover: #09090B;
 
