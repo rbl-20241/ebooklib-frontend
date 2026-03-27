@@ -4,6 +4,7 @@ import {MenuItem} from 'primeng/api';
 import {SettingsService} from '../../services/settings.service';
 import {AboutService} from '../../services/about.service';
 import {LoginService} from '../../services/login.service';
+import {ProfileService} from '../../services/profile.service';
 
 @Component({
   selector: 'app-menu',
@@ -16,6 +17,7 @@ export class MenuComponent {
   private settingsService = inject(SettingsService);
   private aboutService = inject(AboutService);
   private loginService = inject(LoginService);
+  private profileService = inject(ProfileService);
 
   items = computed<MenuItem[]>(() => [
     { label: 'Aanmelden', icon: 'pi pi-sign-in', target: 'login' },
@@ -34,6 +36,9 @@ export class MenuComponent {
 
     if (item.target == 'login') {
       this.loginService.showLoginDialog.set(true);
+    }
+    if (item.target == 'profile') {
+      this.profileService.showProfileDialog.set(true);
     }
     else if (item.target == 'usersettings') {
       this.settingsService.showUserDialog.set(true);

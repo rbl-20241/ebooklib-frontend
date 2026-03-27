@@ -6,6 +6,7 @@ import {AboutDialog} from '../popup/aboutdialog/about.dialog';
 import {LoginDialog} from '../popup/logindialog/login.dialog';
 import {MainsettingsDialog} from '../popup/mainsettingsdialog/mainsettings.dialog';
 import {UsersettingsDialog} from '../popup/usersettingsdialog/usersettings.dialog';
+import {ProfileDialog} from '../popup/profile/profile.dialog';
 
 @Component({
   selector: 'app-top',
@@ -15,6 +16,7 @@ import {UsersettingsDialog} from '../popup/usersettingsdialog/usersettings.dialo
     MenuComponent,
     AboutDialog,
     LoginDialog,
+    ProfileDialog,
     MainsettingsDialog,
     UsersettingsDialog
   ],

@@ -29,11 +29,12 @@ export class LogonDialog {
   logonService = inject(LogonService);
   private fb = inject(FormBuilder);
 
-  displayLogonDialog = this.logonService.showLogon;
+  visible = this.logonService.showLogonDialog;
 
   logonForm = this.fb.nonNullable.group({
     username: ['', Validators.required],
-    password: ['', Validators.required]
+    password: ['', Validators.required],
+    role: ['USER']
   });
 
   async saveAccount() {
@@ -42,11 +43,11 @@ export class LogonDialog {
     await firstValueFrom(
       this.http.post('http://localhost:8080/account', payload)
     );
-    this.displayLogonDialog.set(false);
+    this.visible.set(false);
   }
 
   cancel() {
-    this.displayLogonDialog.set(false);
+    this.visible.set(false);
   }
 }
 

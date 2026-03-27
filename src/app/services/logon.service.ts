@@ -4,11 +4,11 @@ import {Injectable, signal} from '@angular/core';
   providedIn: 'root'
 })
 export class LogonService {
-  private showDialog = signal<boolean>(false);
-  showLogon = this.showDialog;
-
-  showLogonDialog() {
-    this.showDialog.set(true);
-  }
+  showLogonDialog = signal<boolean>(false);
+  // showLogon = this.showDialog;
+  //
+  // showLogonDialog() {
+  //   this.showDialog.set(true);
+  // }
 
 }

@@ -64,7 +64,7 @@ export class LoginDialog {
   }
 
   openCreateAccount() {
-    this.logonService.showLogonDialog();
+    this.logonService.showLogonDialog.set(true);
   }
 
   cancel() {
