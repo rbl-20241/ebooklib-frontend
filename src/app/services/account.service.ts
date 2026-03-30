@@ -12,6 +12,7 @@ export class AccountService {
 
   private activeAccount = signal<Account>(this.getDefaultAccount());
   isDefaultAccount = computed(() => this.activeAccount().username === this.DEFAULT_USER);
+  isAdminAccount = computed(() => this.activeAccount().role === 'ADMIN');
 
   private http = inject(HttpClient);
 
@@ -39,8 +40,8 @@ export class AccountService {
       this.http.get<Account>('http://localhost:8080/account/' + username));
   }
 
-  setActiveAccount(userName: string) {
-    this.getAccount(userName).then(account => {
+  async setActiveAccount(userName: string) {
+    await this.getAccount(userName).then(account => {
       this.activeAccount.set(account)
     });
   }
@@ -62,19 +63,14 @@ export class AccountService {
       password: account.password,
       role: account.role
     }
-    await firstValueFrom(
-      this.http.put('http://localhost:8080/account/' + this.getActiveId(), updateAccount)
+    const updatedAccount = await firstValueFrom(
+      this.http.put<Account>('http://localhost:8080/account/' + this.getActiveId(), updateAccount)
     );
+
+    this.activeAccount.set(updatedAccount);
   }
 
   getRoles(): Observable<Role[]> {
     return this.http.get<Role[]>('http://localhost:8080/account/roles');
   }
-
-  // async getAccount() {
-  //   return await firstValueFrom(
-  //     this.http.get<Account>('http://localhost:8080/account')
-  //   );
-  // }
-
 }

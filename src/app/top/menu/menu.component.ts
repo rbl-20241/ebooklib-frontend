@@ -20,7 +20,7 @@ export class MenuComponent {
     { label: 'Profiel bewerken', icon: 'pi pi-pen-to-square', target: 'profile', disabled: this.accountService.isDefaultAccount()},
     { label: 'Algemene instellingen', icon: 'pi pi-wrench', target: 'mainsettings' },
     { label: 'Gebruikersinstellingen', icon: 'pi pi-user-edit', target: 'usersettings' },
-    { label: 'Database verversen', icon: 'pi pi-refresh', target: 'refresh_db', disabled: !this.accountService.isDefaultAccount()},
+    { label: 'Database verversen', icon: 'pi pi-refresh', target: 'refresh_db', disabled: !this.accountService.isAdminAccount()},
     { divider: true },
     { label: 'Over', icon: 'pi pi-info-circle', target: 'about' }
   ]);

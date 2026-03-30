@@ -58,14 +58,6 @@ export class ProfileDialog implements OnInit {
     });
   }
 
-  // private loadAccountEffect = effect(() => {
-  //   const isVisible = this.visible();
-  //
-  //   if (isVisible) {
-  //     this.loadAccount();
-  //   }
-  // });
-
   async loadAccount() {
     const username = this.accountService.getActiveAccount().username;
     this.account = await this.accountService.getAccount(username);
