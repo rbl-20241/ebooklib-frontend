@@ -7,8 +7,8 @@ import {Ripple} from 'primeng/ripple';
 import {EbookService} from '../../services/ebook.service';
 import {SettingsService} from '../../services/settings.service';
 import {Send} from '../../models/send.model';
-import {MailService} from '../../services/mail.service';
-import {LoginService} from '../../services/login.service';
+import {AccountService} from '../../services/account.service';
+import {ButtonsService} from '../../services/buttons.service';
 
 @Component({
   selector: 'app-maildialog',
@@ -27,13 +27,13 @@ import {LoginService} from '../../services/login.service';
 })
 export class MailDialog {
 
-  private mailService = inject(MailService);
+  private buttonsService = inject(ButtonsService);
   private ebookService = inject(EbookService);
   private settingService = inject(SettingsService);
-  private loginService = inject(LoginService);
+  private accountService = inject(AccountService);
   private fb = inject(FormBuilder);
 
-  displayMailDialog = this.mailService.showMail;
+  visible = this.buttonsService.showMailDialog;
 
   mailForm = this.fb.nonNullable.group({
     mailTo: ['', Validators.required]
@@ -47,9 +47,8 @@ export class MailDialog {
     });
   }
 
-
   cancel() {
-    this.displayMailDialog.set(false);
+    this.visible.set(false);
   }
 
   getBookToMail() {
@@ -62,11 +61,11 @@ export class MailDialog {
 
     let send: Send = {
       id: id,
-      username: this.loginService.getActiveUser(),
+      username: this.accountService.getActiveAccount().username,
       to: this.mailForm.controls['mailTo'].value
     }
 
     this.ebookService.mailBook(send);
-    this.displayMailDialog.set(false);
+    this.visible.set(false);
   }
 }

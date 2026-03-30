@@ -3,15 +3,12 @@ import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Dialog} from 'primeng/dialog';
 import {Image} from 'primeng/image';
 import {Ripple} from 'primeng/ripple';
-import {HttpClient} from '@angular/common/http';
-import {LoginService} from '../../services/login.service';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {InputText} from 'primeng/inputtext';
 import {Password} from 'primeng/password';
-import {LogonDialog} from '../logondialog/logon.dialog';
-import {LogonService} from '../../services/logon.service';
-import {Account} from '../../models/account.model';
-import {firstValueFrom} from 'rxjs';
+import LogonDialog from '../logondialog/logon.dialog';
+import {AccountService} from '../../services/account.service';
+import {MenuService} from '../../services/menu.service';
 
 @Component({
   selector: 'app-logindialog',
@@ -31,23 +28,21 @@ import {firstValueFrom} from 'rxjs';
   styleUrl: './login.dialog.css',
 })
 export class LoginDialog {
-  private http = inject(HttpClient);
-  loginService = inject(LoginService);
-  logonService = inject(LogonService);
+  menuService = inject(MenuService);
+  accountService = inject(AccountService);
   private fb = inject(FormBuilder);
 
-  visible = this.loginService.showLoginDialog;
+  visible = this.menuService.showLoginDialog;
 
   loginForm = this.fb.nonNullable.group({
     username: ['', Validators.required],
     password: ['', Validators.required]
   });
 
-  async getAccount() {
+  async getCurrentAccount() {
     const username = this.loginForm.controls['username'].value;
-    const account =
-      await firstValueFrom(
-        this.http.get<Account>('http://localhost:8080/account/' + username));
+    const account = await this.accountService.getAccount(username);
+    console.log(account);
 
     const isOk =
       this.loginForm.controls['username'].value == account.username &&
@@ -55,7 +50,7 @@ export class LoginDialog {
 
     if (isOk) {
       this.visible.set(false);
-      this.loginService.setActiveUser(account.username);
+      this.accountService.setActiveAccount(account.username);
     } else {
       console.log("Kan niet aanmelden");
       console.log("Username: " + this.loginForm.controls['username'].value + " " + account.username);
@@ -64,7 +59,7 @@ export class LoginDialog {
   }
 
   openCreateAccount() {
-    this.logonService.showLogonDialog.set(true);
+    this.menuService.showLogonDialog.set(true);
   }
 
   cancel() {

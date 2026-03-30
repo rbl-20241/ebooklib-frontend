@@ -1,8 +1,8 @@
-import {inject, Injectable, signal} from '@angular/core';
+import {inject, Injectable} from '@angular/core';
 import {firstValueFrom} from 'rxjs';
 import {UserSettings} from '../models/usersettings.model';
 import {HttpClient} from '@angular/common/http';
-import {LoginService} from './login.service';
+import {AccountService} from './account.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +10,10 @@ import {LoginService} from './login.service';
 export class SettingsService {
   private http = inject(HttpClient);
 
-  showUserDialog = signal<boolean>(false);
-  showMainDialog = signal<boolean>(false);
-  showYesNoDbDialog = signal<boolean>(false);
-  showRefreshingDbDialog = signal<boolean>(false);
-  private loginService = inject(LoginService);
+  private accountService  = inject(AccountService);
 
   async getUserSettings() {
-    const username = this.loginService.getActiveUser();
+    const username = this.accountService.getActiveAccount().username;
     return await firstValueFrom(
       this.http.get<UserSettings>('http://localhost:8080/usersettings/' + username)
     );

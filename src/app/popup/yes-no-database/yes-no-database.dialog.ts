@@ -1,10 +1,10 @@
 import {Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {SettingsService} from '../../services/settings.service';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {EbookService} from '../../services/ebook.service';
 import {RefresingDbDialog} from '../refresing-db-dialog/refresing-db-dialog';
+import {MenuService} from '../../services/menu.service';
 
 @Component({
   selector: 'app-yes-no-database',
@@ -20,10 +20,10 @@ import {RefresingDbDialog} from '../refresing-db-dialog/refresing-db-dialog';
   styleUrl: './yes-no-database.dialog.css',
 })
 export class YesNoDatabaseDialog {
-  private settingsService = inject(SettingsService);
+  private menuService = inject(MenuService);
   private ebookService = inject(EbookService);
-  visibleYesNoDb = this.settingsService.showYesNoDbDialog;
-  visibleRefreshingDb = this.settingsService.showRefreshingDbDialog;
+  visibleYesNoDb = this.menuService.showYesNoDbDialog;
+  visibleRefreshingDb = this.menuService.showRefreshingDbDialog;
 
   cancel() {
     this.visibleYesNoDb.set(false);

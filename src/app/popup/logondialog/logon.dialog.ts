@@ -1,13 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
-import {LogonService} from '../../services/logon.service';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Dialog} from 'primeng/dialog';
 import {InputText} from 'primeng/inputtext';
 import {Password} from 'primeng/password';
 import {Ripple} from 'primeng/ripple';
-import {firstValueFrom} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {AccountService} from '../../services/account.service';
+import {Account} from '../../models/account.model';
+import {MenuService} from '../../services/menu.service';
 
 @Component({
   selector: 'app-logondialog',
@@ -24,32 +24,47 @@ import {HttpClient} from '@angular/common/http';
   templateUrl: './logon.dialog.html',
   styleUrl: './logon.dialog.css',
 })
-export class LogonDialog {
-  private http = inject(HttpClient);
-  logonService = inject(LogonService);
+class LogonDialog {
+  menuService = inject(MenuService);
+  accountService = inject(AccountService);
   private fb = inject(FormBuilder);
 
-  visible = this.logonService.showLogonDialog;
+  visible = this.menuService.showLogonDialog;
 
   logonForm = this.fb.nonNullable.group({
     username: ['', Validators.required],
-    password: ['', Validators.required],
-    role: ['USER']
+    password: ['', Validators.required]
   });
 
   async saveAccount() {
-    console.log("saveAccount");
-    const payload = this.logonForm.value;
-    await firstValueFrom(
-      this.http.post('http://localhost:8080/account', payload)
-    );
+    const account: Account = {
+      id: this.getId(),
+      username: this.getUsername(),
+      password: this.getPassword(),
+      role: "USER"
+    }
+    await this.accountService.saveAccount(account);
     this.visible.set(false);
+  }
+
+  getId() {
+    return this.accountService.getActiveId();
+  }
+
+  getUsername() {
+    return this.logonForm.value.username ?? '';
+  }
+
+  getPassword() {
+    return this.logonForm.value.password ?? '';
   }
 
   cancel() {
     this.visible.set(false);
   }
 }
+
+export default LogonDialog
 
 
 

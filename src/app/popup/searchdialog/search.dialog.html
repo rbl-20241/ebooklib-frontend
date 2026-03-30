@@ -3,8 +3,8 @@
   appendTo="body"
   [modal]="true"
   closable="false"
-  [visible]="displaySearchDialog()"
-  (visibleChange)="displaySearchDialog.set($event)"
+  [visible]="visible()"
+  (visibleChange)="visible.set($event)"
   (onHide)="cancel()"
 >
 

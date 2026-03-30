@@ -1,6 +1,6 @@
 export interface Account {
-  accountId: string;
+  id: string,
   username: string;
   password: string;
-  role: string;
+  role: 'ADMIN' | 'USER';
 }

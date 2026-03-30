@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {SettingsService} from '../../services/settings.service';
 import {InputText} from 'primeng/inputtext';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
@@ -8,6 +7,7 @@ import {Ripple} from 'primeng/ripple';
 import {firstValueFrom} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 import {MainSettings} from '../../models/mainsettings.model';
+import {MenuService} from '../../services/menu.service';
 
 @Component({
   selector: 'app-mainsettingsdialog',
@@ -27,10 +27,10 @@ import {MainSettings} from '../../models/mainsettings.model';
 export class MainsettingsDialog {
 
   private http = inject(HttpClient);
-  private settingsService = inject(SettingsService);
+  private menuService = inject(MenuService);
   private fb = inject(FormBuilder);
 
-  visible = this.settingsService.showMainDialog;
+  visible = this.menuService.showMainDialog;
 
   mainSettingsForm = this.fb.nonNullable.group({
     map: ['', Validators.required],

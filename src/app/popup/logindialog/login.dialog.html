@@ -20,7 +20,7 @@
         <p class="dialog-title">eBook Library</p>
 
         <div>
-          <form [formGroup]="loginForm" (ngSubmit)="getAccount()">
+          <form [formGroup]="loginForm" (ngSubmit)="getCurrentAccount()">
             <div class="field dialog-input">
               <label for="username" class="block">Gebruikersnaam:</label>
               <input type="text" pInputText formControlName="username" />
@@ -67,7 +67,7 @@
           pRipple
           type="button"
           class="dialog-button"
-          (click)="getAccount()"
+          (click)="getCurrentAccount()"
         >
           <i class="pi pi-check" pButtonIcon></i>
           <span pButtonLabel>Ok</span>

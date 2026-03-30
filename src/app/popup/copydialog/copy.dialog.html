@@ -4,8 +4,8 @@
   [modal]="true"
   closable="false"
   (onShow)="onShowDialog()"
-  [visible]="displayCopyDialog()"
-  (visibleChange)="displayCopyDialog.set($event)"
+  [visible]="visible()"
+  (visibleChange)="visible.set($event)"
   (onHide)="cancel()"
 >
   <div class="dialog-form">

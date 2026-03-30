@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {SettingsService} from '../../services/settings.service';
 import {InputText} from 'primeng/inputtext';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
@@ -10,7 +9,8 @@ import {HttpClient} from '@angular/common/http';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
 import {UserSettings} from '../../models/usersettings.model';
 import {Password} from 'primeng/password';
-import {LoginService} from '../../services/login.service';
+import {AccountService} from '../../services/account.service';
+import {MenuService} from '../../services/menu.service';
 
 @Component({
   selector: 'app-usersettingsdialog',
@@ -32,11 +32,11 @@ import {LoginService} from '../../services/login.service';
 export class UsersettingsDialog {
 
   private http = inject(HttpClient);
-  private settingsService = inject(SettingsService);
-  private loginService = inject(LoginService);
+  private menuService = inject(MenuService);
+  private accountService = inject(AccountService);
   private fb = inject(FormBuilder);
 
-  visible = this.settingsService.showUserDialog;
+  visible = this.menuService.showUserDialog;
 
   userSettingsForm = this.fb.nonNullable.group({
     searchUrl: ['', Validators.required],
@@ -49,15 +49,15 @@ export class UsersettingsDialog {
   });
 
   getTitle() {
-    const activeUser = this.loginService.activeUser();
-    if (activeUser === this.loginService.DEFAULT_USER) {
+    const activeUser = this.accountService.getActiveAccount().username;
+    if (activeUser === this.accountService.DEFAULT_USER) {
       return 'Standaardinstellingen';
     }
     return 'Instellingen voor ' + activeUser;
   }
 
   onShowDialog() {
-    const activeUser = this.loginService.getActiveUser();
+    const activeUser = this.accountService.getActiveAccount().username;
     this.http.get<UserSettings>('http://localhost:8080/usersettings/' + activeUser)
       .subscribe({
         next: settings => {
@@ -82,7 +82,7 @@ export class UsersettingsDialog {
   }
 
   async saveSettings() {
-    const activeUser = this.loginService.getActiveUser();
+    const activeUser = this.accountService.getActiveAccount().username;
     const payload = this.userSettingsForm.value;
     await firstValueFrom(
       this.http.post('http://localhost:8080/usersettings/' + activeUser, payload)

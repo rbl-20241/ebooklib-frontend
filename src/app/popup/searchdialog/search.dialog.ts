@@ -6,9 +6,9 @@ import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {HttpParams} from '@angular/common/http';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
-import {SearchService} from '../../services/search.service';
 import {RadioButton} from 'primeng/radiobutton';
 import {EbookService} from '../../services/ebook.service';
+import {ButtonsService} from '../../services/buttons.service';
 
 @Component({
   selector: 'app-searchdialog',
@@ -30,11 +30,11 @@ import {EbookService} from '../../services/ebook.service';
 })
 export class SearchDialog {
 
-  private searchService = inject(SearchService);
+  private buttonsService = inject(ButtonsService);
   private ebookService = inject(EbookService);
   private fb = inject(FormBuilder);
 
-  displaySearchDialog = this.searchService.showSearch;
+  visible = this.buttonsService.showSearchDialog;
 
   whereToSearchPlaces = [
     { label: 'Titels', value: 'titles'},
@@ -54,7 +54,7 @@ export class SearchDialog {
   });
 
   cancel() {
-    this.displaySearchDialog.set(false);
+    this.visible.set(false);
   }
 
   async search() {
@@ -65,7 +65,7 @@ export class SearchDialog {
       .set('q', searchTerm)
       .set('exact', isExact);
     await this.ebookService.search(where, params);
-    this.displaySearchDialog.set(false);
+    this.visible.set(false);
     if (where == 'descriptions') {
       this.ebookService.searchArgument.set(searchTerm);
     } else {

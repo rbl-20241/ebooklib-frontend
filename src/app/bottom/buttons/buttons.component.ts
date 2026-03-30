@@ -2,10 +2,8 @@ import {Component, inject} from '@angular/core';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {SettingsService} from '../../services/settings.service';
-import {CopyService} from '../../services/copy.service';
 import {EbookService} from '../../services/ebook.service';
-import {MailService} from '../../services/mail.service';
-import {SearchService} from '../../services/search.service';
+import {ButtonsService} from '../../services/buttons.service';
 
 @Component({
   selector: 'app-buttons',
@@ -20,9 +18,7 @@ import {SearchService} from '../../services/search.service';
 })
 export class ButtonsComponent {
   private settingsService = inject(SettingsService);
-  private copyService = inject(CopyService);
-  private mailService = inject(MailService);
-  private searchService = inject(SearchService);
+  private buttonsService = inject(ButtonsService);
   private ebookService = inject(EbookService);
 
   async searchWithBrowser() {
@@ -39,15 +35,15 @@ export class ButtonsComponent {
   }
 
   onClickCopyBook() {
-    this.copyService.showCopyDialog();
+    this.buttonsService.showCopyDialog();
   }
 
   onClickMailBook() {
-    this.mailService.showMailDialog();
+    this.buttonsService.showMailDialog();
   }
 
   onClickSearch() {
-    this.searchService.showSearchDialog();
+    this.buttonsService.showSearchDialog();
   }
 
   isButtonDisabled() {

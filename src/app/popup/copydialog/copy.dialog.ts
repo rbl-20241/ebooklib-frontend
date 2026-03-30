@@ -3,12 +3,12 @@ import {Dialog} from 'primeng/dialog';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {SettingsService} from '../../services/settings.service';
-import {CopyService} from '../../services/copy.service';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {EbookService} from '../../services/ebook.service';
 import {InputText} from 'primeng/inputtext';
 import {Send} from '../../models/send.model';
-import {LoginService} from '../../services/login.service';
+import {AccountService} from '../../services/account.service';
+import {ButtonsService} from '../../services/buttons.service';
 
 @Component({
   selector: 'app-copydialog',
@@ -27,13 +27,13 @@ import {LoginService} from '../../services/login.service';
 })
 export class CopyDialog {
 
-  private copyService = inject(CopyService);
+  private buttonsService = inject(ButtonsService);
   private ebookService = inject(EbookService);
   private settingService = inject(SettingsService);
-  private loginService = inject(LoginService);
+  private accountService = inject(AccountService);
   private fb = inject(FormBuilder);
 
-  displayCopyDialog = this.copyService.showCopy;
+  visible = this.buttonsService.showCopyDialog;
 
   copyForm = this.fb.nonNullable.group({
     copyTo: ['', Validators.required]
@@ -48,7 +48,7 @@ export class CopyDialog {
   }
 
   cancel() {
-    this.displayCopyDialog.set(false);
+    this.visible.set(false);
   }
 
   getBookToCopy() {
@@ -61,11 +61,11 @@ export class CopyDialog {
 
     let send: Send = {
       id: id,
-      username: this.loginService.getActiveUser(),
+      username: this.accountService.getActiveAccount().username,
       to: this.copyForm.controls['copyTo'].value
     }
 
     this.ebookService.copyBook(send);
-    this.displayCopyDialog.set(false);
+    this.visible.set(false);
   }
 }

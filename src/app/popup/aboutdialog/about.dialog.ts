@@ -1,13 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
-import {AboutService} from '../../services/about.service';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
 import {TableModule} from 'primeng/table';
 import {Image} from 'primeng/image';
 import {HttpClient} from '@angular/common/http';
 import {About} from '../../models/about.model';
-import {LoginService} from '../../services/login.service';
+import {AccountService} from '../../services/account.service';
+import {MenuService} from '../../services/menu.service';
 
 @Component({
   selector: 'app-aboutdialog',
@@ -24,21 +24,25 @@ import {LoginService} from '../../services/login.service';
   styleUrl: './about.dialog.css',
 })
 export class AboutDialog {
-  aboutService = inject(AboutService);
-  loginService = inject(LoginService);
+  menuService = inject(MenuService);
+  accountService = inject(AccountService);
   private http = inject(HttpClient);
   user: string | undefined;
   version: string | undefined;
   operatingSystem: string | undefined;
   copyright: string | undefined;
 
-  visible = this.aboutService.showAboutDialog;
+  visible = this.menuService.showAboutDialog;
+
+  getActiveUser() {
+    return this.accountService.getActiveAccount().username;
+  }
 
   onShowDialog() {
     this.http.get<About>('http://localhost:8080/about')
       .subscribe({
         next: about => {
-          this.user = this.loginService.getActiveUser();
+          this.user = this.getActiveUser();
           this.version = about.version;
           this.operatingSystem = about.operatingSystem;
           this.copyright = about.copyright;

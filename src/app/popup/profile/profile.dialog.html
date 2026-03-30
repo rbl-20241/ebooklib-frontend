@@ -13,10 +13,10 @@
         <p class="profile-title">Profiel bewerken</p>
 
         <div>
-          <form [formGroup]="profileForm" (ngSubmit)="saveAccount()">
+          <form [formGroup]="profileForm" (ngSubmit)="updateAccount()">
             <div class="field dialog-input">
               <label for="username" class="block">Gebruikersnaam:</label>
-              <input type="text" pInputText formControlName="username" [disabled]="true"/>
+              <input type="text" pInputText formControlName="username"/>
             </div>
 
             <div class="field dialog-input">
@@ -37,6 +37,20 @@
               }
             </div>
 
+            <p-select
+              [options]="roles"
+              formControlName="role"
+              placeholder="Selecteer een rol">
+
+              <ng-template let-role pTemplate="item">
+                {{ role === 'ADMIN' ? 'Administrator' : 'Gebruiker' }}
+              </ng-template>
+
+              <ng-template let-role pTemplate="selectedItem">
+                {{ role === 'ADMIN' ? 'Administrator' : 'Gebruiker' }}
+              </ng-template>
+
+            </p-select>
           </form>
         </div>
       </div>
@@ -58,7 +72,7 @@
           pRipple
           type="button"
           class="dialog-button"
-          (click)="saveAccount()"
+          (click)="updateAccount()"
         >
           <i class="pi pi-check" pButtonIcon></i>
           <span pButtonLabel>Ok</span>
