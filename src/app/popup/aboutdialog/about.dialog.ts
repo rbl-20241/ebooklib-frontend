@@ -29,6 +29,7 @@ export class AboutDialog {
   private http = inject(HttpClient);
   user: string | undefined;
   version: string | undefined;
+  role: string | undefined;
   operatingSystem: string | undefined;
   copyright: string | undefined;
 
@@ -38,17 +39,23 @@ export class AboutDialog {
     return this.accountService.getActiveAccount().username;
   }
 
+  getActiveRole() {
+    return this.accountService.getActiveAccount().role;
+  }
+
   onShowDialog() {
     this.http.get<About>('http://localhost:8080/about')
       .subscribe({
         next: about => {
           this.user = this.getActiveUser();
+          this.role = this.getActiveRole().toLowerCase();
           this.version = about.version;
           this.operatingSystem = about.operatingSystem;
           this.copyright = about.copyright;
         },
         error: () => {
           this.user = "Nobody";
+          this.role = "none";
           this.operatingSystem = "Unknown";
           this.version = "0.0.0";
           this.copyright = "&copy";
