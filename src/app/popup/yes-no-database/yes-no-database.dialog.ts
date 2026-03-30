@@ -33,8 +33,6 @@ export class YesNoDatabaseDialog {
     this.visibleYesNoDb.set(false);
     this.visibleRefreshingDb.set(true);
     await this.ebookService.refreshDatabase();
-    // console.log("hide dialog");
-    // this.settingsService.hideRefreshingDatabaseDialog();
   }
 
 }

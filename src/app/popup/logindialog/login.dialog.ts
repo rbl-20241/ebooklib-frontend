@@ -42,7 +42,6 @@ export class LoginDialog {
   async getCurrentAccount() {
     const username = this.loginForm.controls['username'].value;
     const account = await this.accountService.getAccount(username);
-    console.log(account);
 
     const isOk =
       this.loginForm.controls['username'].value == account.username &&
