@@ -35,15 +35,15 @@ export class ButtonsComponent {
   }
 
   onClickCopyBook() {
-    this.buttonsService.showCopyDialog();
+    this.buttonsService.showCopyDialog.set(true);
   }
 
   onClickMailBook() {
-    this.buttonsService.showMailDialog();
+    this.buttonsService.showMailDialog.set(true);
   }
 
   onClickSearch() {
-    this.buttonsService.showSearchDialog();
+    this.buttonsService.showSearchDialog.set(true);
   }
 
   isButtonDisabled() {
