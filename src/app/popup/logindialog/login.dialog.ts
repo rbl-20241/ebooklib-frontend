@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, effect, inject} from '@angular/core';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Dialog} from 'primeng/dialog';
 import {Image} from 'primeng/image';
@@ -33,6 +33,18 @@ export class LoginDialog {
   private fb = inject(FormBuilder);
 
   visible = this.menuService.showLoginDialog;
+
+  constructor() {
+    effect(() => {
+      if (this.visible()) {
+        this.loginForm.reset({
+          username: '',
+          password: ''
+        });
+        this.accountService.errorMessage.set('');
+      }
+    });
+  }
 
   loginForm = this.fb.nonNullable.group({
     username: ['', Validators.required],

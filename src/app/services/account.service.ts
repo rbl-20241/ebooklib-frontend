@@ -127,7 +127,6 @@ export class AccountService {
     const updatedAccount = await firstValueFrom(
       this.http.put<Account>('http://localhost:8080/account/' + this.getActiveId(), updateAccount)
     );
-    console.log('updatedAccount ', updatedAccount);
 
     this.activeAccount.set(updatedAccount);
   }

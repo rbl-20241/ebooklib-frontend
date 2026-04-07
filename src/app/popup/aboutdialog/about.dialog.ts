@@ -40,7 +40,7 @@ export class AboutDialog {
   }
 
   getActiveRole() {
-    return this.accountService.getActiveAccount().role;
+    return this.accountService.getActiveAccount().role === 'ADMIN' ? 'Administrator' : 'Gebruiker';
   }
 
   onShowDialog() {
@@ -48,7 +48,7 @@ export class AboutDialog {
       .subscribe({
         next: about => {
           this.user = this.getActiveUser();
-          this.role = this.getActiveRole().toLowerCase();
+          this.role = this.getActiveRole();
           this.version = about.version;
           this.operatingSystem = about.operatingSystem;
           this.copyright = about.copyright;

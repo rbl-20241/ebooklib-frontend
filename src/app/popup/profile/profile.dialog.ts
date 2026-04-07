@@ -123,7 +123,6 @@ export class ProfileDialog implements OnInit {
   }
 
   getRole(): Role {
-    console.log('Rol: ', this.profileForm.value.role as Role);
     return this.profileForm.value.role as Role;
   }
 
