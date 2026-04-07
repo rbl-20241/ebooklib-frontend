@@ -13,23 +13,22 @@
         <p class="logon-title">Nieuw account voor eBook Library</p>
 
         <div>
-          <form [formGroup]="logonForm" (ngSubmit)="saveAccount()">
+          <form [formGroup]="logonForm">
             <div class="field dialog-input">
               <label for="username" class="block">Gebruikersnaam:</label>
               <input type="text" pInputText formControlName="username" />
-              @if(logonForm.get('username')?.invalid && logonForm.get('username')?.dirty) {
-                <small class="p-error block">Gebruikersnaam is verplicht</small>
-              }
             </div>
 
             <div class="field dialog-input">
               <label for="password" class="block">Wachtwoord:</label><br/>
               <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
               </p-password>
-              @if(logonForm.get('password')?.invalid && logonForm.get('password')?.dirty) {
-                <small class="p-error block">Wachtwoord is verplicht</small>
-              }
             </div>
+
+            @if(accountService.errorMessage()) {
+              <p class="error">{{ accountService.errorMessage() }}</p>
+            }
+
           </form>
         </div>
       </div>
@@ -49,7 +48,7 @@
         <button
           pButton
           pRipple
-          type="button"
+          type="submit"
           class="dialog-button"
           (click)="saveAccount()"
         >

@@ -110,10 +110,8 @@ export class EbookService {
     )
   }
 
-  async mailBook(payload: Send) {
-    await firstValueFrom(
-      this.http.post('http://localhost:8080/book/mail', payload)
-    )
+  mailBook(send: Send) {
+    return this.http.post('http://localhost:8080/book/mail', send);
   }
 
   async search(where: string | undefined, params: HttpParams) {

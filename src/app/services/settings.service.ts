@@ -1,4 +1,4 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable, signal} from '@angular/core';
 import {firstValueFrom} from 'rxjs';
 import {UserSettings} from '../models/usersettings.model';
 import {HttpClient} from '@angular/common/http';
@@ -11,6 +11,9 @@ export class SettingsService {
   private http = inject(HttpClient);
 
   private accountService  = inject(AccountService);
+  errorMessageMain = signal<string | null>(null);
+  errorMessageUser = signal<string | null>(null);
+
 
   async getUserSettings() {
     const username = this.accountService.getActiveAccount().username;

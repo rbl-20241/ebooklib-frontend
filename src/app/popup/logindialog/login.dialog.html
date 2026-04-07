@@ -24,18 +24,12 @@
             <div class="field dialog-input">
               <label for="username" class="block">Gebruikersnaam:</label>
               <input type="text" pInputText formControlName="username" />
-              @if(loginForm.get('username')?.invalid && loginForm.get('username')?.dirty) {
-                <small class="p-error block">Gebruikersnaam is verplicht</small>
-              }
             </div>
 
             <div class="field dialog-input">
               <label for="password" class="block">Wachtwoord:</label><br/>
               <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
               </p-password>
-              @if(loginForm.get('password')?.invalid && loginForm.get('password')?.dirty) {
-                <small class="p-error block">Wachtwoord is verplicht</small>
-              }
             </div>
           </form>
 
@@ -48,6 +42,11 @@
             </button>
           </div>
         </div>
+
+        @if(accountService.errorMessage()) {
+          <p class="error">{{ accountService.errorMessage() }}</p>
+        }
+
       </div>
 
       <div class="login-dialog-button">

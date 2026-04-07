@@ -46,6 +46,10 @@
   --dialog-button-active-border: var(--color-dialog-active-border);
   --dialog-button-hover-background-color: var(--color-dialog-hover-background);
   --dialog-button-hover-color: var(--color-dialog-hover);
+  --dialog-select-background-color: var(--color-dialog);
+  --dialog-select-color: var(--color-dialog-background);
+  --dialog-select-panel-background-color: var(--color-dialog-active-background);
+  --dialog-select-panel-color: var(--color-dialog-active);
 
   --form-background-color: var(--color-dialog-background);
   --form-color: var(--color-dialog);
@@ -423,4 +427,33 @@ body {
 
 .p-splitter-gutter {
   background-color: var(--panel-background-color) !important;
+}
+
+.error {
+  color: red;
+  margin-left: 0.4rem;
+}
+
+p-select {
+  background: var(--dialog-select-background-color) !important;
+}
+
+p-select .p-select-label {
+  color: var(--dialog-select-color) !important;
+
+}
+
+.role-select-panel {
+  background: var(--dialog-select-panel-background-color) !important;
+  color: var(--dialog-select-panel-color) !important;
+  border: 1px solid #374151;
+}
+
+.role-select-panel .p-select-option {
+  background: var(--dialog-select-panel-background-color) !important;
+  color: var(--dialog-select-panel-color) !important;
+}
+
+.role-select-panel .p-select-option:hover {
+  background: var(--dialog-select-background-color) !important;
 }

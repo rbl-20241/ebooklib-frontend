@@ -14,10 +14,11 @@
       <div class="field">
         <label for="mailTo" class="block">"{{ getBookToMail() }}" kopi&euml;ren naar:</label>
         <input type="text" pInputText formControlName="mailTo"/>
-        @if (mailForm.get('mailTo')?.invalid && mailForm.get('mailTo')?.dirty) {
-          <small class="p-error block">Foldernaam is verplicht</small>
-        }
       </div>
+
+      @if(errorMessage()) {
+        <p class="error">{{ errorMessage() }}</p>
+      }
 
       <div class="dialog-button-group">
         <button
@@ -36,7 +37,6 @@
           pRipple
           type="submit"
           class="dialog-button"
-          (click)="mailBook()"
         >
           <i class="pi pi-send" pButtonIcon></i>
           <span pButtonLabel>Mailen</span>

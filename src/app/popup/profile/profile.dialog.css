@@ -21,7 +21,8 @@
 }
 
 .profile-dialog-button {
-  align-self: flex-end;
+  display: flex;
+  justify-content: flex-end;
   margin-top: 20px;
 }
 

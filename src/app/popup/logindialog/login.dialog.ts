@@ -41,19 +41,12 @@ export class LoginDialog {
 
   async getCurrentAccount() {
     const username = this.loginForm.controls['username'].value;
-    const account = await this.accountService.getAccount(username);
+    const password = this.loginForm.controls['password'].value;
+    const account = await this.accountService.getAccountWithPassword(username, password);
 
-    const isOk =
-      this.loginForm.controls['username'].value == account.username &&
-      this.loginForm.controls['password'].value == account.password;
-
-    if (isOk) {
+    if (!this.accountService.errorMessage()) {
       this.visible.set(false);
-      this.accountService.setActiveAccount(account.username);
-    } else {
-      console.log("Kan niet aanmelden");
-      console.log("Username: " + this.loginForm.controls['username'].value + " " + account.username);
-      console.log("Password: " + this.loginForm.controls['password'].value + " " + account.password);
+      await this.accountService.setActiveAccount(account.username);
     }
   }
 
@@ -63,6 +56,7 @@ export class LoginDialog {
 
   cancel() {
     this.visible.set(false);
+    this.accountService.errorMessage.set('');
   }
 
 }

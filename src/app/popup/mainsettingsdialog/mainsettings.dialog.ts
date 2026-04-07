@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {InputText} from 'primeng/inputtext';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
-import {firstValueFrom} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {catchError, EMPTY} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {MainSettings} from '../../models/mainsettings.model';
 import {MenuService} from '../../services/menu.service';
 
@@ -30,6 +30,7 @@ export class MainsettingsDialog {
   private menuService = inject(MenuService);
   private fb = inject(FormBuilder);
 
+  errorMessage = signal<string | null>(null);
   visible = this.menuService.showMainDialog;
 
   mainSettingsForm = this.fb.nonNullable.group({
@@ -39,8 +40,8 @@ export class MainsettingsDialog {
   onShowDialog() {
     this.http.get<MainSettings>('http://localhost:8080/mainsettings')
       .subscribe({
-        next: settings => {
-          this.mainSettingsForm.patchValue(settings);
+        next: mainSettings => {
+          this.mainSettingsForm.patchValue(mainSettings);
         },
         error: () => {
           this.mainSettingsForm.patchValue({
@@ -52,14 +53,29 @@ export class MainsettingsDialog {
 
   cancel() {
     this.visible.set(false);
+    this.errorMessage.set('');
   }
 
-  async saveSettings() {
+  saveSettings() {
+    this.errorMessage.set(null);
     const payload = this.mainSettingsForm.value;
-    await firstValueFrom(
-      this.http.post('http://localhost:8080/mainsettings', payload)
-    );
-    this.visible.set(false);
-  }
 
+    this.http.post('http://localhost:8080/mainsettings', payload).pipe(
+      catchError((httpError: HttpErrorResponse) => {
+        if (httpError.error?.message) {
+          this.errorMessage.set(httpError.error.message);
+        } else {
+          this.errorMessage.set("De ingevoerde folder bestaat niet.");
+        }
+
+        console.log(`${httpError.status}: ${httpError.error?.message}`);
+        return EMPTY;
+      })
+    ).subscribe({
+      next: () => {
+        this.visible.set(false);
+      }
+    });
+
+  }
 }

@@ -43,8 +43,12 @@ class LogonDialog {
       password: this.getPassword(),
       role: "USER"
     }
-    await this.accountService.saveAccount(account);
-    this.visible.set(false);
+    try {
+      await this.accountService.saveAccount(account);
+      this.visible.set(false);
+    } catch(error) {
+      console.log('Opslaan logon mislukt.')
+    }
   }
 
   getId() {
@@ -61,6 +65,7 @@ class LogonDialog {
 
   cancel() {
     this.visible.set(false);
+    this.accountService.errorMessage.set('');
   }
 }
 

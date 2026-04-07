@@ -1,4 +1,4 @@
-import {Component, effect, inject, Injector, OnInit, runInInjectionContext} from '@angular/core';
+import {Component, effect, inject, Injector, OnInit, runInInjectionContext, signal} from '@angular/core';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Dialog} from 'primeng/dialog';
 import {Select} from 'primeng/select';
@@ -10,6 +10,11 @@ import {AccountService} from '../../services/account.service';
 import {Role} from '../../models/role.model';
 import {Account} from '../../models/account.model';
 import {MenuService} from '../../services/menu.service';
+
+interface RoleOption {
+  label: string;
+  value: Role;
+}
 
 @Component({
   selector: 'app-profiledialog',
@@ -32,10 +37,10 @@ export class ProfileDialog implements OnInit {
   menuService = inject(MenuService);
   accountService = inject(AccountService);
   private fb = inject(FormBuilder);
-  account?: Account;
-  roles: Role[] = [];
+  roles: RoleOption[] = [];
   username = this.accountService.getActiveAccount().username;
   role = this.accountService.getActiveAccount().role;
+  errorMessage = signal<string | null>(null);
 
   visible = this.menuService.showProfileDialog;
 
@@ -52,6 +57,11 @@ export class ProfileDialog implements OnInit {
         const isVisible = this.visible();
 
         if (isVisible) {
+          this.profileForm.patchValue({
+            password_old: '',
+            password: '',
+          });
+
           this.loadAccount();
         }
       });
@@ -59,24 +69,45 @@ export class ProfileDialog implements OnInit {
   }
 
   async loadAccount() {
+    this.errorMessage.set('');
     const username = this.accountService.getActiveAccount().username;
-    this.account = await this.accountService.getAccount(username);
+    const account = await this.accountService.getAccount(username);
 
     this.profileForm.patchValue({
-      username: this.account.username,
-      role: this.account.role
+      username: account.username,
+      role: account.role
     });
   }
 
   async updateAccount() {
-    const account: Account = {
+    const oldAccount = this.accountService.getActiveAccount();
+    const newAccount: Account = {
       id: this.getId(),
-      username: this.getUsername(),
+      username: oldAccount.username,
       password: this.getPassword(),
       role: this.getRole()
     }
-    await this.accountService.updateAccount(account);
+
+    await this.accountService.updateAccount(oldAccount, newAccount);
+    await this.accountService.setActiveAccount(newAccount.username);
+    this.closeDialog();
+
+
+    // if (this.account?.password !== this.profileForm.value.password_old) {
+    //   this.errorMessage.set('Het oude wachtwoord komt niet overeen met het huidige wachtwoord.')
+    // } else {
+    //   await this.accountService.updateAccount(oldAccount, newAccount);
+    //   this.closeDialog();
+    // }
+  }
+
+  closeDialog() {
     this.visible.set(false);
+    this.profileForm.patchValue({
+      password_old: '',
+      password: ''
+    });
+    this.errorMessage.set('');
   }
 
   getId() {
@@ -92,15 +123,25 @@ export class ProfileDialog implements OnInit {
   }
 
   getRole(): Role {
+    console.log('Rol: ', this.profileForm.value.role as Role);
     return this.profileForm.value.role as Role;
   }
 
   cancel() {
-    this.visible.set(false);
+    this.closeDialog();
   }
 
   ngOnInit(): void {
-    this.accountService.getRoles().subscribe(roles => this.roles = roles);
+    this.accountService.getRoles().subscribe(roles => {
+      this.roles = roles.map(r => ({
+        label: r === 'ADMIN' ? 'Administrator' : 'Gebruiker',
+        value: r
+      }));
+
+      this.profileForm.patchValue({
+        role: this.accountService.getActiveAccount().role
+      });
+    });
   }
 
 }

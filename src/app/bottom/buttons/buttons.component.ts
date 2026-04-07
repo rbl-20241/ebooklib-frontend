@@ -49,6 +49,4 @@ export class ButtonsComponent {
   isButtonDisabled() {
     return this.ebookService.isButtonDisabled();
   }
-
-
 }

@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component, inject, signal} from '@angular/core';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Dialog} from 'primeng/dialog';
 import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
@@ -9,6 +9,7 @@ import {SettingsService} from '../../services/settings.service';
 import {Send} from '../../models/send.model';
 import {AccountService} from '../../services/account.service';
 import {ButtonsService} from '../../services/buttons.service';
+import {firstValueFrom} from 'rxjs';
 
 @Component({
   selector: 'app-maildialog',
@@ -33,6 +34,7 @@ export class MailDialog {
   private accountService = inject(AccountService);
   private fb = inject(FormBuilder);
 
+  errorMessage = signal<string | null>(null);
   visible = this.buttonsService.showMailDialog;
 
   mailForm = this.fb.nonNullable.group({
@@ -49,13 +51,14 @@ export class MailDialog {
 
   cancel() {
     this.visible.set(false);
+    this.errorMessage.set('');
   }
 
   getBookToMail() {
     return this.ebookService.getFirstAuthor() + " - " + this.ebookService.getTitle();
   }
 
-  mailBook() {
+  async mailBook() {
     const id = this.ebookService.getId();
     if (!id) return;
 
@@ -65,7 +68,13 @@ export class MailDialog {
       to: this.mailForm.controls['mailTo'].value
     }
 
-    this.ebookService.mailBook(send);
-    this.visible.set(false);
+    try {
+      await firstValueFrom(this.ebookService.mailBook(send));
+      this.visible.set(false);
+    } catch (error: any) {
+      console.error(error);
+      this.errorMessage.set(error.error?.message ?? 'Mail versturen is mislukt.');
+    }
   }
+
 }

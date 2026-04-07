@@ -23,61 +23,54 @@
               <label for="password" class="block">Oud wachtwoord:</label><br/>
               <p-password formControlName="password_old" [toggleMask]="true" [feedback]="false">
               </p-password>
-              @if(profileForm.get('password_old')?.invalid && profileForm.get('password_old')?.dirty) {
-                <small class="p-error block">Wachtwoord is verplicht</small>
-              }
             </div>
 
             <div class="field dialog-input">
               <label for="password" class="block">Nieuw wachtwoord:</label><br/>
               <p-password formControlName="password" [toggleMask]="true" [feedback]="false">
               </p-password>
-              @if(profileForm.get('password')?.invalid && profileForm.get('password')?.dirty) {
-                <small class="p-error block">Wachtwoord is verplicht</small>
-              }
             </div>
 
             <p-select
               [options]="roles"
+              optionLabel="label"
+              optionValue="value"
               formControlName="role"
+              appendTo="body"
+              panelStyleClass="role-select-panel"
               placeholder="Selecteer een rol">
-
-              <ng-template let-role pTemplate="item">
-                {{ role === 'ADMIN' ? 'Administrator' : 'Gebruiker' }}
-              </ng-template>
-
-              <ng-template let-role pTemplate="selectedItem">
-                {{ role === 'ADMIN' ? 'Administrator' : 'Gebruiker' }}
-              </ng-template>
-
             </p-select>
+            @if(errorMessage()) {
+              <p class="error">{{ errorMessage() }}</p>
+            }
+
+            <div class="profile-dialog-button">
+              <button
+                pButton
+                pRipple
+                type="button"
+                class="dialog-button"
+                (click)="cancel()"
+              >
+                <i class="pi pi-times" pButtonIcon></i>
+                <span pButtonLabel>Annuleren</span>
+              </button>
+
+              <button
+                pButton
+                pRipple
+                type="submit"
+                class="dialog-button"
+              >
+                <i class="pi pi-check" pButtonIcon></i>
+                <span pButtonLabel>Ok</span>
+              </button>
+            </div>
           </form>
+
         </div>
       </div>
 
-      <div class="profile-dialog-button">
-        <button
-          pButton
-          pRipple
-          type="button"
-          class="dialog-button"
-          (click)="cancel()"
-        >
-          <i class="pi pi-times" pButtonIcon></i>
-          <span pButtonLabel>Annuleren</span>
-        </button>
-
-        <button
-          pButton
-          pRipple
-          type="button"
-          class="dialog-button"
-          (click)="updateAccount()"
-        >
-          <i class="pi pi-check" pButtonIcon></i>
-          <span pButtonLabel>Ok</span>
-        </button>
-      </div>
 
     </div>
   </div>

@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, inject, signal} from '@angular/core';
 import {Dialog} from 'primeng/dialog';
 import {InputText} from 'primeng/inputtext';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import {ButtonDirective, ButtonIcon, ButtonLabel} from 'primeng/button';
 import {Ripple} from 'primeng/ripple';
-import {firstValueFrom} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {catchError, EMPTY} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {YesNoDatabaseDialog} from '../yes-no-database/yes-no-database.dialog';
 import {UserSettings} from '../../models/usersettings.model';
 import {Password} from 'primeng/password';
@@ -36,6 +36,7 @@ export class UsersettingsDialog {
   private accountService = inject(AccountService);
   private fb = inject(FormBuilder);
 
+  errorMessage = signal<string | null>(null);
   visible = this.menuService.showUserDialog;
 
   userSettingsForm = this.fb.nonNullable.group({
@@ -60,8 +61,8 @@ export class UsersettingsDialog {
     const activeUser = this.accountService.getActiveAccount().username;
     this.http.get<UserSettings>('http://localhost:8080/usersettings/' + activeUser)
       .subscribe({
-        next: settings => {
-          this.userSettingsForm.patchValue(settings);
+        next: userSettings => {
+          this.userSettingsForm.patchValue(userSettings);
         },
         error: () => {
           this.userSettingsForm.patchValue({
@@ -79,15 +80,31 @@ export class UsersettingsDialog {
 
   cancel() {
     this.visible.set(false);
+    this.errorMessage.set(null);
   }
 
   async saveSettings() {
+    this.errorMessage.set(null);
+
     const activeUser = this.accountService.getActiveAccount().username;
     const payload = this.userSettingsForm.value;
-    await firstValueFrom(
-      this.http.post('http://localhost:8080/usersettings/' + activeUser, payload)
-    );
-    this.visible.set(false);
+
+    this.http.post('http://localhost:8080/usersettings/' + activeUser, payload).pipe(
+      catchError((httpError: HttpErrorResponse) => {
+        if (httpError.error?.message) {
+          this.errorMessage.set(httpError.error.message);
+        } else {
+          this.errorMessage.set("Alle velden zijn verplicht.");
+        }
+
+        console.log(`${httpError.status}: ${httpError.error?.message}`);
+        return EMPTY;
+      })
+    ).subscribe({
+      next: () => {
+        this.visible.set(false);
+      }
+    });
   }
 
 }
